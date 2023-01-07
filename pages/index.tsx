@@ -66,7 +66,9 @@ const Home: NextPage = () => {
           <img src="/picture.png" className="sm:w-14 sm:h-14 w-9 h-9" />
           <h1 className="sm:text-5xl text-3xl font-bold ml-2 tracking-tight">restorePhotos.io</h1>
         </div>
-        <img src="/github-mark.png" className="sm:w-10 sm:h-10 w-8 h-8" />
+        <a href="https://github.com/Nutlope/whatisdevrel" target="_blank" rel="noreferrer">
+          <img src="/github-mark.png" className="sm:w-10 sm:h-10 w-8 h-8" />
+        </a>
       </header>
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-10">
         <h1 className="text-5xl sm:text-6xl font-bold mb-5">
@@ -100,11 +102,20 @@ const Home: NextPage = () => {
         </div>
       </main>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t-2 mt-5">
-        <a className="flex items-center justify-center gap-2" href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app" target="_blank" rel="noopener noreferrer">
-          Powered by Next.js, Vercel, and Replicate.
+      <footer className="text-center sm:h-20 h-16 w-full sm:pt-8 pt-6 border-t-2 mt-5">
+        Powered by{" "}
+        <a href="https://nextjs.org/" target="_blank" rel="noreferrer" className="font-bold hover:underline transition underline-offset-2">
+          Next.js
         </a>
-        {/* Also include GitHub Repo */}
+        ,{" "}
+        <a href="https://vercel.com/" target="_blank" rel="noreferrer" className="font-bold hover:underline transition underline-offset-2">
+          Vercel
+        </a>
+        , and{" "}
+        <a href="https://replicate.com/" target="_blank" rel="noreferrer" className="font-bold hover:underline transition underline-offset-2">
+          Replicate
+        </a>
+        .
       </footer>
     </div>
   );
