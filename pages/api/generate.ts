@@ -8,7 +8,7 @@ interface ExtendedNextApiRequest extends NextApiRequest {
 }
 
 export default async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<Data>) {
-  const { imageUrl } = req.query;
+  const imageUrl = req.body.imageUrl;
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
@@ -29,6 +29,7 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
   let restoredImage: string | null = null;
   while (!restoredImage) {
     // Loop in 1s intervals until the alt text is ready
+    console.log("polling for result...");
     let finalResponse = await fetch(endpointUrl, {
       method: "GET",
       headers: {

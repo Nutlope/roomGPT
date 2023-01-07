@@ -14,6 +14,8 @@ const options = { maxFileCount: 1, mimeTypes: ["image/jpeg", "image/png", "image
 
 const Home: NextPage = () => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [restoredImage, setRestoredImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -25,12 +27,32 @@ const Home: NextPage = () => {
         } else {
           console.log("File selected: ", file[0].fileUrl);
           setImageUrl(file[0].fileUrl);
+          generatePhoto(file[0].fileUrl);
         }
       }}
-      width="600px"
-      height="375px"
+      width="500px"
+      height="200px"
     />
   );
+
+  async function generatePhoto(fileUrl: string) {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ imageUrl: fileUrl }),
+      });
+
+      let newPhoto = await res.json();
+      setRestoredImage(newPhoto);
+      setLoading(false);
+    } catch (e) {
+      console.log("error", e);
+    }
+  }
 
   return (
     <div className="flex min-h-screen max-w-6xl mx-auto flex-col items-center justify-center py-2">
@@ -39,19 +61,21 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center text-center px-20">
+      <main className="flex w-full flex-1 flex-col items-center justify-center text-center sm:px-20 px-4">
         <h1 className="text-5xl sm:text-6xl font-bold mb-5">
           Welcome to <span className="text-blue-600">Restore Photos!</span>
         </h1>
         {/* Input for a photo upload */}
-        <div className="flex justify-between items-center border w-full">
-          <UploadDropZone />
+        <div className="flex justify-between items-center w-full flex-col">
+          {!imageUrl && <UploadDropZone />}
+          {imageUrl && <img src={imageUrl} className="sm:h-80 h-60" />}
           {imageUrl && (
-            <a href={imageUrl}>
-              {" "}
-              <img src={imageUrl} className="h-80" />
-            </a>
+            <button onClick={() => setImageUrl(null)} className="bg-blue-500 rounded-xl p-3 mt-5 mb-2">
+              Upload New Photo
+            </button>
           )}
+          {restoredImage && <img src={restoredImage} className="sm:h-80 h-60" />}
+          {loading && <p>Loading...</p>}
         </div>
       </main>
 
