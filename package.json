@@ -8,7 +8,9 @@
   "dependencies": {
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-uploader": "^3.0.2",
+    "uploader": "^3.0.2"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
