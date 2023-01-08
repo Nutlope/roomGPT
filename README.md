@@ -24,9 +24,9 @@ A site that restores people in old photos, specifically faces.
 - [x] Add Framer Motion for smooth animations when switching states
 - [x] Use Next.js Image Component everywhere
 - [x] Improve picture I'm showing
-- [ ] Add Vercel Analytics
-- [ ] Troubleshoot Vercel deployment
-- [ ] Add small FAQ section to the bottom
+- [x] Add Vercel Analytics
+- [x] Troubleshoot Vercel deployment
+- [x] Improved footer
 - [ ] Improve loading pattern for second image, maybe render placeholder and just load it in
 - [ ] Make sure it's good on mobile – add more space between two photos for example
 - [ ] Add an OG card, write out README, add to templates marketplace
@@ -34,6 +34,7 @@ A site that restores people in old photos, specifically faces.
 
 ## Todos v4
 
+- [ ] Add a testimonial section
 - [ ] Migrate to S3 + filepond (use s3 code I have)
 - [ ] Add examples to `/restore` page
 - [ ] Maybe try migrating to `/app` directory

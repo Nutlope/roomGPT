@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-20">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
           Restoring old photos{" "}
-          <span className="relative whitespace-nowrap text-blue-600">
+          <span className="relative whitespace-nowrap text-[#3290EE]">
             <SquigglyLines />
             <span className="relative">using AI</span>
           </span>{" "}
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          <p className="text-gray-400 mt-2 mb-10">Check out this sweet photo restoration of my little brother.</p>
+          <p className="text-gray-400 mt-3 mb-10">Check out this sweet photo restoration of my little brother.</p>
         </div>
       </main>
       <Footer />
