@@ -24,6 +24,8 @@ A site that restores people in old photos, specifically faces.
 - [x] Add Framer Motion for smooth animations when switching states
 - [x] Use Next.js Image Component everywhere
 - [x] Improve picture I'm showing
+- [ ] Add Vercel Analytics
+- [ ] Troubleshoot Vercel deployment
 - [ ] Add small FAQ section to the bottom
 - [ ] Improve loading pattern for second image, maybe render placeholder and just load it in
 - [ ] Make sure it's good on mobile – add more space between two photos for example
