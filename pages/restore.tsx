@@ -18,7 +18,6 @@ const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [firstImageLoaded, setFirstImageLoaded] = useState<boolean>(false);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -74,7 +73,7 @@ const Home: NextPage = () => {
                     <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
                     <Image alt="" src={originalPhoto} className="rounded-2xl relative" width={300} height={300} />
                   </div>
-                  <div>
+                  <div className="sm:mt-0 mt-8">
                     <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
                     <Image alt="" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} />
                   </div>

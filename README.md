@@ -28,7 +28,7 @@ A site that restores people in old photos, specifically faces.
 - [x] Troubleshoot Vercel deployment
 - [x] Improved footer
 - [x] Improve loading pattern for second image, maybe render placeholder and just load it in
-- [ ] Make sure it's good on mobile – add more space between two photos for example
+- [x] Make sure it's good on mobile – add more space between two photos for example
 - [ ] Add an OG card, write out README, add to templates marketplace
 - [ ] Share on Twitter along with link to templates marketplace and a couple tweets
 
