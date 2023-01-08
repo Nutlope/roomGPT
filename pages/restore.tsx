@@ -67,12 +67,11 @@ const Home: NextPage = () => {
           <AnimatePresence exitBeforeEnter>
             <motion.div className="flex justify-between items-center w-full flex-col mt-6">
               {!originalPhoto && <UploadDropZone />}
-              {originalPhoto && !restoredImage && <img src={originalPhoto} className="w-80 rounded-2xl" />}
+              {originalPhoto && !restoredImage && <Image alt="original photo" src={originalPhoto} className="w-80 rounded-2xl" width={300} height={300} />}
               {restoredImage && originalPhoto && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
                     <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
-                    {/* TODO: Add onCompletedLoading prop to only show loading when first image is up */}
                     <Image alt="" src={originalPhoto} className="rounded-2xl relative" width={300} height={300} />
                   </div>
                   <div>
