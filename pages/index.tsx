@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -32,11 +33,11 @@ const Home: NextPage = () => {
             <div className="flex sm:space-x-2 sm:flex-row flex-col">
               <div>
                 <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
-                <img src="originalLilBro.png" className="w-80 rounded-2xl" />
+                <Image alt="" src="/originalbro.png" className="w-80 rounded-2xl" width={300} height={300} />
               </div>
               <div>
                 <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
-                <img src="restoredLilBro.png" className="w-80 rounded-2xl sm:mt-0 mt-2" />
+                <Image alt="" width={300} height={300} src="/restoredbro.png" className="w-80 rounded-2xl sm:mt-0 mt-2" />
               </div>
             </div>
           </div>

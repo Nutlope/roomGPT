@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
@@ -11,12 +12,13 @@ import ResizablePanel from "../components/ResizablePanel";
 
 // Configuration for the uploader
 const uploader = Uploader({ apiKey: "free" });
-const options = { maxFileCount: 1, mimeTypes: ["image/jpeg", "image/png", "image/jpg"], editor: { images: { crop: false } } };
+const options = { maxFileCount: 1, mimeTypes: ["image/jpeg", "image/png", "image/jpg"], editor: { images: { crop: false } }, styles: { colors: { primary: "#000" } } };
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [firstImageLoaded, setFirstImageLoaded] = useState<boolean>(false);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -24,6 +26,7 @@ const Home: NextPage = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
+          console.log("uploaded file man");
           setOriginalPhoto(file[0].fileUrl);
           generatePhoto(file[0].fileUrl);
         }
@@ -34,6 +37,7 @@ const Home: NextPage = () => {
   );
 
   async function generatePhoto(fileUrl: string) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
     const res = await fetch("/api/generate", {
       method: "POST",
@@ -65,14 +69,15 @@ const Home: NextPage = () => {
               {!originalPhoto && <UploadDropZone />}
               {originalPhoto && !restoredImage && <img src={originalPhoto} className="w-80 rounded-2xl" />}
               {restoredImage && originalPhoto && (
-                <div className="flex sm:space-x-2 sm:flex-row flex-col">
+                <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
                     <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
-                    <img src={originalPhoto} className="w-80 rounded-2xl" />
+                    {/* TODO: Add onCompletedLoading prop to only show loading when first image is up */}
+                    <Image alt="" src={originalPhoto} className="rounded-2xl relative" width={300} height={300} />
                   </div>
                   <div>
                     <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
-                    <img src={restoredImage} className="w-80 rounded-2xl sm:mt-0 mt-2" />
+                    <Image alt="" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} />
                   </div>
                 </div>
               )}
