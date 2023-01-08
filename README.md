@@ -29,18 +29,19 @@ A site that restores people in old photos, specifically faces.
 - [x] Improved footer
 - [x] Improve loading pattern for second image, maybe render placeholder and just load it in
 - [x] Make sure it's good on mobile – add more space between two photos for example
-- [ ] Add an OG card, write out README, add to templates marketplace
-- [ ] Share on Twitter along with link to templates marketplace and a couple tweets
+- [x] Add OG card
+- [x] Improve accessibility
+- [ ] Write out README
+- [ ] Add to templates marketplace + share on Twitter
 
-## Todos v4
+## Future Tasks
 
-- [ ] Add a testimonial section
-- [ ] Migrate to S3 + filepond (use s3 code I have)
-- [ ] Add examples to `/restore` page
-- [ ] Maybe try migrating to `/app` directory
-- [ ] Add v2 to vercel examples and link to that one instead (maybe)
-- [ ] Implement share page
-  - [ ] Use Vercel OG to dynamically generate an image that contains the old and new pics
-  - [ ] Create a hash and store it in redis along with links to the old and new photos
-  - [ ] With this new hash, create a new dynamic page that has a link back to the original in the header and just shows the photos side by side
+- [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos
+- [ ] Implement a dynamic share page
+  - [ ] Use Vercel OG to dynamically generate an OG card that contains the old and new pics side by side
+  - [ ] Create a hash and store it in redis or postgres along with links to the old and new photos
+  - [ ] With this new hash, create a new sharable dynamic page that has the photos side by side
 - [ ] Add toggle to be able to restore both face photos and other old photos using swinr model
+- [ ] [Maybe] Add a testimonial section from Twitter after launching
+- [ ] [Maybe] Add a carousel of examples to the index page
+- [ ] [Maybe] Migrate to the `/app` directory

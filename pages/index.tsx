@@ -10,8 +10,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Restore Photos</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Face Photo Restorer</title>
       </Head>
 
       <Header />
@@ -33,15 +32,15 @@ const Home: NextPage = () => {
             <div className="flex sm:space-x-2 sm:flex-row flex-col">
               <div>
                 <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
-                <Image alt="" src="/originalbro.png" className="w-80 rounded-2xl" width={300} height={300} />
+                <Image alt="Original photo of my bro" src="/originalbro.png" className="w-80 rounded-2xl" width={300} height={300} />
               </div>
               <div className="sm:mt-0 mt-8">
                 <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
-                <Image alt="" width={300} height={300} src="/restoredbro.png" className="w-80 rounded-2xl sm:mt-0 mt-2" />
+                <Image alt="Restored photo of my bro" width={300} height={300} src="/restoredbro.png" className="w-80 rounded-2xl sm:mt-0 mt-2" />
               </div>
             </div>
           </div>
-          <p className="text-gray-400 mt-3 mb-10 sm:text-base text-sm">Check out this photo restoration of my little brother.</p>
+          <p className="text-gray-500 mt-3 mb-10 sm:text-base text-sm">Check out this photo restoration of my little brother.</p>
         </div>
       </main>
       <Footer />

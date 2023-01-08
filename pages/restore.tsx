@@ -70,12 +70,12 @@ const Home: NextPage = () => {
               {restoredImage && originalPhoto && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
-                    <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
-                    <Image alt="" src={originalPhoto} className="rounded-2xl relative" width={300} height={300} />
+                    <h2 className="mb-1 font-medium text-lg">Original Photo</h2>
+                    <Image alt="original photo" src={originalPhoto} className="rounded-2xl relative" width={300} height={300} />
                   </div>
                   <div className="sm:mt-0 mt-8">
-                    <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
-                    <Image alt="" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} />
+                    <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
+                    <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} />
                   </div>
                 </div>
               )}
