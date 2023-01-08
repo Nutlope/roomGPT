@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
@@ -5,6 +6,8 @@ import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import LoadingDots from "../components/LoadingDots";
+import ResizablePanel from "../components/ResizablePanel";
 
 // Configuration for the uploader
 const uploader = Uploader({ apiKey: "free" });
@@ -53,39 +56,47 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4">
+      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4">
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">Restore your photos</h1>
 
-        <div className="flex justify-between items-center w-full flex-col mt-6">
-          {/* TODO: Throw some Framer Motion here to resize dynamically */}
-          {!originalPhoto && <UploadDropZone />}
-          {originalPhoto && !restoredImage && <img src={originalPhoto} className="sm:h-80 h-60" />}
-          {restoredImage && originalPhoto && (
-            <div className="flex sm:space-x-2 sm:flex-row flex-col">
-              <div>
-                <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
-                <img src={originalPhoto} className="w-80 rounded-2xl" />
-              </div>
-              <div>
-                <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
-                <img src={restoredImage} className="w-80 rounded-2xl sm:mt-0 mt-2" />
-              </div>
-            </div>
-          )}
-          {/* TODO: Add nice loading state */}
-          {loading && <p>Generating photo...</p>}
-          {originalPhoto && !loading && (
-            <button
-              onClick={() => {
-                setOriginalPhoto(null);
-                setRestoredImage(null);
-              }}
-              className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80"
-            >
-              Upload New Photo
-            </button>
-          )}
-        </div>
+        <ResizablePanel>
+          <AnimatePresence exitBeforeEnter>
+            <motion.div className="flex justify-between items-center w-full flex-col mt-6">
+              {!originalPhoto && <UploadDropZone />}
+              {originalPhoto && !restoredImage && <img src={originalPhoto} className="w-80 rounded-2xl" />}
+              {restoredImage && originalPhoto && (
+                <div className="flex sm:space-x-2 sm:flex-row flex-col">
+                  <div>
+                    <h3 className="mb-1 font-medium text-lg">Original Photo</h3>
+                    <img src={originalPhoto} className="w-80 rounded-2xl" />
+                  </div>
+                  <div>
+                    <h3 className="mb-1 font-medium text-lg">Restored Photo</h3>
+                    <img src={restoredImage} className="w-80 rounded-2xl sm:mt-0 mt-2" />
+                  </div>
+                </div>
+              )}
+              {loading && (
+                <button disabled className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40">
+                  <span className="pt-4">
+                    <LoadingDots color="white" style="large" />
+                  </span>
+                </button>
+              )}
+              {originalPhoto && !loading && (
+                <button
+                  onClick={() => {
+                    setOriginalPhoto(null);
+                    setRestoredImage(null);
+                  }}
+                  className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80"
+                >
+                  Upload New Photo
+                </button>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </ResizablePanel>
       </main>
       <Footer />
     </div>

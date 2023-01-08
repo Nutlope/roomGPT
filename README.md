@@ -20,12 +20,14 @@ A site that restores people in old photos, specifically faces.
 
 ## Todos v3
 
-- [ ] Implement some kind of loading state
-- [ ] Add Framer Motion for smooth animations when switching states
+- [x] Implement some kind of loading state
+- [x] Add Framer Motion for smooth animations when switching states
+- [ ] Use Next.js Image Component
 - [ ] Add an OG card, write out README, add to templates marketplace
 - [ ] Share on Twitter along with link to templates marketplace and a couple tweets
 - [ ] Maybe add "restore your own photos" somewhere in the header to link to the relevant page
 - [ ] Add FAQ section to the bottom
+- [ ] Maybe replace photo with my dad instead
 
 ## Todos v4
 

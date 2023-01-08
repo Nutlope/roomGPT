@@ -6,10 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "framer-motion": "^8.2.4",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-uploader": "^3.0.2",
+    "react-use-measure": "^2.1.1",
     "uploader": "^3.0.2"
   },
   "devDependencies": {
