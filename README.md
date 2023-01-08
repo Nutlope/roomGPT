@@ -1,41 +1,34 @@
-# RestorePhotos.io
+# [RestorePhotos.io](https://restorephotos.io/)
 
-A site that restores people in old photos, specifically faces.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
 
-## Todos v1
+This project will restore old face photos and make them higher quality using AI.
 
-- [x] Get initial API route to work
-- [x] Figure how to feed API an image from the UI
-- [x] Create the UI for uploading an image
-- [x] Add header with an image icon, restorephotos.io, then a GitHub icon with the repo at the top right
-- [x] Footer with links to Next.js, Vercel, and Replicate
-- [x] Improve how hero section looks using Untitled UI / Tailwind UI
-- [x] Add a new section from Tailwind/Untitled UI to show some examples
+[![Face Photo Restorer](./public/og-image.png)](https://restorephotos.io/)
 
-## Todos v2
+## How it works
 
-- [x] Improve the landing page design
-- [x] Add a new "generate" page with the file picker
-- [x] Make it work for real
+It uses an ML modal from the Applied Research Center called [GFPGAN](https://github.com/TencentARC/GFPGAN) on [Replicate](https://replicate.com/) to restore face photos. The application gives you the ability to upload any photo, which will send it through this ML Model using a Next.js API route, and return your restored photo.
 
-## Todos v3
+## Running Locally
 
-- [x] Implement some kind of loading state
-- [x] Add Framer Motion for smooth animations when switching states
-- [x] Use Next.js Image Component everywhere
-- [x] Improve picture I'm showing
-- [x] Add Vercel Analytics
-- [x] Troubleshoot Vercel deployment
-- [x] Improved footer
-- [x] Improve loading pattern for second image, maybe render placeholder and just load it in
-- [x] Make sure it's good on mobile – add more space between two photos for example
-- [x] Add OG card
-- [x] Improve accessibility
-- [ ] Write out README
-- [ ] Add to templates marketplace + share on Twitter
+After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`.
+
+Then, run the application in the command line and it will be available at `http://localhost:3000`.
+
+```bash
+npm run dev
+```
+
+## One-Click Deploy
+
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
 
 ## Future Tasks
 
+- [ ] Add to templates marketplace + share on Twitter
 - [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos
 - [ ] Implement a dynamic share page
   - [ ] Use Vercel OG to dynamically generate an OG card that contains the old and new pics side by side
