@@ -16,9 +16,8 @@ export default function Header() {
           restorePhotos.io
         </h1>
       </Link>
-      {/* TODO: Replace this link to Vercel Templates Marketplace */}
       <a
-        href="https://github.com/Nutlope/restorePhotos"
+        href="https://vercel.com/templates/next.js/ai-photo-restorer"
         target="_blank"
         rel="noreferrer"
       >
