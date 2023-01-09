@@ -5,10 +5,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
+import { CompareSlider } from "../components/CompareSlider";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
+import Toggle from "../components/Toggle";
 import downloadPhoto from "../utils/downloadPhoto";
 
 // Configuration for the uploader
@@ -20,6 +22,7 @@ const Home: NextPage = () => {
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
+  const [sideBySide, setSideBySide] = useState<boolean>(false);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -67,18 +70,20 @@ const Home: NextPage = () => {
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>
             <motion.div className="flex justify-between items-center w-full flex-col mt-6">
+              <Toggle sideBySide={sideBySide} setSideBySide={setSideBySide} className={`${restoredLoaded ? "visible" : "invisible"}`} />
+              {restoredLoaded && sideBySide && <CompareSlider original={originalPhoto!} restored={restoredImage!} />}
               {!originalPhoto && <UploadDropZone />}
-              {originalPhoto && !restoredImage && <Image alt="original photo" src={originalPhoto} className="w-80 rounded-2xl" width={300} height={300} />}
-              {restoredImage && originalPhoto && (
+              {originalPhoto && !restoredImage && <Image alt="original photo" src={originalPhoto} className="rounded-2xl" width={500} height={500} />}
+              {restoredImage && originalPhoto && !sideBySide && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
                     <h2 className="mb-1 font-medium text-lg">Original Photo</h2>
-                    <Image alt="original photo" src={originalPhoto} className="rounded-2xl relative" width={300} height={300} />
+                    <Image alt="original photo" src={originalPhoto} className="rounded-2xl relative" width={500} height={500} />
                   </div>
                   <div className="sm:mt-0 mt-8">
                     <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
-                      <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in" width={300} height={300} onLoadingComplete={() => setRestoredLoaded(true)} />
+                      <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in" width={500} height={500} onLoadingComplete={() => setRestoredLoaded(true)} />
                     </a>
                   </div>
                 </div>

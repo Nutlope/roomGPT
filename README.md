@@ -28,6 +28,10 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 ## Future Tasks
 
+- [x] Add download link to high res version of restored image
+- [x] Show the restored photo larger on the screen
+- [x] Add comparison slider
+- [ ] Add rate limiting based on IP Address and throw an error in the app for it
 - [ ] Add to templates marketplace + share on Twitter
 - [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos
 - [ ] Implement a dynamic share page
