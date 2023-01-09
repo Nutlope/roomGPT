@@ -24,21 +24,6 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
 
-## Current Tasks
-
-- [x] v1 with header, footer, and landing page copy
-- [x] write API route to interact with ML Model through replicate
-- [x] build a `/restore` page with an upload that does the image restoration
-- [x] Add download link to high res version of restored image
-- [x] Add a comparison slider to more clearly see before/after
-- [x] Add rate limiting based on IP Address and throw an error in the app for it
-- [x] Make sure all env variables are updated, especially the upstash ones
-- [x] Add a testimonial section from Twitter
-- [x] Go over all links
-- [x] Make sure it's good on mobile
-- [x] Connect restorePhotos.io to Vercel project
-- [ ] Make repo OSS, add to templates marketplace + tweet it out with a short demo vid + thank G and Malte for the feedback
-
 ## Future Tasks
 
 - [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos for the dynamic share page
