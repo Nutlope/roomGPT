@@ -15,7 +15,12 @@ import downloadPhoto from "../utils/downloadPhoto";
 
 // Configuration for the uploader
 const uploader = Uploader({ apiKey: "free" });
-const options = { maxFileCount: 1, mimeTypes: ["image/jpeg", "image/png", "image/jpg"], editor: { images: { crop: false } }, styles: { colors: { primary: "#000" } } };
+const options = {
+  maxFileCount: 1,
+  mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
+  editor: { images: { crop: false } },
+  styles: { colors: { primary: "#000" } },
+};
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
@@ -53,7 +58,9 @@ const Home: NextPage = () => {
 
     let newPhoto = await res.json();
     if (newPhoto === "The request has been rate limited") {
-      setError("The request has been rate limited. Please try again in a few minutes.");
+      setError(
+        "The request has been rate limited. Please try again in a few minutes."
+      );
     } else {
       setRestoredImage(newPhoto);
     }
@@ -69,38 +76,76 @@ const Home: NextPage = () => {
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4">
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">Restore your photos</h1>
+        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
+          Restore your photos
+        </h1>
 
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>
             <motion.div className="flex justify-between items-center w-full flex-col mt-6">
-              <Toggle sideBySide={sideBySide} setSideBySide={setSideBySide} className={`${restoredLoaded ? "visible" : "invisible"}`} />
-              {restoredLoaded && sideBySide && <CompareSlider original={originalPhoto!} restored={restoredImage!} />}
+              <Toggle
+                className={`${restoredLoaded ? "visible" : "invisible"}`}
+                sideBySide={sideBySide}
+                setSideBySide={setSideBySide}
+              />
+              {restoredLoaded && sideBySide && (
+                <CompareSlider
+                  original={originalPhoto!}
+                  restored={restoredImage!}
+                />
+              )}
               {!originalPhoto && <UploadDropZone />}
-              {originalPhoto && !restoredImage && <Image alt="original photo" src={originalPhoto} className="rounded-2xl" width={475} height={475} />}
+              {originalPhoto && !restoredImage && (
+                <Image
+                  alt="original photo"
+                  src={originalPhoto}
+                  className="rounded-2xl"
+                  width={475}
+                  height={475}
+                />
+              )}
               {restoredImage && originalPhoto && !sideBySide && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
                     <h2 className="mb-1 font-medium text-lg">Original Photo</h2>
-                    <Image alt="original photo" src={originalPhoto} className="rounded-2xl relative" width={475} height={475} />
+                    <Image
+                      alt="original photo"
+                      src={originalPhoto}
+                      className="rounded-2xl relative"
+                      width={475}
+                      height={475}
+                    />
                   </div>
                   <div className="sm:mt-0 mt-8">
                     <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
-                      <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in" width={475} height={475} onLoadingComplete={() => setRestoredLoaded(true)} />
+                      <Image
+                        alt="restored photo"
+                        src={restoredImage}
+                        className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in"
+                        width={475}
+                        height={475}
+                        onLoadingComplete={() => setRestoredLoaded(true)}
+                      />
                     </a>
                   </div>
                 </div>
               )}
               {loading && (
-                <button disabled className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40">
+                <button
+                  disabled
+                  className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+                >
                   <span className="pt-4">
                     <LoadingDots color="white" style="large" />
                   </span>
                 </button>
               )}
               {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-8" role="alert">
+                <div
+                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-8"
+                  role="alert"
+                >
                   <span className="block sm:inline">{error}</span>
                 </div>
               )}

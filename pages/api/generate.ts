@@ -16,7 +16,10 @@ const ratelimit = new Ratelimit({
   limiter: Ratelimit.fixedWindow(5, "60 s"),
 });
 
-export default async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler(
+  req: ExtendedNextApiRequest,
+  res: NextApiResponse<Data>
+) {
   // Rate Limiter Code
   const identifier = requestIp.getClientIp(req);
   const result = await ratelimit.limit(identifier!);
@@ -36,7 +39,8 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
       Authorization: "Token " + process.env.REPLICATE_API_KEY,
     },
     body: JSON.stringify({
-      version: "9283608cc6b7be6b65a8e44983db012355fde4132009bf99d976b2f0896856a3",
+      version:
+        "9283608cc6b7be6b65a8e44983db012355fde4132009bf99d976b2f0896856a3",
       input: { img: imageUrl, version: "v1.4", scale: 2 },
     }),
   });
@@ -66,5 +70,7 @@ export default async function handler(req: ExtendedNextApiRequest, res: NextApiR
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
-  res.status(200).json(restoredImage ? restoredImage : "Failed to restore image");
+  res
+    .status(200)
+    .json(restoredImage ? restoredImage : "Failed to restore image");
 }
