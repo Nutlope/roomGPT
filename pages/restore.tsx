@@ -73,17 +73,17 @@ const Home: NextPage = () => {
               <Toggle sideBySide={sideBySide} setSideBySide={setSideBySide} className={`${restoredLoaded ? "visible" : "invisible"}`} />
               {restoredLoaded && sideBySide && <CompareSlider original={originalPhoto!} restored={restoredImage!} />}
               {!originalPhoto && <UploadDropZone />}
-              {originalPhoto && !restoredImage && <Image alt="original photo" src={originalPhoto} className="rounded-2xl" width={500} height={500} />}
+              {originalPhoto && !restoredImage && <Image alt="original photo" src={originalPhoto} className="rounded-2xl" width={475} height={475} />}
               {restoredImage && originalPhoto && !sideBySide && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
                     <h2 className="mb-1 font-medium text-lg">Original Photo</h2>
-                    <Image alt="original photo" src={originalPhoto} className="rounded-2xl relative" width={500} height={500} />
+                    <Image alt="original photo" src={originalPhoto} className="rounded-2xl relative" width={475} height={475} />
                   </div>
                   <div className="sm:mt-0 mt-8">
                     <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
-                      <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in" width={500} height={500} onLoadingComplete={() => setRestoredLoaded(true)} />
+                      <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in" width={475} height={475} onLoadingComplete={() => setRestoredLoaded(true)} />
                     </a>
                   </div>
                 </div>
