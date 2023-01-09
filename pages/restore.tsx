@@ -77,14 +77,13 @@ const Home: NextPage = () => {
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4">
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
-          Restore your photos
+          Restore any face photo
         </h1>
-
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>
-            <motion.div className="flex justify-between items-center w-full flex-col mt-6">
+            <motion.div className="flex justify-between items-center w-full flex-col mt-4">
               <Toggle
-                className={`${restoredLoaded ? "visible" : "invisible"}`}
+                className={`${restoredLoaded ? "visible" : "invisible"} mb-6`}
                 sideBySide={sideBySide}
                 setSideBySide={setSideBySide}
               />

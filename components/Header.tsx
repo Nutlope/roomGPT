@@ -23,7 +23,7 @@ export default function Header() {
         rel="noreferrer"
       >
         <Image
-          alt="GitHub Icon"
+          alt="Vercel Icon"
           src="/vercelLogo.png"
           className="sm:w-10 sm:h-10 w-8 h-8"
           width={32}

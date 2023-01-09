@@ -37,7 +37,7 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 - [x] Go over all links
 - [x] Make sure it's good on mobile
 - [ ] Connect restorePhotos.io to Vercel project
-- [ ] Make repo OSS, add to templates marketplace + tweet it out
+- [ ] Make repo OSS, add to templates marketplace + tweet it out with a short demo vid + thank G and Malte for the feedback
 - [ ] Clean up code a little – The `any` and other things
 
 ## Future Tasks
