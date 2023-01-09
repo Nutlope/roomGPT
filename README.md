@@ -10,7 +10,7 @@ It uses an ML modal from the Applied Research Center called [GFPGAN](https://git
 
 ## Running Locally
 
-After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`. If you'd also like to do rate limiting, create an account on UpStash, create a Redis database, and put the two environment variables in `.env` as well. If you don't want to do rate limiting, delete those lines from the `/generate` API route (L14-17, L21-28).
+After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`.
 
 Then, run the application in the command line and it will be available at `http://localhost:3000`.
 
@@ -22,7 +22,7 @@ npm run dev
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY,UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN&project-name=face-photo-restorer&repo-name=restore-photos)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
 
 ## Current Tasks
 
