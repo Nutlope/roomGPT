@@ -42,19 +42,19 @@ const Home: NextPage = () => {
                 <Image
                   alt="Original photo of my bro"
                   src="/originalbro.png"
-                  className="w-80 rounded-2xl"
-                  width={300}
-                  height={300}
+                  className="w-80 h-80 rounded-2xl"
+                  width={320}
+                  height={320}
                 />
               </div>
               <div className="sm:mt-0 mt-8">
                 <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
                 <Image
                   alt="Restored photo of my bro"
-                  width={300}
-                  height={300}
+                  width={320}
+                  height={320}
                   src="/restoredbro.png"
-                  className="w-80 rounded-2xl sm:mt-0 mt-2"
+                  className="w-80 h-80 rounded-2xl sm:mt-0 mt-2"
                 />
               </div>
             </div>
