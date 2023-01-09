@@ -26,11 +26,10 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 ## Future Tasks
 
-- [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos for the dynamic share page
 - [ ] Implement a dynamic share page
-  - [ ] Use Vercel OG to dynamically generate an OG card that contains the old and new pics side by side
-  - [ ] Create a hash and store it in redis or postgres along with links to the old and new photos
+  - [ ] Create a hash and store it in redis along with links to the old and new photos
   - [ ] With this new hash, create a new sharable dynamic page that has the photos side by side
-- [ ] Add toggle to be able to restore both face photos and other old photos using swinr model
+  - [ ] Use Vercel OG to dynamically generate an OG card that contains the old and new pics side by side
+- [ ] Add toggle to be able to restore both face photos or just old blurry photos using swinr model
 - [ ] Improve the generation of the photo to extend beyond faces; maybe run it through a general model before
 - [ ] Add a carousel of good examples to the index page

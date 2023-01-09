@@ -4,16 +4,16 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+export interface ToggleProps extends React.HTMLAttributes<HTMLDivElement> {
+  sideBySide: boolean;
+  setSideBySide: (sideBySide: boolean) => void;
+}
+
 export default function Toggle({
   sideBySide,
   setSideBySide,
   ...props
-}: any) // {
-//   sideBySide: boolean;
-//   setSideBySide: (sideBySide: boolean) => void;
-//   props: any;
-// }
-{
+}: ToggleProps) {
   return (
     <Switch.Group as="div" {...props}>
       <div className="flex items-center">

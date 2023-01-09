@@ -83,7 +83,7 @@ const Home: NextPage = () => {
               <Toggle
                 className={`${restoredLoaded ? "visible" : "invisible"} mb-6`}
                 sideBySide={sideBySide}
-                setSideBySide={setSideBySide}
+                setSideBySide={(newVal) => setSideBySide(newVal)}
               />
               {restoredLoaded && sideBySide && (
                 <CompareSlider
