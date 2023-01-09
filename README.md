@@ -34,13 +34,11 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 - [x] Add rate limiting based on IP Address and throw an error in the app for it
 - [x] Make sure all env variables are updated, especially the upstash ones
 - [x] Add a testimonial section from Twitter
+- [x] Go over all links
+- [x] Make sure it's good on mobile
 - [ ] Connect restorePhotos.io to Vercel project
-- [ ] Go over all links
-- [ ] Make repo OSS
-- [ ] make sure it's good on mobile
-- [ ] Add to templates marketplace + write up example tweet on typefully
-- [ ] Tweet
-- [ ] Clean up code a little
+- [ ] Make repo OSS, add to templates marketplace + tweet it out
+- [ ] Clean up code a little – The `any` and other things
 
 ## Future Tasks
 

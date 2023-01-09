@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-20">
+      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-24 mt-20">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
           Restoring old photos{" "}
           <span className="relative whitespace-nowrap text-[#3290EE]">
@@ -29,12 +29,12 @@ const Home: NextPage = () => {
           memories can live on. 100% free – restore your photos today.
         </p>
         <Link
-          className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80"
+          className="bg-black rounded-full text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
           href="/restore"
         >
           Restore your photos
         </Link>
-        <div className="flex justify-between items-center w-full flex-col mt-6">
+        <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
           <div className="flex flex-col space-y-10 mt-4">
             <div className="flex sm:space-x-2 sm:flex-row flex-col">
               <div>
