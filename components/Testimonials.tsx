@@ -13,20 +13,21 @@ const testimonials = [
       },
     },
     {
-      content: "This looks awesome! Can’t wait to use it, thanks Hassan.",
-      link: "https://twitter.com/hqasmei/status/1612147400378052608",
+      content:
+        "This is amazing! And in the 🧵 you can see the whole open-source stack instantly deployable to Vercel",
+      link: "https://twitter.com/cramforce/status/1612496954218672128",
       author: {
-        name: "Hosna Qasmei",
-        role: "Software Engineer",
-        image: "/hosna.jpg",
+        name: "Malte Ubl",
+        role: "CTO at Vercel",
+        image: "/malte.jpg",
       },
     },
   ],
   [
     {
       content:
-        "Wow, that's a really cool project! I'm sure a lot of people will appreciate having a tool like that. It's great that you're planning to make it free and open source as well.",
-      link: "https://twitter.com/phar_whaz/status/1612218773980975104",
+        "I just used it and am extremely impressed with the website and wanted to express my appreciation for the excellent design and functionality. Keep up the great work!",
+      link: "https://twitter.com/phar_whaz/status/1612498030627852309",
       author: {
         name: "Fawaz Adeniji",
         role: "Software Engineer",
@@ -45,21 +46,22 @@ const testimonials = [
   ],
   [
     {
+      content:
+        "I've just used it and damn I'll keep coming back! This is so good. Great work!",
+      link: "https://twitter.com/Himanil_Gole/status/1612510385504157697",
+      author: {
+        name: "Himanil Gole",
+        role: "Designer & Founder at CBREX",
+        image: "/himanil.jpg",
+      },
+    },
+    {
       content: "Hassan, that is so cool. Can't wait to use this!",
       link: "https://twitter.com/Madisonkanna/status/1611893042306502657",
       author: {
         name: "Madison Kanna",
         role: "Programmer and YouTuber",
         image: "/madison.jpg",
-      },
-    },
-    {
-      content: "This will come in handy, can't wait to try it!",
-      link: "https://twitter.com/ahm3daslam/status/1612224871320150018",
-      author: {
-        name: "Ahmed Aslam",
-        role: "Software Engineer",
-        image: "/ahmed.jpg",
       },
     },
   ],
