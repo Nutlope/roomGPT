@@ -1,12 +1,12 @@
 # [RestorePhotos.io](https://restorephotos.io/)
 
-This project will restore old face photos and make them higher quality using AI.
+This project restores old face photos using AI. Watch the [15 second demo](https://twitter.com/nutlope/status/1612488923716136962).
 
-[![Face Photo Restorer](./public/og-image.png)](https://restorephotos.io/)
+[![Face Photo Restorer](./public/screenshot.png)](https://restorephotos.io/)
 
 ## How it works
 
-It uses an ML model from the Applied Research Center called [GFPGAN](https://github.com/TencentARC/GFPGAN) on [Replicate](https://replicate.com/) to restore face photos. The application gives you the ability to upload any photo, which will send it through this ML Model using a Next.js API route, and return your restored photo.
+It uses an ML model from the Applied Research Center called [GFPGAN](https://github.com/TencentARC/GFPGAN) on [Replicate](https://replicate.com/) to restore face photos. This application gives you the ability to upload any photo, which will send it through this ML Model using a Next.js API route, and return your restored photo.
 
 ## Running Locally
 
