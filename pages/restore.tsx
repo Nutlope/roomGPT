@@ -77,7 +77,9 @@ const Home: NextPage = () => {
                   </div>
                   <div className="sm:mt-0 mt-8">
                     <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
-                    <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} onLoadingComplete={() => setRestoredLoaded(true)} />
+                    <a href={restoredImage} target="_blank" rel="noreferrer">
+                      <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in" width={300} height={300} onLoadingComplete={() => setRestoredLoaded(true)} />
+                    </a>
                   </div>
                 </div>
               )}
@@ -108,7 +110,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download high quality
+                    Download Restored Photo
                   </button>
                 )}
               </div>
