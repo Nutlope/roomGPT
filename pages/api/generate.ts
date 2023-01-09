@@ -22,10 +22,7 @@ export default async function handler(
 ) {
   // Rate Limiter Code
   const identifier = requestIp.getClientIp(req);
-
-  console.log({ identifier });
   const result = await ratelimit.limit(identifier!);
-
   res.setHeader("X-RateLimit-Limit", result.limit);
   res.setHeader("X-RateLimit-Remaining", result.remaining);
 
