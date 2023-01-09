@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
+import downloadPhoto from "../utils/downloadPhoto";
 
 // Configuration for the uploader
 const uploader = Uploader({ apiKey: "free" });
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -75,7 +77,7 @@ const Home: NextPage = () => {
                   </div>
                   <div className="sm:mt-0 mt-8">
                     <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
-                    <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} />
+                    <Image alt="restored photo" src={restoredImage} className="rounded-2xl relative sm:mt-0 mt-2" width={300} height={300} onLoadingComplete={() => setRestoredLoaded(true)} />
                   </div>
                 </div>
               )}
@@ -86,17 +88,30 @@ const Home: NextPage = () => {
                   </span>
                 </button>
               )}
-              {originalPhoto && !loading && (
-                <button
-                  onClick={() => {
-                    setOriginalPhoto(null);
-                    setRestoredImage(null);
-                  }}
-                  className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80"
-                >
-                  Upload New Photo
-                </button>
-              )}
+              <div className="flex space-x-2 justify-center">
+                {originalPhoto && !loading && (
+                  <button
+                    onClick={() => {
+                      setOriginalPhoto(null);
+                      setRestoredImage(null);
+                      setRestoredLoaded(false);
+                    }}
+                    className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
+                  >
+                    Upload New Photo
+                  </button>
+                )}
+                {restoredLoaded && (
+                  <button
+                    onClick={() => {
+                      downloadPhoto(restoredImage!, "restoredPhoto.jpg");
+                    }}
+                    className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+                  >
+                    Download high quality
+                  </button>
+                )}
+              </div>
             </motion.div>
           </AnimatePresence>
         </ResizablePanel>
