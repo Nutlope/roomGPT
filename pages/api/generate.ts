@@ -1,4 +1,7 @@
+import { Ratelimit } from "@upstash/ratelimit";
 import type { NextApiRequest, NextApiResponse } from "next";
+import requestIp from "request-ip";
+import redis from "../../utils/redis";
 
 type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
@@ -7,7 +10,23 @@ interface ExtendedNextApiRequest extends NextApiRequest {
   };
 }
 
+// Create a new ratelimiter, that allows 5 requests per 60 seconds
+const ratelimit = new Ratelimit({
+  redis: redis,
+  limiter: Ratelimit.fixedWindow(5, "60 s"),
+});
+
 export default async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<Data>) {
+  // Rate Limiter Code
+  const identifier = requestIp.getClientIp(req);
+  const result = await ratelimit.limit(identifier!);
+  res.setHeader("X-RateLimit-Limit", result.limit);
+  res.setHeader("X-RateLimit-Remaining", result.remaining);
+  if (!result.success) {
+    res.status(200).json("The request has been rate limited");
+    return;
+  }
+
   const imageUrl = req.body.imageUrl;
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {

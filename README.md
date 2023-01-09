@@ -1,7 +1,5 @@
 # [RestorePhotos.io](https://restorephotos.io/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
-
 This project will restore old face photos and make them higher quality using AI.
 
 [![Face Photo Restorer](./public/og-image.png)](https://restorephotos.io/)
@@ -12,7 +10,7 @@ It uses an ML modal from the Applied Research Center called [GFPGAN](https://git
 
 ## Running Locally
 
-After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`.
+After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`. If you'd also like to do rate limiting, create an account on UpStash, create a Redis database, and put the two environment variables in `.env` as well. If you don't want to do rate limiting, delete those lines from the `/generate` API route (L14-17, L21-28).
 
 Then, run the application in the command line and it will be available at `http://localhost:3000`.
 
@@ -24,22 +22,26 @@ npm run dev
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY,UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN&project-name=face-photo-restorer&repo-name=restore-photos)
 
 ## Future Tasks
 
+- [x] v1 with header, footer, and landing page copy
+- [x] write API route to interact with ML Model through replicate
+- [x] build a `/restore` page with an upload that does the image restoration
 - [x] Add download link to high res version of restored image
-- [x] Show the restored photo larger on the screen
-- [x] Add comparison slider
-- [ ] Add rate limiting based on IP Address and throw an error in the app for it
-- [ ] Make sure all env variables are updated, especially the upstash ones
-- [ ] Add to templates marketplace + share on Twitter
-- [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos
+- [x] Add a comparison slider to more clearly see before/after
+- [x] Add rate limiting based on IP Address and throw an error in the app for it
+- [x] Make sure all env variables are updated, especially the upstash ones
+- [ ] Add a testimonial section from Twitter
+- [ ] Add to templates marketplace + write up example tweet on typefully
+- [ ] Connect actual website to it
+
+- [ ] Migrate from react-uploader to S3 + filepond to have access to uploaded photos for the dynamic share page
 - [ ] Implement a dynamic share page
   - [ ] Use Vercel OG to dynamically generate an OG card that contains the old and new pics side by side
   - [ ] Create a hash and store it in redis or postgres along with links to the old and new photos
   - [ ] With this new hash, create a new sharable dynamic page that has the photos side by side
 - [ ] Add toggle to be able to restore both face photos and other old photos using swinr model
-- [ ] [Maybe] Add a testimonial section from Twitter after launching
-- [ ] [Maybe] Add a carousel of examples to the index page
-- [ ] [Maybe] Migrate to the `/app` directory
+- [ ] Improve the generation of the photo to extend beyond faces; maybe run it through a general model before
+- [ ] Add a carousel of good examples to the index page

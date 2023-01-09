@@ -23,6 +23,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
   const [sideBySide, setSideBySide] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -30,7 +31,6 @@ const Home: NextPage = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
-          console.log("uploaded file man");
           setOriginalPhoto(file[0].fileUrl);
           generatePhoto(file[0].fileUrl);
         }
@@ -52,7 +52,11 @@ const Home: NextPage = () => {
     });
 
     let newPhoto = await res.json();
-    setRestoredImage(newPhoto);
+    if (newPhoto === "The request has been rate limited") {
+      setError("The request has been rate limited. Please try again in a few minutes.");
+    } else {
+      setRestoredImage(newPhoto);
+    }
     setLoading(false);
   }
 
@@ -94,6 +98,11 @@ const Home: NextPage = () => {
                     <LoadingDots color="white" style="large" />
                   </span>
                 </button>
+              )}
+              {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-8" role="alert">
+                  <span className="block sm:inline">{error}</span>
+                </div>
               )}
               <div className="flex space-x-2 justify-center">
                 {originalPhoto && !loading && (
