@@ -57,10 +57,8 @@ const Home: NextPage = () => {
     });
 
     let newPhoto = await res.json();
-    if (newPhoto === "The request has been rate limited") {
-      setError(
-        "The request has been rate limited. Please try again in a few minutes."
-      );
+    if (res.status !== 200) {
+      setError(newPhoto);
     } else {
       setRestoredImage(newPhoto);
     }

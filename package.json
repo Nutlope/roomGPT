@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
+    "@upstash/ratelimit": "^0.1.5",
+    "@upstash/redis": "^1.19.1",
     "@vercel/analytics": "^0.1.6",
     "framer-motion": "^8.2.4",
     "next": "latest",
@@ -15,6 +17,7 @@
     "react-dom": "18.2.0",
     "react-uploader": "^3.0.2",
     "react-use-measure": "^2.1.1",
+    "request-ip": "^3.3.0",
     "uploader": "^3.0.2"
   },
   "devDependencies": {
