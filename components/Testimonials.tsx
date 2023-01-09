@@ -35,12 +35,13 @@ const testimonials = [
       },
     },
     {
-      content: "This is genius.",
-      link: "https://twitter.com/maikbenson/status/1612310374849576968",
+      content:
+        "Wow, thank you! Tried a few and love it! My small example (pic of father from 70s original on right), really cleaned it up!",
+      link: "https://twitter.com/rod_ellison/status/1612513333302775809",
       author: {
-        name: "Michael Benson",
-        role: "Founder at Dabble Ventures",
-        image: "/michael.jpg",
+        name: "Rod Ellison",
+        role: "Software Engineer",
+        image: "/rod.jpg",
       },
     },
   ],
