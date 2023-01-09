@@ -10,7 +10,7 @@ It uses an ML model from the Applied Research Center called [GFPGAN](https://git
 
 ## Running Locally
 
-After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`.
+After cloning the repo, go to [Replicate](https://replicate.com/) to make an account and put your API key in a file called `.env`. If you'd also like to do rate limiting, create an account on UpStash, create a Redis database, and populate the two environment variables in `.env` as well. If you don't want to do rate limiting, you don't need to make any changes.
 
 Then, run the application in the command line and it will be available at `http://localhost:3000`.
 
