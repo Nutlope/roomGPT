@@ -11,6 +11,7 @@ import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
 import Toggle from "../components/Toggle";
+import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 
 // Configuration for the uploader
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
   const [sideBySide, setSideBySide] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [photoName, setPhotoName] = useState<string | null>(null);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -36,6 +38,7 @@ const Home: NextPage = () => {
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
+          setPhotoName(file[0].originalFile.originalFileName);
           setOriginalPhoto(file[0].fileUrl);
           generatePhoto(file[0].fileUrl);
         }
@@ -162,7 +165,10 @@ const Home: NextPage = () => {
                 {restoredLoaded && (
                   <button
                     onClick={() => {
-                      downloadPhoto(restoredImage!, "restoredPhoto.jpg");
+                      downloadPhoto(
+                        restoredImage!,
+                        appendNewToName(photoName!)
+                      );
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
