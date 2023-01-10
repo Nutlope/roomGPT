@@ -36,12 +36,12 @@ const testimonials = [
     },
     {
       content:
-        "Wow, thank you! Tried a few and love it! My small example (pic of father from 70s original on right), really cleaned it up!",
-      link: "https://twitter.com/rod_ellison/status/1612513333302775809",
+        "Turning blurred photos into perfectly sharp ones. Works like magic",
+      link: "https://twitter.com/sergvind/status/1612610058369515521",
       author: {
-        name: "Rod Ellison",
-        role: "Software Engineer",
-        image: "/rod.jpg",
+        name: "Sergei Vinderskikh",
+        role: "CPO at Treeum",
+        image: "/sergei.jpg",
       },
     },
   ],
@@ -57,12 +57,13 @@ const testimonials = [
       },
     },
     {
-      content: "Hassan, that is so cool. Can't wait to use this!",
-      link: "https://twitter.com/Madisonkanna/status/1611893042306502657",
+      content:
+        "Wow, thank you! Tried a few and love it! My small example (pic of father from 70s original on right), really cleaned it up!",
+      link: "https://twitter.com/rod_ellison/status/1612513333302775809",
       author: {
-        name: "Madison Kanna",
-        role: "Programmer and YouTuber",
-        image: "/madison.jpg",
+        name: "Rod Ellison",
+        role: "Software Engineer",
+        image: "/rod.jpg",
       },
     },
   ],
