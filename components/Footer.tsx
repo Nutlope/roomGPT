@@ -12,7 +12,7 @@ export default function Footer() {
         >
           Subscribe to my newsletter
         </a>{" "}
-        to hear about my latest side projects like this one.
+        to hear about new updates and my latest side projects.
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
