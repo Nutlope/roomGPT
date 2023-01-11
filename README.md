@@ -26,6 +26,8 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 ## Future Tasks
 
+- [ ] Add upload.io API key
+- [ ] Fix issue on iphones rotating photos
 - [ ] Implement a dynamic share page
   - [ ] Create a hash and store it in redis along with links to the old and new photos
   - [ ] With this new hash, create a new sharable dynamic page that has the photos side by side
