@@ -44,7 +44,7 @@ const Home: NextPage = () => {
       onUpdate={(file) => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
-          setOriginalPhoto(file[0].fileUrl);
+          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl);
         }
       }}
@@ -97,7 +97,7 @@ const Home: NextPage = () => {
         <p className="text-slate-500">
           {" "}
           {/* Obtained this number from Vercel: based on how many serverless invocations happened. Can automate later */}
-          <CountUp start={10000} end={30415} duration={2} separator="," />{" "}
+          <CountUp start={10000} end={38044} duration={2} separator="," />{" "}
           photos generated and counting.
         </p>
         <ResizablePanel>
