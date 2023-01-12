@@ -6,32 +6,22 @@ export default function Footer() {
       <div>
         Powered by{" "}
         <a
-          href="https://nextjs.org/"
+          href="https://replicate.com/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition underline-offset-2"
         >
-          Next.js
+          Replicate{" "}
         </a>
-        ,{" "}
+        and{" "}
         <a
           href="https://vercel.com/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition underline-offset-2"
         >
-          Vercel
+          Vercel.
         </a>
-        , &{" "}
-        <a
-          href="https://replicate.com/"
-          target="_blank"
-          rel="noreferrer"
-          className="font-bold hover:underline transition underline-offset-2"
-        >
-          Replicate
-        </a>
-        .
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
