@@ -45,7 +45,7 @@ const Home: NextPage = () => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
-          generatePhoto(file[0].fileUrl);
+          generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
       }}
       width="670px"
