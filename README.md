@@ -26,12 +26,6 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 ## Future Tasks
 
-- [ ] Add upload.io API key
 - [ ] Fix issue on iphones rotating photos
-- [ ] Implement a dynamic share page
-  - [ ] Create a hash and store it in redis along with links to the old and new photos
-  - [ ] With this new hash, create a new sharable dynamic page that has the photos side by side
-  - [ ] Use Vercel OG to dynamically generate an OG card that contains the old and new pics side by side
-- [ ] Add toggle to be able to restore both face photos or just old blurry photos using swinr model
-- [ ] Improve the generation of the photo to extend beyond faces; maybe run it through a general model before
-- [ ] Add a carousel of good examples to the index page
+- [ ] Add FAQ section on homepage with privacy policy
+- [ ] Add NSFW filter

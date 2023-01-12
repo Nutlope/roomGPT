@@ -163,7 +163,7 @@ const Home: NextPage = () => {
               )}
               {error && (
                 <div
-                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-8"
+                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
                   role="alert"
                 >
                   <span className="block sm:inline">{error}</span>
@@ -176,6 +176,7 @@ const Home: NextPage = () => {
                       setOriginalPhoto(null);
                       setRestoredImage(null);
                       setRestoredLoaded(false);
+                      setError(null);
                     }}
                     className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
                   >

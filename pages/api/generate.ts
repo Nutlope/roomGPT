@@ -10,11 +10,11 @@ interface ExtendedNextApiRequest extends NextApiRequest {
   };
 }
 
-// Create a new ratelimiter, that allows 5 requests per 60 seconds
+// Create a new ratelimiter, that allows 3 requests per 60 seconds
 const ratelimit = redis
   ? new Ratelimit({
       redis: redis,
-      limiter: Ratelimit.fixedWindow(5, "60 s"),
+      limiter: Ratelimit.fixedWindow(3, "60 s"),
     })
   : undefined;
 
@@ -30,7 +30,11 @@ export default async function handler(
     res.setHeader("X-RateLimit-Remaining", result.remaining);
 
     if (!result.success) {
-      res.status(429).json("The request has been rate limited");
+      res
+        .status(429)
+        .json(
+          "Too many uploads in 1 minute. Please try again in a few minutes."
+        );
       return;
     }
   }
