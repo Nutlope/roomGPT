@@ -10,7 +10,7 @@ It uses an ML model from the Applied Research Center called [GFPGAN](https://git
 
 ## Running Locally
 
-Cloning the repository the local machine.
+### Cloning the repository the local machine.
 
 ```bash
 git clone
