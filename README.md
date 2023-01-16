@@ -36,7 +36,9 @@ If you'd also like to do rate limiting, create an account on UpStash, create a R
 npm install
 ```
 
-### Then, run the application in the command line and it will be available at `http://localhost:3000`.
+### Running the application.
+
+Then, run the application in the command line and it will be available at `http://localhost:3000`.
 
 ```bash
 npm run dev
