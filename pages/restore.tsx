@@ -97,7 +97,7 @@ const Home: NextPage = () => {
         <p className="text-slate-500">
           {" "}
           {/* Obtained this number from Vercel: based on how many serverless invocations happened. Can automate later */}
-          <CountUp start={10000} end={60896} duration={2} separator="," />{" "}
+          <CountUp start={30000} end={85092} duration={2} separator="," />{" "}
           photos generated and counting.
         </p>
         <ResizablePanel>
