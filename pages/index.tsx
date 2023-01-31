@@ -17,12 +17,12 @@ const Home: NextPage = () => {
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-28 mt-20">
         <a
-          href="https://twitter.com/nutlope/status/1615597965787435015"
+          href="https://twitter.com/nutlope/status/1620493265865957376"
           target="_blank"
           rel="noreferrer"
           className="border rounded-2xl py-1 px-4 text-slate-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out"
         >
-          Used by over <span className="font-semibold">80,000</span> happy
+          Used by over <span className="font-semibold">100,000</span> happy
           customers
         </a>
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
