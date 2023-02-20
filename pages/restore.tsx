@@ -15,7 +15,6 @@ import Toggle from "../components/Toggle";
 import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 import NSFWPredictor from "../utils/nsfwCheck";
-import va from "@vercel/analytics";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -35,8 +34,6 @@ const options = {
     } catch (error) {
       console.error("NSFW predictor threw an error", error);
     }
-    // @ts-ignore
-    if (!isSafe) va.track("NSFW Image blocked");
     return isSafe
       ? undefined
       : "Detected a NSFW image which is not allowed. If this was a mistake, please contact me at hassan@hey.com";
