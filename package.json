@@ -10,7 +10,7 @@
     "@tensorflow/tfjs": "^3.21.0",
     "@upstash/ratelimit": "^0.1.5",
     "@upstash/redis": "^1.19.1",
-    "@vercel/analytics": "^0.1.6",
+    "@vercel/analytics": "^0.1.10",
     "framer-motion": "^8.2.4",
     "next": "latest",
     "nsfwjs": "^2.4.2",
