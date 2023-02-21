@@ -1,3 +1,14 @@
+# Todos
+
+- [x] Replace model with controlnet and test it
+  - [ ] Need to make sure to let replicate team know to keep it on when I launch
+- [ ] Make UI look nicer, maybe dark theme
+- [ ] Add dropdown with what kind of room it is
+- [ ] Come up with 4 themes and add them to the restore page
+- [ ] Add ability to make the links sharable - look at Replicate's projects
+- [ ] Redo landing page, remove testimonials and either make it dark mode or use another lp
+- [ ] Redo README
+
 # [RestorePhotos.io](https://restorephotos.io/)
 
 This project restores old face photos using AI. Watch the [4 minute explainer video](https://twitter.com/nutlope/status/1614794731396931585) to see how I built this or see the [15 second demo](https://twitter.com/nutlope/status/1612488923716136962).
@@ -22,11 +33,9 @@ git clone
 2. Click on your profile picture in the top right corner, and click on "Dashboard".
 3. Click on "Account" in the navbar. And, here you can find your API token, copy it.
 
-
 ### Storing API key in .env file.
 
 Create a file in root directory of project with env. And store your API key in it, as shown in the .example.env file.
-
 
 If you'd also like to do rate limiting, create an account on UpStash, create a Redis database, and populate the two environment variables in `.env` as well. If you don't want to do rate limiting, you don't need to make any changes.
 

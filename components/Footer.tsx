@@ -11,7 +11,15 @@ export default function Footer() {
           rel="noreferrer"
           className="font-bold hover:underline transition underline-offset-2"
         >
-          Replicate{" "}
+          Replicate,{" "}
+        </a>
+        <a
+          href="https://upload.io"
+          target="_blank"
+          rel="noreferrer"
+          className="font-bold hover:underline transition underline-offset-2"
+        >
+          Upload,{" "}
         </a>
         and{" "}
         <a
