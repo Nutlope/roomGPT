@@ -3,7 +3,6 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import CountUp from "react-countup";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../components/CompareSlider";
@@ -23,11 +22,12 @@ const uploader = Uploader({
     ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
     : "free",
 });
+
 const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  styles: { colors: { primary: "#000" } },
+  styles: { colors: { primary: "#4B5563" } }, // maybe experiment with diff colors
   onValidate: async (file: File): Promise<undefined | string> => {
     let isSafe = false;
     try {
@@ -96,8 +96,8 @@ const Home: NextPage = () => {
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
-          Generate your next room photo
+        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
+          Generate your dream room
         </h1>
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>

@@ -31,7 +31,7 @@ class MyDocument extends Document {
             content="https://restore-photos.vercel.app/og-image.png"
           />
         </Head>
-        <body>
+        <body className="bg-[#17181C] text-white">
           <Main />
           <NextScript />
         </body>
