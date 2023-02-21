@@ -13,8 +13,6 @@ import ResizablePanel from "../components/ResizablePanel";
 import Toggle from "../components/Toggle";
 import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
-import NSFWPredictor from "../utils/nsfwCheck";
-import va from "@vercel/analytics";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -27,19 +25,7 @@ const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  styles: { colors: { primary: "#4B5563" } }, // maybe experiment with diff colors
-  onValidate: async (file: File): Promise<undefined | string> => {
-    let isSafe = false;
-    try {
-      isSafe = await NSFWPredictor.isSafeImg(file);
-      if (!isSafe) va.track("NSFW Image blocked");
-    } catch (error) {
-      console.error("NSFW predictor threw an error", error);
-    }
-    return isSafe
-      ? undefined
-      : "Detected a NSFW image which is not allowed. If this was a mistake, please contact me at hassan@hey.com";
-  },
+  styles: { colors: { primary: "#2563EB" } }, // maybe experiment with diff colors
 };
 
 const Home: NextPage = () => {
@@ -90,14 +76,14 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Restore Photos</title>
+        <title>roomGPT</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your dream room
+          Generate your <span className="text-blue-600">dream</span> room
         </h1>
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>

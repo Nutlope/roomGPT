@@ -3,12 +3,13 @@
 - [x] Replace model with controlnet and test it
   - [ ] Need to make sure to let replicate team know to keep it on when I launch
 - [x] Make UI look nicer, maybe dark theme
-- [ ] Redo landing page, remove testimonials and either make it dark mode or use another lp
+- [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
 - [ ] Add dropdown with what kind of room it is
+- [ ] Some visual indication that it takes ~25s
 - [ ] Come up with 4 themes and add them to the restore page
 - [ ] Add ability to make the links sharable - look at Replicate's projects
-- [ ] Try diff color pallets
 - [ ] Redo README
+- [ ] Add gradient / Try diff color pallets
 
 # [RestorePhotos.io](https://restorephotos.io/)
 
