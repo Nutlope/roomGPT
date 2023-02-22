@@ -1,13 +1,13 @@
 # Todos v1
 
 - [x] Replace model with controlnet and test it
-  - [ ] Need to make sure to let replicate team know to keep it on when I launch
 - [x] Make UI look nicer, maybe dark theme
 - [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
 - [ ] Fix issue with generations not working
 - [ ] Add two dropdowns for what kind of room it is + dropdown for themes
 - [ ] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
 - [ ] Send it to team/ai channel for feedback + tweet out a screenshot for hype
+- [ ] Let replicate team know to keep it on when I launch
 
 ## Todos v1.5
 
