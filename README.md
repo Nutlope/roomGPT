@@ -3,6 +3,7 @@
 - [x] Replace model with controlnet and test it
 - [x] Make UI look nicer, maybe dark theme
 - [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
+- [x] Redo README
 - [ ] Fix issue with generations not working
 - [ ] Add two dropdowns for what kind of room it is + dropdown for themes
 - [ ] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
@@ -16,18 +17,17 @@
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links
   - [ ] Also use dynamic OGs to make this work as well
-- [ ] Redo README
 - [ ] Launch on Twitter
 
-# [RestorePhotos.io](https://restorephotos.io/)
+# [roomGPT.io](https://roomGPT.io)
 
-This project restores old face photos using AI. Watch the [4 minute explainer video](https://twitter.com/nutlope/status/1614794731396931585) to see how I built this or see the [15 second demo](https://twitter.com/nutlope/status/1612488923716136962).
+This project generates new variations of your room based on a photo.
 
-[![Face Photo Restorer](./public/screenshot.png)](https://restorephotos.io/)
+[![Room GPT](./public/screenshot.png)](https://roomGPT.io)
 
 ## How it works
 
-It uses an ML model from the Applied Research Center called [GFPGAN](https://github.com/TencentARC/GFPGAN) on [Replicate](https://replicate.com/) to restore face photos. This application gives you the ability to upload any photo, which will send it through this ML Model using a Next.js API route, and return your restored photo.
+It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet) to generate variations of rooms. This application gives you the ability to upload a photo of any room, which will send it through this ML Model using a Next.js API route, and return your generated room. The ML Model is hosted on [Replicate](https://replicate.com) and [Upload](https://upload.io) is used for image storage.
 
 ## Running Locally
 
@@ -67,4 +67,4 @@ npm run dev
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/restorePhotos&env=REPLICATE_API_KEY&project-name=face-photo-restorer&repo-name=restore-photos)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY&project-name=room-GPT&repo-name=roomGPT)
