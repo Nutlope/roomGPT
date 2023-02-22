@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
+    "@headlessui/tailwindcss": "^0.1.2",
+    "@heroicons/react": "^2.0.16",
+    "@tailwindcss/forms": "^0.5.3",
     "@tensorflow/tfjs": "^3.21.0",
     "@upstash/ratelimit": "^0.1.5",
     "@upstash/redis": "^1.19.1",

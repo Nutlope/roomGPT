@@ -7,6 +7,8 @@ type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
     imageUrl: string;
+    theme: string;
+    room: string;
   };
 }
 
@@ -39,7 +41,7 @@ export default async function handler(
     }
   }
 
-  const imageUrl = req.body.imageUrl;
+  const { imageUrl, theme, room } = req.body;
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
@@ -50,7 +52,7 @@ export default async function handler(
     body: JSON.stringify({
       version:
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
-      input: { image: imageUrl, prompt: "a modern living room" },
+      input: { image: imageUrl, prompt: `a ${theme} ${room}` },
     }),
   });
 

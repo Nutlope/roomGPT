@@ -13,6 +13,8 @@ import ResizablePanel from "../components/ResizablePanel";
 import Toggle from "../components/Toggle";
 import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
+import DropDown from "../components/DropDown";
+import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -36,6 +38,8 @@ const Home: NextPage = () => {
   const [sideBySide, setSideBySide] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [photoName, setPhotoName] = useState<string | null>(null);
+  const [theme, setTheme] = useState<themeType>("Modern");
+  const [room, setRoom] = useState<roomType>("Living Room");
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -62,7 +66,7 @@ const Home: NextPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageUrl: fileUrl }),
+      body: JSON.stringify({ imageUrl: fileUrl, theme, room }),
     });
 
     let newPhoto = await res.json();
@@ -89,8 +93,62 @@ const Home: NextPage = () => {
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
+              <div className="space-y-4">
+                <div className="flex mt-3 items-center space-x-3">
+                  <Image
+                    src="/number-1-white.svg"
+                    width={30}
+                    height={30}
+                    alt="1 icon"
+                    className="mb-5 sm:mb-0"
+                  />
+                  <p className="text-left font-medium">
+                    Choose your room theme.
+                  </p>
+                </div>
+                <DropDown
+                  theme={theme}
+                  // @ts-ignore
+                  setTheme={(newTheme) => setTheme(newTheme)}
+                  themes={themes}
+                />
+              </div>
+              <div className="space-y-4">
+                <div className="flex mt-10 items-center space-x-3">
+                  <Image
+                    src="/number-2-white.svg"
+                    width={30}
+                    height={30}
+                    alt="1 icon"
+                    className="mb-5 sm:mb-0"
+                  />
+                  <p className="text-left font-medium">
+                    Choose your room type.
+                  </p>
+                </div>
+                <DropDown
+                  theme={room}
+                  // @ts-ignore
+                  setTheme={(newRoom) => setRoom(newRoom)}
+                  themes={rooms}
+                />
+              </div>
+              <div className="mt-4">
+                <div className="flex mt-6 w-96 items-center space-x-3">
+                  <Image
+                    src="/number-3-white.svg"
+                    width={30}
+                    height={30}
+                    alt="1 icon"
+                    className="mb-5 sm:mb-0"
+                  />
+                  <p className="text-left font-medium">
+                    Upload a picture of your room.
+                  </p>
+                </div>
+              </div>
               <Toggle
-                className={`${restoredLoaded ? "visible" : "invisible"} mb-6`}
+                className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
                 sideBySide={sideBySide}
                 setSideBySide={(newVal) => setSideBySide(newVal)}
               />

@@ -5,8 +5,9 @@
 - [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
 - [x] Redo README
 - [x] Fix issue with generations not working
-- [ ] Add two dropdowns for what kind of room it is + dropdown for themes
+- [x] Add two dropdowns for what kind of room it is + dropdown for themes
 - [ ] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
+- [ ] Make all dropdowns same length as upload box in /restore
 - [ ] Send it to team/ai channel for feedback + tweet out a screenshot for hype
 - [ ] Let replicate team know to keep it on when I launch
 
@@ -21,6 +22,9 @@
 
 ## Todos v2
 
+- [ ] Play around with the scale input - 16 seems good
+- [ ] Refactor all inputs into react-hook-form
+- [ ] Figure out how to customize upload.io more
 - [ ] Add a carousel of generated rooms using my image gallery
 - [ ] Add gradient / Try diff color pallets for roomGPT
 
