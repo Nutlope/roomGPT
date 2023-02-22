@@ -4,7 +4,7 @@
 - [x] Make UI look nicer, maybe dark theme
 - [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
 - [x] Redo README
-- [ ] Fix issue with generations not working
+- [x] Fix issue with generations not working
 - [ ] Add two dropdowns for what kind of room it is + dropdown for themes
 - [ ] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
 - [ ] Send it to team/ai channel for feedback + tweet out a screenshot for hype
@@ -12,12 +12,17 @@
 
 ## Todos v1.5
 
-- [ ] Use new redis db?
+- [ ] Use new redis db for rate limiting
 - [ ] Some visual indication that it takes ~25s
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links
   - [ ] Also use dynamic OGs to make this work as well
 - [ ] Launch on Twitter
+
+## Todos v2
+
+- [ ] Add a carousel of generated rooms using my image gallery
+- [ ] Add gradient / Try diff color pallets for roomGPT
 
 # [roomGPT.io](https://roomGPT.io)
 

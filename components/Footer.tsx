@@ -45,7 +45,7 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/Nutlope/restorePhotos"
+          href="https://github.com/Nutlope/roomGPT"
           className="group"
           aria-label="TaxPal on GitHub"
         >

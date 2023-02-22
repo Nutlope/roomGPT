@@ -25,7 +25,7 @@ const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  styles: { colors: { primary: "#2563EB" } }, // maybe experiment with diff colors
+  styles: { colors: { primary: "#2563EB", active: "#2563EB" } }, // maybe experiment with diff colors
 };
 
 const Home: NextPage = () => {
@@ -44,6 +44,7 @@ const Home: NextPage = () => {
       onUpdate={(file) => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
+          // TODO: Make sure these are the image dimensions we want
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
@@ -93,6 +94,7 @@ const Home: NextPage = () => {
                 sideBySide={sideBySide}
                 setSideBySide={(newVal) => setSideBySide(newVal)}
               />
+              {/* TODO: Think about whether I wanna use the compare slider */}
               {restoredLoaded && sideBySide && (
                 <CompareSlider
                   original={originalPhoto!}
@@ -104,7 +106,7 @@ const Home: NextPage = () => {
                 <Image
                   alt="original photo"
                   src={originalPhoto}
-                  className="rounded-2xl"
+                  className="rounded-2xl w-full h-96"
                   width={475}
                   height={475}
                 />
@@ -116,18 +118,20 @@ const Home: NextPage = () => {
                     <Image
                       alt="original photo"
                       src={originalPhoto}
-                      className="rounded-2xl relative"
+                      className="rounded-2xl relative w-full h-96"
                       width={475}
                       height={475}
                     />
                   </div>
                   <div className="sm:mt-0 mt-8">
-                    <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
+                    <h2 className="mb-1 font-medium text-lg">
+                      Generated Photo
+                    </h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
                       <Image
                         alt="restored photo"
                         src={restoredImage}
-                        className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in"
+                        className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full h-96"
                         width={475}
                         height={475}
                         onLoadingComplete={() => setRestoredLoaded(true)}
@@ -139,7 +143,7 @@ const Home: NextPage = () => {
               {loading && (
                 <button
                   disabled
-                  className="bg-black rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+                  className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
                 >
                   <span className="pt-4">
                     <LoadingDots color="white" style="large" />
@@ -163,7 +167,7 @@ const Home: NextPage = () => {
                       setRestoredLoaded(false);
                       setError(null);
                     }}
-                    className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
+                    className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
                   >
                     Upload New Photo
                   </button>
@@ -178,7 +182,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download Restored Photo
+                    Download Photo
                   </button>
                 )}
               </div>
