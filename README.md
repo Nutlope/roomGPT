@@ -1,15 +1,23 @@
-# Todos
+# Todos v1
 
 - [x] Replace model with controlnet and test it
   - [ ] Need to make sure to let replicate team know to keep it on when I launch
 - [x] Make UI look nicer, maybe dark theme
 - [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
-- [ ] Add dropdown with what kind of room it is
+- [ ] Fix issue with generations not working
+- [ ] Add two dropdowns for what kind of room it is + dropdown for themes
+- [ ] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
+- [ ] Send it to team/ai channel for feedback + tweet out a screenshot for hype
+
+## Todos v1.5
+
+- [ ] Use new redis db?
 - [ ] Some visual indication that it takes ~25s
-- [ ] Come up with 4 themes and add them to the restore page
-- [ ] Add ability to make the links sharable - look at Replicate's projects
+- [ ] Sharability features - look at Replicate's project for inspo
+  - [ ] Add ability to generate shareable links
+  - [ ] Also use dynamic OGs to make this work as well
 - [ ] Redo README
-- [ ] Add gradient / Try diff color pallets
+- [ ] Launch on Twitter
 
 # [RestorePhotos.io](https://restorephotos.io/)
 
