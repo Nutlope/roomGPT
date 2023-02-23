@@ -6,14 +6,14 @@
 - [x] Redo README
 - [x] Fix issue with generations not working
 - [x] Add two dropdowns for what kind of room it is + dropdown for themes
-- [ ] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
+- [x] Use new redis db for rate limiting
+- [x] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
 - [ ] Make all dropdowns same length as upload box in /restore
 - [ ] Send it to team/ai channel for feedback + tweet out a screenshot for hype
 - [ ] Let replicate team know to keep it on when I launch
 
 ## Todos v1.5
 
-- [ ] Use new redis db for rate limiting
 - [ ] Some visual indication that it takes ~25s
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links
