@@ -52,7 +52,14 @@ export default async function handler(
     body: JSON.stringify({
       version:
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
-      input: { image: imageUrl, prompt: `a ${theme} ${room}` },
+      input: {
+        image: imageUrl,
+        prompt: `a ${theme.toLowerCase()} ${room.toLowerCase()}`,
+        a_prompt: "best quality, extremely detailed",
+        n_prompt:
+          "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
+        // image_resolution: "768",
+      },
     }),
   });
 

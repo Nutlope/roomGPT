@@ -8,9 +8,15 @@
 - [x] Add two dropdowns for what kind of room it is + dropdown for themes
 - [x] Use new redis db for rate limiting
 - [x] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
-- [ ] Make all dropdowns same length as upload box in /restore
-- [ ] Send it to team/ai channel for feedback + tweet out a screenshot for hype
-- [ ] Let replicate team know to keep it on when I launch
+- [x] Tweet out a screenshot for hype
+- [x] Let replicate team know to keep it on when I launch
+- [x] Test it out locally + in prod to make sure it works properly
+- [ ] Test out other models and tweak params to obtain optimal results
+- [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches, re-align toggle
+  - [ ] Email upload.io about changing the background for that thing
+  - [ ] Maybe switch to 768 generations
+- [ ] Send it to team/ai channel for feedback
+- [ ] I don't like that it's low quality.
 
 ## Todos v1.5
 
