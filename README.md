@@ -11,28 +11,22 @@
 - [x] Tweet out a screenshot for hype
 - [x] Let replicate team know to keep it on when I launch
 - [x] Test it out locally + in prod to make sure it works properly
+- [x] Add gradient for roomGPT
+- [ ] Refactor code in general (maybe use react-hook-form)
 - [ ] Test out other models and tweak params to obtain optimal results
-- [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches, re-align toggle
+  - [ ] Play around with the scale input - 16 seems good
+- [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches
   - [ ] Email upload.io about changing the background for that thing
   - [ ] Maybe switch to 768 generations
-- [ ] Send it to team/ai channel for feedback
-- [ ] I don't like that it's low quality.
+- [ ] Mobile styles
+- [ ] Some visual indication that it takes ~25s
 
 ## Todos v1.5
 
-- [ ] Some visual indication that it takes ~25s
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links
   - [ ] Also use dynamic OGs to make this work as well
-- [ ] Launch on Twitter
-
-## Todos v2
-
-- [ ] Play around with the scale input - 16 seems good
-- [ ] Refactor all inputs into react-hook-form
-- [ ] Figure out how to customize upload.io more
 - [ ] Add a carousel of generated rooms using my image gallery
-- [ ] Add gradient / Try diff color pallets for roomGPT
 
 # [roomGPT.io](https://roomGPT.io)
 
