@@ -12,7 +12,7 @@
 - [x] Let replicate team know to keep it on when I launch
 - [x] Test it out locally + in prod to make sure it works properly
 - [x] Add gradient for roomGPT
-- [ ] Refactor code in general (maybe use react-hook-form)
+- [x] Refactor code in general (maybe use react-hook-form)
 - [ ] Test out other models and tweak params to obtain optimal results
   - [ ] Play around with the scale input - 16 seems good
 - [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches
@@ -20,6 +20,7 @@
   - [ ] Maybe switch to 768 generations
 - [ ] Mobile styles
 - [ ] Some visual indication that it takes ~25s
+- [ ] Test lighthouse scores to make sure I have good performance
 
 ## Todos v1.5
 

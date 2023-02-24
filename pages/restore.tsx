@@ -22,12 +22,11 @@ const uploader = Uploader({
     ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
     : "free",
 });
-
 const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  styles: { colors: { primary: "#2563EB", active: "#2563EB" } }, // maybe experiment with diff colors
+  styles: { colors: { primary: "#2563EB", active: "#2563EB" } },
 };
 
 const Home: NextPage = () => {
@@ -59,7 +58,7 @@ const Home: NextPage = () => {
   );
 
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 500)); // TODO: See if I even need this
     setLoading(true);
     const res = await fetch("/api/generate", {
       method: "POST",
@@ -82,16 +81,14 @@ const Home: NextPage = () => {
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
         <title>RoomGPT</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
         <ResizablePanel>
-          <AnimatePresence exitBeforeEnter>
+          <AnimatePresence mode="wait">
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
               <div className="space-y-4">
                 <div className="flex mt-3 items-center space-x-3">
@@ -152,7 +149,6 @@ const Home: NextPage = () => {
                 sideBySide={sideBySide}
                 setSideBySide={(newVal) => setSideBySide(newVal)}
               />
-              {/* TODO: Think about whether I wanna use the compare slider */}
               {restoredLoaded && sideBySide && (
                 <CompareSlider
                   original={originalPhoto!}
