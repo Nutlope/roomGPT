@@ -64,6 +64,7 @@ export default async function handler(
   });
 
   let jsonStartResponse = await startResponse.json();
+
   let endpointUrl = jsonStartResponse.urls.get;
 
   // GET request to get the status of the image restoration process & return the result when it's ready
@@ -82,6 +83,7 @@ export default async function handler(
 
     if (jsonFinalResponse.status === "succeeded") {
       restoredImage = jsonFinalResponse.output;
+      console.log({ jsonFinalResponse });
     } else if (jsonFinalResponse.status === "failed") {
       break;
     } else {

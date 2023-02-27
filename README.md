@@ -16,18 +16,24 @@
 - [ ] Test out other models and tweak params to obtain optimal results
   - [ ] Play around with the scale input - 16 seems good
 - [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches
-  - [ ] Email upload.io about changing the background for that thing
   - [ ] Maybe switch to 768 generations
+  - [ ] Email upload.io about changing the background for that thing
 - [ ] Mobile styles
-- [ ] Some visual indication that it takes ~25s
 - [ ] Test lighthouse scores to make sure I have good performance
 
 ## Todos v1.5
 
+- [ ] Some visual indication that it takes ~25s
 - [ ] Sharability features - look at Replicate's project for inspo
-  - [ ] Add ability to generate shareable links
+  - [ ] Add ability to generate shareable links – show
   - [ ] Also use dynamic OGs to make this work as well
 - [ ] Add a carousel of generated rooms using my image gallery
+
+Replicate ID should be stored in the URL ideally
+
+<!-- // 1. User form with dropdowns for theme and room
+// 2. Get back id from Replicate, tell it to switch to the second component, query with the id
+// 3. Result component with the image and the download button -->
 
 # [roomGPT.io](https://roomGPT.io)
 
