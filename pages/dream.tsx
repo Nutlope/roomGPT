@@ -58,7 +58,7 @@ const Home: NextPage = () => {
   );
 
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 500)); // TODO: See if I even need this
+    await new Promise((resolve) => setTimeout(resolve, 200)); // TODO: See if I even need this
     setLoading(true);
     const res = await fetch("/api/generate", {
       method: "POST",

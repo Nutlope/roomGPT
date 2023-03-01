@@ -21,13 +21,14 @@
 - [x] Move toggle slightly on the restore page and we took out the dropdowns
 - [x] Make sure it looks good on mobile (1, 2, 3 icons cut off)
 - [x] Add Vercel Analytics
-- [ ] Test lighthouse scores to make sure I have good performance
-- [ ] Maybe replace the pic in the homescreen and copy
-- [ ] Add 1 more themes and types of rooms based on interiorAI
-- [ ] Send it in Vercel's Slack to give folks a sneak peek
+- [x] Test lighthouse scores to make sure I have good performance
+- [x] Send it in Vercel's Slack to give folks a sneak peek
+- [ ] Maybe replace the pic in the homescreen and copy (remodel instead of generate dream room?)
+- [ ] Add all replicate IDs to localstorage array
 
 ## Todos v2
 
+- [ ] Add more themes and types of room based on interiorAI
 - [ ] See if I should open a new tab when clicking "Upload new room"
 - [ ] Add mechanism for folks to vote on themes with the top theme being added each week
 - [ ] Add aggresive rate limiting
