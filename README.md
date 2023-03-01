@@ -16,19 +16,20 @@
 - [x] Some visual indication that it takes ~25s
 - [x] Make sure original image doesn't stretch
 - [x] add roomGPT domain
-- [ ] Make all dropdowns same length
-  - [ ] Email upload.io about changing the background for that thing
-  - [ ] Try switching to 768 generations
-- [ ] Mobile styles
+- [x] Email upload.io about changing the background for the upload component
+- [ ] Make sure the OG image is working
+- [ ] Make all dropdowns same length on restore page and any other small UI tweaks
+- [ ] Make sure it looks good on mobile
 - [ ] Test lighthouse scores to make sure I have good performance
 - [ ] Maybe replace the pic in the homescreen
-- [ ] Add more themes and types of rooms
-- [ ] Add aggresive rate limiting
-- [ ] Play around with the prompt based on levelsio project
-- [ ] Test out other models and tweak params to obtain optimal results, might be tied to hough for faster generations
+- [ ] Add more themes and types of rooms, maybe have somewhere where folks can vote and that I will choose a theme each week or something
 
 ## Todos v2
 
+- [ ] Add aggresive rate limiting
+- [ ] Play around with the prompt based on levelsio project
+- [ ] Test out other models and tweak params to obtain optimal results, might be tied to hough for faster generations
+  - [ ] Try switching to 768px generations and seeing how that affects things
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links – show
   - [ ] Also use dynamic OGs to make this work as well
