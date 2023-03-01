@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../components/CompareSlider";
@@ -15,7 +15,6 @@ import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 import DropDown from "../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
-import LoadingCircle from "../components/LoadingCircle";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -81,21 +80,6 @@ const Home: NextPage = () => {
       setLoading(false);
     }, 1300);
   }
-
-  // create useEffect increase percentage to 100 in 25 seconds and clear interval when percentage reaches 100
-  useEffect(() => {
-    if (loading) {
-      const interval = setInterval(() => {
-        if (percentage < 95) {
-          setPercentage(percentage + 1);
-        }
-      }, 250);
-      if (percentage === 95) {
-        clearInterval(interval);
-      }
-      return () => clearInterval(interval);
-    }
-  }, [percentage, loading]);
 
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
@@ -214,7 +198,6 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               )}
-              {loading && <LoadingCircle percentage={percentage} />}
               {error && (
                 <div
                   className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
