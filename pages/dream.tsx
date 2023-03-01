@@ -39,7 +39,6 @@ const Home: NextPage = () => {
   const [photoName, setPhotoName] = useState<string | null>(null);
   const [theme, setTheme] = useState<themeType>("Modern");
   const [room, setRoom] = useState<roomType>("Living Room");
-  const [percentage, setPercentage] = useState<number>(0);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -75,7 +74,6 @@ const Home: NextPage = () => {
     } else {
       setRestoredImage(newPhoto[1]);
     }
-    setPercentage(100);
     setTimeout(() => {
       setLoading(false);
     }, 1300);
@@ -96,14 +94,13 @@ const Home: NextPage = () => {
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
               {!restoredImage && (
                 <>
-                  <div className="space-y-4">
+                  <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-3 items-center space-x-3">
                       <Image
                         src="/number-1-white.svg"
                         width={30}
                         height={30}
                         alt="1 icon"
-                        className="mb-5 sm:mb-0"
                       />
                       <p className="text-left font-medium">
                         Choose your room theme.
@@ -116,14 +113,13 @@ const Home: NextPage = () => {
                       themes={themes}
                     />
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-10 items-center space-x-3">
                       <Image
                         src="/number-2-white.svg"
                         width={30}
                         height={30}
                         alt="1 icon"
-                        className="mb-5 sm:mb-0"
                       />
                       <p className="text-left font-medium">
                         Choose your room type.
@@ -136,14 +132,13 @@ const Home: NextPage = () => {
                       themes={rooms}
                     />
                   </div>
-                  <div className="mt-4">
+                  <div className="mt-4 w-full max-w-sm">
                     <div className="flex mt-6 w-96 items-center space-x-3">
                       <Image
                         src="/number-3-white.svg"
                         width={30}
                         height={30}
                         alt="1 icon"
-                        className="mb-5 sm:mb-0"
                       />
                       <p className="text-left font-medium">
                         Upload a picture of your room.
