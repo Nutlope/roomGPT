@@ -164,7 +164,7 @@ const Home: NextPage = () => {
                 <Image
                   alt="original photo"
                   src={originalPhoto}
-                  className="rounded-2xl w-full h-96"
+                  className="rounded-2xl h-96"
                   width={475}
                   height={475}
                 />
@@ -197,6 +197,16 @@ const Home: NextPage = () => {
                     </a>
                   </div>
                 </div>
+              )}
+              {loading && (
+                <button
+                  disabled
+                  className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+                >
+                  <span className="pt-4">
+                    <LoadingDots color="white" style="large" />
+                  </span>
+                </button>
               )}
               {error && (
                 <div

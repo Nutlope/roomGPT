@@ -14,8 +14,9 @@
 - [x] Add gradient for roomGPT
 - [x] Refactor code in general (maybe use react-hook-form)
 - [x] Some visual indication that it takes ~25s
-- [ ] add roomGPT domain
-- [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches
+- [x] Make sure original image doesn't stretch
+- [x] add roomGPT domain
+- [ ] Make all dropdowns same length
   - [ ] Email upload.io about changing the background for that thing
   - [ ] Try switching to 768 generations
 - [ ] Mobile styles
@@ -23,10 +24,11 @@
 - [ ] Maybe replace the pic in the homescreen
 - [ ] Add more themes and types of rooms
 - [ ] Add aggresive rate limiting
+- [ ] Play around with the prompt based on levelsio project
+- [ ] Test out other models and tweak params to obtain optimal results, might be tied to hough for faster generations
 
 ## Todos v2
 
-- [ ] Test out other models and tweak params to obtain optimal results
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links – show
   - [ ] Also use dynamic OGs to make this work as well
