@@ -20,6 +20,7 @@
 - [x] Make sure the OG image is working
 - [x] Move toggle slightly on the restore page and we took out the dropdowns
 - [x] Make sure it looks good on mobile (1, 2, 3 icons cut off)
+- [x] Add Vercel Analytics
 - [ ] Test lighthouse scores to make sure I have good performance
 - [ ] Maybe replace the pic in the homescreen and copy
 - [ ] Add 1 more themes and types of rooms based on interiorAI
