@@ -94,65 +94,77 @@ const Home: NextPage = () => {
         <ResizablePanel>
           <AnimatePresence mode="wait">
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
-              <div className="space-y-4">
-                <div className="flex mt-3 items-center space-x-3">
-                  <Image
-                    src="/number-1-white.svg"
-                    width={30}
-                    height={30}
-                    alt="1 icon"
-                    className="mb-5 sm:mb-0"
-                  />
-                  <p className="text-left font-medium">
-                    Choose your room theme.
-                  </p>
+              {!restoredImage && (
+                <>
+                  <div className="space-y-4">
+                    <div className="flex mt-3 items-center space-x-3">
+                      <Image
+                        src="/number-1-white.svg"
+                        width={30}
+                        height={30}
+                        alt="1 icon"
+                        className="mb-5 sm:mb-0"
+                      />
+                      <p className="text-left font-medium">
+                        Choose your room theme.
+                      </p>
+                    </div>
+                    <DropDown
+                      theme={theme}
+                      // @ts-ignore
+                      setTheme={(newTheme) => setTheme(newTheme)}
+                      themes={themes}
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex mt-10 items-center space-x-3">
+                      <Image
+                        src="/number-2-white.svg"
+                        width={30}
+                        height={30}
+                        alt="1 icon"
+                        className="mb-5 sm:mb-0"
+                      />
+                      <p className="text-left font-medium">
+                        Choose your room type.
+                      </p>
+                    </div>
+                    <DropDown
+                      theme={room}
+                      // @ts-ignore
+                      setTheme={(newRoom) => setRoom(newRoom)}
+                      themes={rooms}
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <div className="flex mt-6 w-96 items-center space-x-3">
+                      <Image
+                        src="/number-3-white.svg"
+                        width={30}
+                        height={30}
+                        alt="1 icon"
+                        className="mb-5 sm:mb-0"
+                      />
+                      <p className="text-left font-medium">
+                        Upload a picture of your room.
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
+              {restoredImage && (
+                <div>
+                  Here's your remodeled <b>{room.toLowerCase()}</b> in the{" "}
+                  <b>{theme.toLowerCase()}</b> theme!{" "}
                 </div>
-                <DropDown
-                  theme={theme}
-                  // @ts-ignore
-                  setTheme={(newTheme) => setTheme(newTheme)}
-                  themes={themes}
+              )}
+              <div className="mt-6 -ml-8">
+                <Toggle
+                  className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
+                  sideBySide={sideBySide}
+                  setSideBySide={(newVal) => setSideBySide(newVal)}
                 />
               </div>
-              <div className="space-y-4">
-                <div className="flex mt-10 items-center space-x-3">
-                  <Image
-                    src="/number-2-white.svg"
-                    width={30}
-                    height={30}
-                    alt="1 icon"
-                    className="mb-5 sm:mb-0"
-                  />
-                  <p className="text-left font-medium">
-                    Choose your room type.
-                  </p>
-                </div>
-                <DropDown
-                  theme={room}
-                  // @ts-ignore
-                  setTheme={(newRoom) => setRoom(newRoom)}
-                  themes={rooms}
-                />
-              </div>
-              <div className="mt-4">
-                <div className="flex mt-6 w-96 items-center space-x-3">
-                  <Image
-                    src="/number-3-white.svg"
-                    width={30}
-                    height={30}
-                    alt="1 icon"
-                    className="mb-5 sm:mb-0"
-                  />
-                  <p className="text-left font-medium">
-                    Upload a picture of your room.
-                  </p>
-                </div>
-              </div>
-              <Toggle
-                className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
-                sideBySide={sideBySide}
-                setSideBySide={(newVal) => setSideBySide(newVal)}
-              />
               {restoredLoaded && sideBySide && (
                 <CompareSlider
                   original={originalPhoto!}
@@ -172,7 +184,7 @@ const Home: NextPage = () => {
               {restoredImage && originalPhoto && !sideBySide && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
-                    <h2 className="mb-1 font-medium text-lg">Original Photo</h2>
+                    <h2 className="mb-1 font-medium text-lg">Original Room</h2>
                     <Image
                       alt="original photo"
                       src={originalPhoto}
@@ -182,9 +194,7 @@ const Home: NextPage = () => {
                     />
                   </div>
                   <div className="sm:mt-0 mt-8">
-                    <h2 className="mb-1 font-medium text-lg">
-                      Generated Photo
-                    </h2>
+                    <h2 className="mb-1 font-medium text-lg">Generated Room</h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
                       <Image
                         alt="restored photo"
@@ -225,9 +235,9 @@ const Home: NextPage = () => {
                       setRestoredLoaded(false);
                       setError(null);
                     }}
-                    className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
+                    className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
                   >
-                    Upload New Photo
+                    Generate New Room
                   </button>
                 )}
                 {restoredLoaded && (
@@ -240,7 +250,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download Photo
+                    Download Generated Room
                   </button>
                 )}
               </div>

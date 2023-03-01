@@ -18,16 +18,17 @@
 - [x] add roomGPT domain
 - [x] Email upload.io about changing the background for the upload component
 - [x] Make sure the OG image is working
-- [ ] Make all dropdowns same length + move toggle slightly on the restore page
+- [x] Move toggle slightly on the restore page and we took out the dropdowns
 - [ ] Make sure it looks good on mobile (1, 2, 3 icons cut off)
-- [ ] Send it in Vercel's Slack to give folks a sneak peek + to the VC
 - [ ] Test lighthouse scores to make sure I have good performance
-- [ ] Maybe replace the pic in the homescreen
-- [ ] Maybe improve working of homepage
+- [ ] Maybe replace the pic in the homescreen and copy
+- [ ] Add 1 more themes and types of rooms based on interiorAI
+- [ ] Send it in Vercel's Slack to give folks a sneak peek
 
 ## Todos v2
 
-- [ ] Add more themes and types of rooms, maybe have somewhere where folks can vote and that I will choose a theme each week or something
+- [ ] See if I should open a new tab when clicking "Upload new room"
+- [ ] Add mechanism for folks to vote on themes with the top theme being added each week
 - [ ] Add aggresive rate limiting
 - [ ] Play around with the prompt based on levelsio project
 - [ ] Test out other models and tweak params to obtain optimal results, might be tied to hough for faster generations
