@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../components/CompareSlider";
@@ -15,6 +15,7 @@ import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 import DropDown from "../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
+import LoadingCircle from "../components/LoadingCircle";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
   const [photoName, setPhotoName] = useState<string | null>(null);
   const [theme, setTheme] = useState<themeType>("Modern");
   const [room, setRoom] = useState<roomType>("Living Room");
+  const [percentage, setPercentage] = useState<number>(0);
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -74,8 +76,26 @@ const Home: NextPage = () => {
     } else {
       setRestoredImage(newPhoto[1]);
     }
-    setLoading(false);
+    setPercentage(100);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1300);
   }
+
+  // create useEffect increase percentage to 100 in 25 seconds and clear interval when percentage reaches 100
+  useEffect(() => {
+    if (loading) {
+      const interval = setInterval(() => {
+        if (percentage < 95) {
+          setPercentage(percentage + 1);
+        }
+      }, 250);
+      if (percentage === 95) {
+        clearInterval(interval);
+      }
+      return () => clearInterval(interval);
+    }
+  }, [percentage, loading]);
 
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
@@ -194,16 +214,7 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               )}
-              {loading && (
-                <button
-                  disabled
-                  className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
-                >
-                  <span className="pt-4">
-                    <LoadingDots color="white" style="large" />
-                  </span>
-                </button>
-              )}
+              {loading && <LoadingCircle percentage={percentage} />}
               {error && (
                 <div
                   className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"

@@ -13,17 +13,20 @@
 - [x] Test it out locally + in prod to make sure it works properly
 - [x] Add gradient for roomGPT
 - [x] Refactor code in general (maybe use react-hook-form)
-- [ ] Test out other models and tweak params to obtain optimal results
-  - [ ] Play around with the scale input - 16 seems good
+- [x] Some visual indication that it takes ~25s
+- [ ] add roomGPT domain
 - [ ] /restore UI update: Make all dropdowns same length, make sure original image isn't stretches
-  - [ ] Maybe switch to 768 generations
   - [ ] Email upload.io about changing the background for that thing
+  - [ ] Try switching to 768 generations
 - [ ] Mobile styles
 - [ ] Test lighthouse scores to make sure I have good performance
+- [ ] Maybe replace the pic in the homescreen
+- [ ] Add more themes and types of rooms
+- [ ] Add aggresive rate limiting
 
-## Todos v1.5
+## Todos v2
 
-- [ ] Some visual indication that it takes ~25s
+- [ ] Test out other models and tweak params to obtain optimal results
 - [ ] Sharability features - look at Replicate's project for inspo
   - [ ] Add ability to generate shareable links – show
   - [ ] Also use dynamic OGs to make this work as well
