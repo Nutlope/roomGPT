@@ -49,7 +49,7 @@ const Home: NextPage = () => {
                 <Image
                   alt="Original photo of a room with roomGPT.io"
                   src="/original-pic.jpg"
-                  className="w-full h-96 rounded-2xl"
+                  className="w-full object-cover h-96 rounded-2xl"
                   width={400}
                   height={400}
                 />
@@ -61,7 +61,7 @@ const Home: NextPage = () => {
                   width={400}
                   height={400}
                   src="/generated-pic.png"
-                  className="w-full h-96 rounded-2xl sm:mt-0 mt-2"
+                  className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
                 />
               </div>
             </div>
