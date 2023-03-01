@@ -17,15 +17,17 @@
 - [x] Make sure original image doesn't stretch
 - [x] add roomGPT domain
 - [x] Email upload.io about changing the background for the upload component
-- [ ] Make sure the OG image is working
-- [ ] Make all dropdowns same length on restore page and any other small UI tweaks
-- [ ] Make sure it looks good on mobile
+- [x] Make sure the OG image is working
+- [ ] Make all dropdowns same length + move toggle slightly on the restore page
+- [ ] Make sure it looks good on mobile (1, 2, 3 icons cut off)
+- [ ] Send it in Vercel's Slack to give folks a sneak peek + to the VC
 - [ ] Test lighthouse scores to make sure I have good performance
 - [ ] Maybe replace the pic in the homescreen
-- [ ] Add more themes and types of rooms, maybe have somewhere where folks can vote and that I will choose a theme each week or something
+- [ ] Maybe improve working of homepage
 
 ## Todos v2
 
+- [ ] Add more themes and types of rooms, maybe have somewhere where folks can vote and that I will choose a theme each week or something
 - [ ] Add aggresive rate limiting
 - [ ] Play around with the prompt based on levelsio project
 - [ ] Test out other models and tweak params to obtain optimal results, might be tied to hough for faster generations
