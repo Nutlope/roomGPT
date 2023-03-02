@@ -1,10 +1,6 @@
-# Todos v1
-
-- [ ] Make GitHub repo OSS, tweet about it, and add tweet to homepage after launching
-
 # [roomGPT.io](https://roomGPT.io)
 
-This project generates designs of your room.
+This project generates designs of your room with AI.
 
 [![Room GPT](./public/screenshot.png)](https://roomGPT.io)
 
@@ -17,7 +13,7 @@ It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet
 ### Cloning the repository the local machine.
 
 ```bash
-git clone
+git clone https://github.com/Nutlope/roomGPT
 ```
 
 ### Creating a account on Replicate to get an API key.
@@ -26,7 +22,7 @@ git clone
 2. Click on your profile picture in the top right corner, and click on "Dashboard".
 3. Click on "Account" in the navbar. And, here you can find your API token, copy it.
 
-### Storing API key in .env file.
+### Storing the API keys in .env
 
 Create a file in root directory of project with env. And store your API key in it, as shown in the .example.env file.
 
@@ -51,15 +47,3 @@ npm run dev
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY&project-name=room-GPT&repo-name=roomGPT)
-
-## Future tasks
-
-- Add to Vercel templates marketplace and link it on the site
-- Add testimonials
-- Add all replicate IDs to localstorage array, add PR
-- Add more themes and types of rooms
-- Add mechanism for folks to vote on themes with the top theme being added each week
-- Add more aggressive rate limiting and/or auth if traffic is too high
-- Try switching to 768px generations and seeing how that affects things
-- Add ability to generate shareable links and dynamic OGs
-- Add a carousel of generated rooms using an image gallery
