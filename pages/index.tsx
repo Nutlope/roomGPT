@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
         <a
-          href="https://twitter.com/nutlope/status/1626074563481051136"
+          href="https://twitter.com/nutlope/status/1631336792560476182"
           target="_blank"
           rel="noreferrer"
           className="border border-gray-700 rounded-lg py-2 px-4 text-gray-400 text-sm mb-5 transition duration-300 ease-in-out"
