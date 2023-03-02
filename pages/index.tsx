@@ -60,7 +60,7 @@ const Home: NextPage = () => {
                   alt="Generated photo of a room with roomGPT.io"
                   width={400}
                   height={400}
-                  src="/generated-pic.png"
+                  src="/generated-pic-2.jpg"
                   className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
                 />
               </div>
