@@ -28,6 +28,7 @@
 
 ## Todos v2
 
+- [ ] Add auth
 - [ ] Add more themes and types of room based on interiorAI
 - [ ] See if I should open a new tab when clicking "Upload new room"
 - [ ] Add mechanism for folks to vote on themes with the top theme being added each week
