@@ -3,7 +3,11 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import requestIp from "request-ip";
 import redis from "../../utils/redis";
 
-type Data = string;
+export type GenerateResponseData = {
+  original: string | null;
+  generated: string | null;
+  id: string;
+};
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
     imageUrl: string;
@@ -22,7 +26,7 @@ const ratelimit = redis
 
 export default async function handler(
   req: ExtendedNextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<GenerateResponseData | string>
 ) {
   // Rate Limiter Code
   if (ratelimit) {
@@ -68,11 +72,15 @@ export default async function handler(
 
   let jsonStartResponse = await startResponse.json();
 
+  console.log(jsonStartResponse)
+
   let endpointUrl = jsonStartResponse.urls.get;
+  const originalImage = jsonStartResponse.input.image;
+  const roomId = jsonStartResponse.id;
 
   // GET request to get the status of the image restoration process & return the result when it's ready
-  let restoredImage: string | null = null;
-  while (!restoredImage) {
+  let generatedImage: string | null = null;
+  while (!generatedImage) {
     // Loop in 1s intervals until the alt text is ready
     console.log("polling for result...");
     let finalResponse = await fetch(endpointUrl, {
@@ -85,7 +93,7 @@ export default async function handler(
     let jsonFinalResponse = await finalResponse.json();
 
     if (jsonFinalResponse.status === "succeeded") {
-      restoredImage = jsonFinalResponse.output;
+      generatedImage = jsonFinalResponse.output[1] as string;
     } else if (jsonFinalResponse.status === "failed") {
       break;
     } else {
@@ -94,5 +102,9 @@ export default async function handler(
   }
   res
     .status(200)
-    .json(restoredImage ? restoredImage : "Failed to restore image");
+    .json({
+      original: originalImage,
+      generated: generatedImage,
+      id: roomId,
+    });
 }
