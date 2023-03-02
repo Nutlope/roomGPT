@@ -1,15 +1,28 @@
-export type themeType = "Modern" | "Gaming" | "Minimalist" | "Professional";
-export type roomType = "Living Room" | "Dining Room" | "Bedroom" | "Bathroom";
+export type themeType =
+  | "Modern"
+  | "Gaming"
+  | "Minimalist"
+  | "Professional"
+  | "Tropical";
+
+export type roomType =
+  | "Living Room"
+  | "Dining Room"
+  | "Bedroom"
+  | "Bathroom"
+  | "Office";
 
 export const themes: themeType[] = [
   "Modern",
-  "Gaming",
   "Minimalist",
   "Professional",
+  "Tropical",
+  "Gaming",
 ];
 export const rooms: roomType[] = [
   "Living Room",
   "Dining Room",
+  "Office",
   "Bedroom",
   "Bathroom",
 ];

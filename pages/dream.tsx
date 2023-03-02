@@ -26,7 +26,9 @@ const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  styles: { colors: { primary: "#2563EB", active: "#2563EB" } },
+  styles: {
+    colors: { primary: "#2563EB" },
+  },
 };
 
 const Home: NextPage = () => {
