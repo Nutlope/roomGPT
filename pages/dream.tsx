@@ -153,7 +153,11 @@ const Home: NextPage = () => {
                   <b>{theme.toLowerCase()}</b> theme!{" "}
                 </div>
               )}
-              <div className="mt-6 -ml-8">
+              <div
+                className={`${
+                  restoredLoaded ? "visible mt-6 -ml-8" : "invisible"
+                }`}
+              >
                 <Toggle
                   className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
                   sideBySide={sideBySide}
@@ -206,7 +210,7 @@ const Home: NextPage = () => {
               {loading && (
                 <button
                   disabled
-                  className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 hover:bg-black/80 w-40"
+                  className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
                 >
                   <span className="pt-4">
                     <LoadingDots color="white" style="large" />

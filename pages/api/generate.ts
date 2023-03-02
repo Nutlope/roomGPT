@@ -58,7 +58,6 @@ export default async function handler(
         a_prompt: "best quality, extremely detailed",
         n_prompt:
           "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
-        // image_resolution: "768",
       },
     }),
   });

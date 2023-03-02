@@ -1,7 +1,10 @@
 # Todos v1
 
 - [ ] Play around with the prompt to optimize it based on levelsio prompt
-- [ ] Make GitHub repo OSS, add tweet to homepage, and test out deploy in the README
+- [ ] Change the upload background
+- [ ] Maybe add one more theme and one more room type
+- [ ] Make GitHub repo OSS and add tweet to homepage after launching
+- [ ] Tweet about the project
 
 # [roomGPT.io](https://roomGPT.io)
 
