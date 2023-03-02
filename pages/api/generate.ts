@@ -83,7 +83,6 @@ export default async function handler(
 
     if (jsonFinalResponse.status === "succeeded") {
       restoredImage = jsonFinalResponse.output;
-      console.log({ jsonFinalResponse });
     } else if (jsonFinalResponse.status === "failed") {
       break;
     } else {

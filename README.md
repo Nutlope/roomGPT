@@ -1,6 +1,5 @@
 # Todos v1
 
-- [ ] Maybe replace the pic in the homescreen and copy (remodel instead of generate dream room?)
 - [ ] Play around with the prompt to optimize it based on levelsio prompt
 - [ ] Make GitHub repo OSS, add tweet to homepage, and test out deploy in the README
 
