@@ -1,55 +1,12 @@
 # Todos v1
 
-- [x] Replace model with controlnet and test it
-- [x] Make UI look nicer, maybe dark theme
-- [x] Redo landing page, remove testimonials and either make it dark mode or use another lp
-- [x] Redo README
-- [x] Fix issue with generations not working
-- [x] Add two dropdowns for what kind of room it is + dropdown for themes
-- [x] Use new redis db for rate limiting
-- [x] Deploy, assign domain, fix meta tags, add OG image with one of the genrated pics
-- [x] Tweet out a screenshot for hype
-- [x] Let replicate team know to keep it on when I launch
-- [x] Test it out locally + in prod to make sure it works properly
-- [x] Add gradient for roomGPT
-- [x] Refactor code in general (maybe use react-hook-form)
-- [x] Some visual indication that it takes ~25s
-- [x] Make sure original image doesn't stretch
-- [x] add roomGPT domain
-- [x] Email upload.io about changing the background for the upload component
-- [x] Make sure the OG image is working
-- [x] Move toggle slightly on the restore page and we took out the dropdowns
-- [x] Make sure it looks good on mobile (1, 2, 3 icons cut off)
-- [x] Add Vercel Analytics
-- [x] Test lighthouse scores to make sure I have good performance
-- [x] Send it in Vercel's Slack to give folks a sneak peek
 - [ ] Maybe replace the pic in the homescreen and copy (remodel instead of generate dream room?)
-- [ ] Add all replicate IDs to localstorage array
-
-## Todos v2
-
-- [ ] Add auth
-- [ ] Add more themes and types of room based on interiorAI
-- [ ] See if I should open a new tab when clicking "Upload new room"
-- [ ] Add mechanism for folks to vote on themes with the top theme being added each week
-- [ ] Add aggresive rate limiting
-- [ ] Play around with the prompt based on levelsio project
-- [ ] Test out other models and tweak params to obtain optimal results, might be tied to hough for faster generations
-  - [ ] Try switching to 768px generations and seeing how that affects things
-- [ ] Sharability features - look at Replicate's project for inspo
-  - [ ] Add ability to generate shareable links – show
-  - [ ] Also use dynamic OGs to make this work as well
-- [ ] Add a carousel of generated rooms using my image gallery
-
-Replicate ID should be stored in the URL ideally
-
-<!-- // 1. User form with dropdowns for theme and room
-// 2. Get back id from Replicate, tell it to switch to the second component, query with the id
-// 3. Result component with the image and the download button -->
+- [ ] Play around with the prompt to optimize it based on levelsio prompt
+- [ ] Make GitHub repo OSS, add tweet to homepage, and test out deploy in the README
 
 # [roomGPT.io](https://roomGPT.io)
 
-This project generates new variations of your room based on a photo.
+This project generates designs of your room.
 
 [![Room GPT](./public/screenshot.png)](https://roomGPT.io)
 
@@ -96,3 +53,15 @@ npm run dev
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY&project-name=room-GPT&repo-name=roomGPT)
+
+## Future tasks
+
+- Add to Vercel templates marketplace and link it on the site
+- Add testimonials
+- Add all replicate IDs to localstorage array, add PR
+- Add more themes and types of rooms
+- Add mechanism for folks to vote on themes with the top theme being added each week
+- Add more aggressive rate limiting and/or auth if traffic is too high
+- Try switching to 768px generations and seeing how that affects things
+- Add ability to generate shareable links and dynamic OGs
+- Add a carousel of generated rooms using an image gallery
