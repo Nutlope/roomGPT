@@ -16,6 +16,7 @@ import downloadPhoto from "../utils/downloadPhoto";
 import DropDown from "../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
 import CountUp from "react-countup";
+import { GenerateResponseData } from "./api/generate";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -83,11 +84,16 @@ const Home: NextPage = () => {
       body: JSON.stringify({ imageUrl: fileUrl, theme, room }),
     });
 
-    let newPhoto = await res.json();
+    let response = (await res.json()) as GenerateResponseData;
+    console.log("res from replicate", response);
     if (res.status !== 200) {
-      setError(newPhoto);
+      setError(response as any);
     } else {
-      setRestoredImage(newPhoto[1]);
+      const rooms =
+        (JSON.parse(localStorage.getItem("rooms") || "[]") as string[]) || [];
+      rooms.push(response.id);
+      localStorage.setItem("rooms", JSON.stringify(rooms));
+      setRestoredImage(response.generated);
     }
     setTimeout(() => {
       setLoading(false);
