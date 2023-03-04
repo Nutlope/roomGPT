@@ -40,7 +40,7 @@ export default async function handler(
     if (!result.success) {
       res
         .status(429)
-        .json("Too many uploads in 1 day. Please try again in a 24 hours.");
+        .json("Too many uploads in 1 day. Please try again in 24 hours.");
       return;
     }
   }
