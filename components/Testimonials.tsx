@@ -81,7 +81,7 @@ export function Testimonials() {
             Loved by many worldwide.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
-            See what our 50,000+ users are saying about the product.
+            See what our 92,000+ users are saying about the product.
           </p>
         </div>
         <ul
