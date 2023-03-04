@@ -15,6 +15,7 @@ import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 import DropDown from "../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
+import CountUp from "react-countup";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -29,16 +30,16 @@ const options = {
   styles: {
     colors: {
       primary: "#2563EB", // Primary buttons & links
-      error: "#d23f4d",   // Error messages
-      shade100: "#fff",   // Standard text
-      shade200: "#fffe",  // Secondary button text
-      shade300: "#fffd",  // Secondary button text (hover)
-      shade400: "#fffc",  // Welcome text
-      shade500: "#fff9",  // Modal close button
-      shade600: "#fff7",  // Border
-      shade700: "#fff2",  // Progress indicator background
-      shade800: "#fff1",  // File item background
-      shade900: "#ffff"   // Various (draggable crop buttons, etc.)
+      error: "#d23f4d", // Error messages
+      shade100: "#fff", // Standard text
+      shade200: "#fffe", // Secondary button text
+      shade300: "#fffd", // Secondary button text (hover)
+      shade400: "#fffc", // Welcome text
+      shade500: "#fff9", // Modal close button
+      shade600: "#fff7", // Border
+      shade700: "#fff2", // Progress indicator background
+      shade800: "#fff1", // File item background
+      shade900: "#ffff", // Various (draggable crop buttons, etc.)
     },
   },
 };
@@ -103,6 +104,11 @@ const Home: NextPage = () => {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
+        <p className="text-slate-500">
+          {/* Obtained this number from Vercel: based on how many serverless invocations happened. */}
+          <CountUp start={0} end={68719} duration={1} separator="," /> rooms
+          generated so far.
+        </p>
         <ResizablePanel>
           <AnimatePresence mode="wait">
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
