@@ -122,7 +122,7 @@ const Home: NextPage = () => {
           <span className="font-bold text-gray-300">Note:</span> We're
           temporarily{" "}
           <span className="font-bold text-gray-300">
-            limiting generations to 1 per day
+            limiting generations to 3 per day
           </span>{" "}
           because of high traffic.
         </p>
