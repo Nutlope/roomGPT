@@ -41,7 +41,7 @@ export default async function handler(
       res
         .status(429)
         .json(
-          "We're temporarily limiting generations to 1 per day because of high traffic. Please try again in 24 hours. For any questions, email hassan@hey.com"
+          "We're temporarily limiting generations to 1 per day because of high traffic. For any questions, email hassan@hey.com"
         );
       return;
     }

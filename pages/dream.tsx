@@ -15,7 +15,6 @@ import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
 import DropDown from "../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
-import CountUp from "react-countup";
 import { GenerateResponseData } from "./api/generate";
 
 // Configuration for the uploader
@@ -257,14 +256,19 @@ const Home: NextPage = () => {
               )}
               {error && (
                 <div
-                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
+                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8 max-w-[575px]"
                   role="alert"
                 >
-                  <span className="block sm:inline">{error}</span>
+                  <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                    Please try again in 24 hours
+                  </div>
+                  <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                    {error}
+                  </div>
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
-                {originalPhoto && !loading && (
+                {originalPhoto && !loading && !error && (
                   <button
                     onClick={() => {
                       setOriginalPhoto(null);
