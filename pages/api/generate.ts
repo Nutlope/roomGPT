@@ -17,11 +17,11 @@ interface ExtendedNextApiRequest extends NextApiRequest {
   };
 }
 
-// Create a new ratelimiter, that allows 3 requests per 24 hours
+// Create a new ratelimiter, that allows 1 request per 24 hours
 const ratelimit = redis
   ? new Ratelimit({
       redis: redis,
-      limiter: Ratelimit.fixedWindow(3, "1440 m"),
+      limiter: Ratelimit.fixedWindow(1, "1440 m"),
       analytics: true,
     })
   : undefined;
@@ -40,7 +40,9 @@ export default async function handler(
     if (!result.success) {
       res
         .status(429)
-        .json("Too many uploads in 1 day. Please try again in 24 hours.");
+        .json(
+          "We're temporarily limiting generations to 1 per day because of high traffic. Please try again in 24 hours. For any questions, email hassan@hey.com"
+        );
       return;
     }
   }

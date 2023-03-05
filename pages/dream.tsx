@@ -119,10 +119,13 @@ const Home: NextPage = () => {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
-        <p className="text-slate-500">
-          {/* Obtained this number from Vercel: based on how many serverless invocations happened. */}
-          <CountUp start={50000} end={141531} duration={1} separator="," />{" "}
-          rooms generated so far.
+        <p className="text-gray-400">
+          <span className="font-bold text-gray-300">Note:</span> We're
+          temporarily{" "}
+          <span className="font-bold text-gray-300">
+            limiting generations to 1 per day
+          </span>{" "}
+          because of high traffic.
         </p>
         <ResizablePanel>
           <AnimatePresence mode="wait">
