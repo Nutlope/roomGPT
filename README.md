@@ -1,4 +1,4 @@
-# [roomGPT.io](https://roomGPT.io)
+# [roomGPT.io](https://roomGPT.ioooo)
 
 This project generates designs of your room with AI.
 
