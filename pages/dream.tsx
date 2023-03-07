@@ -118,14 +118,16 @@ const Home: NextPage = () => {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
-        <p className="text-gray-400">
-          <span className="font-bold text-gray-300">Note:</span> We're
-          temporarily{" "}
-          <span className="font-bold text-gray-300">
-            limiting generations to 3 per day
-          </span>{" "}
-          because of high traffic.
-        </p>
+        {!restoredImage && (
+          <p className="text-gray-400">
+            <span className="font-bold text-gray-300">Note:</span> We're
+            temporarily{" "}
+            <span className="font-bold text-gray-300">
+              limiting generations to 3 per day
+            </span>{" "}
+            because of high traffic.
+          </p>
+        )}
         <ResizablePanel>
           <AnimatePresence mode="wait">
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
