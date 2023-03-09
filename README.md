@@ -42,6 +42,11 @@ Then, run the application in the command line and it will be available at `http:
 npm run dev
 ```
 
+## Auth setup
+
+1. Use `openssl rand -base64 32` to generate NEXTAUTH_SECRET
+2. Add DB URL and SHADOW DB URL from Neon
+
 ## One-Click Deploy
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):

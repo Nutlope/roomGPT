@@ -16,6 +16,9 @@ import downloadPhoto from "../utils/downloadPhoto";
 import DropDown from "../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
 import { GenerateResponseData } from "./api/generate";
+import { useSession, signIn } from "next-auth/react";
+import useSWR from "swr";
+import { Rings } from "react-loader-spinner";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -54,6 +57,10 @@ const Home: NextPage = () => {
   const [photoName, setPhotoName] = useState<string | null>(null);
   const [theme, setTheme] = useState<themeType>("Modern");
   const [room, setRoom] = useState<roomType>("Living Room");
+
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data, mutate } = useSWR("/api/remaining", fetcher);
+  const { data: session, status } = useSession();
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -104,7 +111,7 @@ const Home: NextPage = () => {
       <Head>
         <title>RoomGPT</title>
       </Head>
-      <Header />
+      <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         <a
           href="https://dub.sh/hassan-newsletter"
@@ -118,7 +125,20 @@ const Home: NextPage = () => {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
-        {!restoredImage && (
+        {status === "authenticated" && data && (
+          <p className="text-slate-500">
+            You have{" "}
+            <span className="font-semibold">
+              {data.remainingGenerations} generations
+            </span>{" "}
+            left today. Your generation
+            {Number(data.remainingGenerations) > 1 ? "s" : ""} will renew in{" "}
+            <span className="font-semibold">
+              {data.hours} hours and {data.minutes} minutes.
+            </span>
+          </p>
+        )}
+        {/* {!restoredImage && (
           <p className="text-gray-400">
             <span className="font-bold text-gray-300">Note:</span> We're
             temporarily{" "}
@@ -127,7 +147,7 @@ const Home: NextPage = () => {
             </span>{" "}
             because of high traffic.
           </p>
-        )}
+        )} */}
         <ResizablePanel>
           <AnimatePresence mode="wait">
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
@@ -209,7 +229,44 @@ const Home: NextPage = () => {
                   restored={restoredImage!}
                 />
               )}
-              {!originalPhoto && <UploadDropZone />}
+              {status === "loading" ? (
+                <div className="max-w-[670px] h-[250px] flex justify-center items-center">
+                  <Rings
+                    height="100"
+                    width="100"
+                    color="black"
+                    radius="6"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                    ariaLabel="rings-loading"
+                  />
+                </div>
+              ) : status === "authenticated" && !originalPhoto ? (
+                <UploadDropZone />
+              ) : (
+                !originalPhoto && (
+                  <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
+                    <div className="max-w-xl text-gray-600">
+                      Sign in below with Google to create a free account and
+                      restore your photos today. You will be able to restore 5
+                      photos per day for free.
+                    </div>
+                    <button
+                      onClick={() => signIn("google")}
+                      className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
+                    >
+                      <Image
+                        src="/google.png"
+                        width={20}
+                        height={20}
+                        alt="google's logo"
+                      />
+                      <span>Sign in with Google</span>
+                    </button>
+                  </div>
+                )
+              )}
               {originalPhoto && !restoredImage && (
                 <Image
                   alt="original photo"
