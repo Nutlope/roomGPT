@@ -63,7 +63,9 @@ export default async function handler(
         prompt:
           room === "Gaming Room"
             ? "a room for gaming with gaming computers, gaming consoles, and gaming chairs"
-            : `a ${theme.toLowerCase()} ${room.toLowerCase()}`,
+            : room === "Kitchen"
+              ? `a ${theme.toLowerCase()} kitchen with refrigerator, microwave and dishwasher`
+              : `a ${theme.toLowerCase()} ${room.toLowerCase()}`,
         a_prompt:
           "best quality, extremely detailed, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning",
         n_prompt:
