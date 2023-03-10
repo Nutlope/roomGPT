@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ photo }: { photo?: string }) {
   return (
     <header className="flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
       <Link href="/" className="flex space-x-2">
@@ -16,15 +16,25 @@ export default function Header() {
           roomGPT.io
         </h1>
       </Link>
-      <a
-        className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-blue-500 bg-blue-600 font-medium transition"
-        href="https://github.com/Nutlope/roomGPT"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Github />
-        <p>Star on GitHub</p>
-      </a>
+      {photo ? (
+        <Image
+          alt="Profile picture"
+          src={photo}
+          className="w-10 rounded-full"
+          width={32}
+          height={28}
+        />
+      ) : (
+        <a
+          className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-blue-500 bg-blue-600 font-medium transition"
+          href="https://github.com/Nutlope/roomGPT"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Github />
+          <p>Star on GitHub</p>
+        </a>
+      )}
     </header>
   );
 }

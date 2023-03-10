@@ -3,25 +3,33 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "vercel-build": "prisma generate && next build",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.16",
+    "@next-auth/prisma-adapter": "^1.0.5",
+    "@prisma/client": "^4.11.0",
     "@tailwindcss/forms": "^0.5.3",
     "@upstash/ratelimit": "^0.3.8",
     "@upstash/redis": "^1.19.1",
     "@vercel/analytics": "^0.1.9-beta.4",
     "framer-motion": "^8.2.4",
     "next": "latest",
+    "next-auth": "^4.20.1",
+    "prisma": "^4.11.0",
     "react": "18.2.0",
     "react-compare-slider": "^2.2.0",
     "react-countup": "^6.4.0",
     "react-dom": "18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-uploader": "^3.10.0",
     "react-use-measure": "^2.1.1",
     "request-ip": "^3.3.0",
+    "swr": "^2.1.0",
     "uploader": "^3.9.0"
   },
   "devDependencies": {

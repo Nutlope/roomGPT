@@ -2,6 +2,8 @@ import { Ratelimit } from "@upstash/ratelimit";
 import type { NextApiRequest, NextApiResponse } from "next";
 import requestIp from "request-ip";
 import redis from "../../utils/redis";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "./auth/[...nextauth]";
 
 export type GenerateResponseData = {
   original: string | null;
@@ -17,11 +19,11 @@ interface ExtendedNextApiRequest extends NextApiRequest {
   };
 }
 
-// Create a new ratelimiter, that allows 3 requests per 24 hours
+// Create a new ratelimiter, that allows 5 requests per 24 hours
 const ratelimit = redis
   ? new Ratelimit({
       redis: redis,
-      limiter: Ratelimit.fixedWindow(3, "1440 m"),
+      limiter: Ratelimit.fixedWindow(5, "1440 m"),
       analytics: true,
     })
   : undefined;
@@ -30,20 +32,32 @@ export default async function handler(
   req: ExtendedNextApiRequest,
   res: NextApiResponse<GenerateResponseData | string>
 ) {
+  // Check if user is logged in
+  const session = await getServerSession(req, res, authOptions);
+  if (!session || !session.user) {
+    return res.status(500).json("Login to upload.");
+  }
+
   // Rate Limiter Code
   if (ratelimit) {
-    const identifier = requestIp.getClientIp(req);
+    const identifier = session.user.email;
     const result = await ratelimit.limit(identifier!);
     res.setHeader("X-RateLimit-Limit", result.limit);
     res.setHeader("X-RateLimit-Remaining", result.remaining);
 
+    // Calcualte the remaining time until generations are reset
+    const diff = Math.abs(
+      new Date(result.reset).getTime() - new Date().getTime()
+    );
+    const hours = Math.floor(diff / 1000 / 60 / 60);
+    const minutes = Math.floor(diff / 1000 / 60) - hours * 60;
+
     if (!result.success) {
-      res
+      return res
         .status(429)
         .json(
-          "We're temporarily limiting generations to 3 per day because of high traffic. For any questions, email hassan@hey.com"
+          `Your generations will renew in ${hours} hours and ${minutes} minutes. Email hassan@hey.com if you have any questions.`
         );
-      return;
     }
   }
 
