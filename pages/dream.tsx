@@ -131,7 +131,7 @@ const Home: NextPage = () => {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
-        {status === "authenticated" && data && !restoredImage && (
+        {!restoredImage && (
           // <p className="text-gray-400">
           //   You have{" "}
           //   <span className="font-semibold text-gray-300">
