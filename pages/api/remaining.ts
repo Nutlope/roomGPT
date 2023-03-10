@@ -21,11 +21,18 @@ export default async function handler(
   const usedGenerations =
     (await redis?.get(`@upstash/ratelimit:${identifier!}:${bucket}`)) || 0;
 
-  // it can return null and it also returns the number of generations the user has done, not the number they have left
-
-  // TODO: Move this using date-fns on the client-side
+  // Move this using date-fns on the client-side
   const resetDate = new Date();
-  resetDate.setHours(19, 0, 0, 0);
+  // Check if the current time is before 7pm EST
+  if (resetDate.getUTCHours() < 23) {
+    // 23 is equivalent to 7pm EST in UTC
+    // If before 7pm EST, set the time to 7pm EST
+    resetDate.setUTCHours(19, 0, 0, 0);
+  } else {
+    // If after 7pm EST, add one day and set the time to 7pm EST
+    resetDate.setDate(resetDate.getDate() + 1); // Add one day
+    resetDate.setUTCHours(19, 0, 0, 0);
+  }
   const diff = Math.abs(resetDate.getTime() - new Date().getTime());
   const hours = Math.floor(diff / 1000 / 60 / 60);
   const minutes = Math.floor(diff / 1000 / 60) - hours * 60;

@@ -1,3 +1,8 @@
+## Todos left for auth
+
+- test it on deployment URL, make sure reset time is real
+- roll it out to prod with instant rollback
+
 # [roomGPT.io](https://roomGPT.io)
 
 This project generates new designs of your room with AI.
@@ -46,6 +51,12 @@ npm run dev
 
 1. Use `openssl rand -base64 32` to generate NEXTAUTH_SECRET
 2. Add DB URL and SHADOW DB URL from Neon
+3. Create a new project in console.cloud.google.com
+4. Click configure consent screen in API credentials page and click external
+5. Add an app name, do not upload logo, add authorized domain
+6. Publish app
+7. Create credentials -> Oauth client ID
+8. Run npx prisma db push && prisma migrate dev && prisma generate
 
 ## One-Click Deploy
 
