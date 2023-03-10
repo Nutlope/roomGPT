@@ -26,26 +26,6 @@ const uploader = Uploader({
     ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
     : "free",
 });
-const options = {
-  maxFileCount: 1,
-  mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
-  editor: { images: { crop: false } },
-  styles: {
-    colors: {
-      primary: "#2563EB", // Primary buttons & links
-      error: "#d23f4d", // Error messages
-      shade100: "#fff", // Standard text
-      shade200: "#fffe", // Secondary button text
-      shade300: "#fffd", // Secondary button text (hover)
-      shade400: "#fffc", // Welcome text
-      shade500: "#fff9", // Modal close button
-      shade600: "#fff7", // Border
-      shade700: "#fff2", // Progress indicator background
-      shade800: "#fff1", // File item background
-      shade900: "#ffff", // Various (draggable crop buttons, etc.)
-    },
-  },
-};
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
@@ -61,6 +41,32 @@ const Home: NextPage = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
   const { data: session, status } = useSession();
+
+  const options = {
+    maxFileCount: 1,
+    mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
+    editor: { images: { crop: false } },
+    styles: {
+      colors: {
+        primary: "#2563EB", // Primary buttons & links
+        error: "#d23f4d", // Error messages
+        shade100: "#fff", // Standard text
+        shade200: "#fffe", // Secondary button text
+        shade300: "#fffd", // Secondary button text (hover)
+        shade400: "#fffc", // Welcome text
+        shade500: "#fff9", // Modal close button
+        shade600: "#fff7", // Border
+        shade700: "#fff2", // Progress indicator background
+        shade800: "#fff1", // File item background
+        shade900: "#ffff", // Various (draggable crop buttons, etc.)
+      },
+    },
+    onValidate: async (file: File): Promise<undefined | string> => {
+      return data.remainingGenerations === 0
+        ? "No more generations left for the day."
+        : undefined;
+    },
+  };
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -91,7 +97,6 @@ const Home: NextPage = () => {
     });
 
     let response = (await res.json()) as GenerateResponseData;
-    console.log("res from replicate", response);
     if (res.status !== 200) {
       setError(response as any);
     } else {
