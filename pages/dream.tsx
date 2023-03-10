@@ -135,7 +135,7 @@ const Home: NextPage = () => {
             left today. Your generation
             {Number(data.remainingGenerations) > 1 ? "s" : ""} will renew in{" "}
             <span className="font-semibold text-gray-300">
-              {data.hours} hours and {data.minutes} minutes.
+              {data.hours + 5} hours and {data.minutes} minutes.
             </span>
           </p>
         )}
@@ -308,7 +308,7 @@ const Home: NextPage = () => {
                   role="alert"
                 >
                   <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                    Please try again in 24 hours
+                    Please try again later.
                   </div>
                   <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                     {error}
