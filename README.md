@@ -1,8 +1,3 @@
-## Todos left for auth
-
-- test it on deployment URL, make sure reset time is real
-- roll it out to prod with instant rollback
-
 # [roomGPT.io](https://roomGPT.io)
 
 This project generates new designs of your room with AI.
