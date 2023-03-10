@@ -11,7 +11,7 @@ export default async function handler(
   const session = await getServerSession(req, res, authOptions);
   if (!session || !session.user) {
     console.log("User not logged in");
-    return res.status(500).json("Login to upload.");
+    return res.status(401).json("Login to upload.");
   }
 
   // Query the redis database by email to get the number of generations left
@@ -39,7 +39,7 @@ export default async function handler(
   const minutes = Math.floor(diff / 1000 / 60) - hours * 60;
 
   const remainingGenerations =
-    Number(usedGenerations) > 2 ? 0 : 2 - Number(usedGenerations);
+    Number(usedGenerations) > 3 ? 0 : 3 - Number(usedGenerations);
 
   return res.status(200).json({ remainingGenerations, hours, minutes });
 }
