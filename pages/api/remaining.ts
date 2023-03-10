@@ -39,7 +39,7 @@ export default async function handler(
   const minutes = Math.floor(diff / 1000 / 60) - hours * 60;
 
   const remainingGenerations =
-    Number(usedGenerations) > 5 ? 0 : 5 - Number(usedGenerations);
+    Number(usedGenerations) > 2 ? 0 : 2 - Number(usedGenerations);
 
   return res.status(200).json({ remainingGenerations, hours, minutes });
 }
