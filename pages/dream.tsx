@@ -132,16 +132,20 @@ const Home: NextPage = () => {
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
         {status === "authenticated" && data && !restoredImage && (
-          <p className="text-gray-400">
-            You have{" "}
-            <span className="font-semibold text-gray-300">
-              {data.remainingGenerations} generations
-            </span>{" "}
-            left today. Your generation
-            {Number(data.remainingGenerations) > 1 ? "s" : ""} will renew in{" "}
-            <span className="font-semibold text-gray-300">
-              {data.hours + 5} hours and {data.minutes} minutes.
-            </span>
+          // <p className="text-gray-400">
+          //   You have{" "}
+          //   <span className="font-semibold text-gray-300">
+          //     {data.remainingGenerations} generations
+          //   </span>{" "}
+          //   left today. Your generation
+          //   {Number(data.remainingGenerations) > 1 ? "s" : ""} will renew in{" "}
+          //   <span className="font-semibold text-gray-300">
+          //     {data.hours + 5} hours and {data.minutes} minutes.
+          //   </span>
+          // </p>
+          <p className="text-gray-300 font-medium">
+            We're currently experiencing some issues with our server. Please try
+            again later.
           </p>
         )}
         <ResizablePanel>
