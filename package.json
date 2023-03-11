@@ -17,6 +17,8 @@
     "@upstash/ratelimit": "^0.3.8",
     "@upstash/redis": "^1.19.1",
     "@vercel/analytics": "^0.1.9-beta.4",
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^2.0.0",
     "framer-motion": "^8.2.4",
     "next": "latest",
     "next-auth": "^4.20.1",

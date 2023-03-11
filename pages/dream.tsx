@@ -19,6 +19,7 @@ import { GenerateResponseData } from "./api/generate";
 import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { Rings } from "react-loader-spinner";
+import getRemainingTime from "../utils/getRemainingTime";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -41,6 +42,7 @@ const Home: NextPage = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
   const { data: session, status } = useSession();
+  const { hours, minutes } = getRemainingTime();
 
   const options = {
     maxFileCount: 1,
@@ -63,7 +65,7 @@ const Home: NextPage = () => {
     },
     onValidate: async (file: File): Promise<undefined | string> => {
       return data.remainingGenerations === 0
-        ? "No more generations left for the day."
+        ? `No more generations left. Try again in ${hours} hours and ${minutes} minutes.`
         : undefined;
     },
   };
@@ -137,10 +139,9 @@ const Home: NextPage = () => {
             <span className="font-semibold text-gray-300">
               {data.remainingGenerations} generations
             </span>{" "}
-            left today. Your generation
-            {Number(data.remainingGenerations) > 1 ? "s" : ""} will renew in{" "}
+            left today. Your generations will renew in{" "}
             <span className="font-semibold text-gray-300">
-              {data.hours + 5} hours and {data.minutes} minutes.
+              {hours} hours and {minutes} minutes.
             </span>
           </p>
         )}
