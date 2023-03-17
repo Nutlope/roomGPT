@@ -40,8 +40,11 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  credits       Int       @default(5)
+  boughtCredits Int       @default(0)
   accounts      Account[]
   sessions      Session[]
+  rooms         Room[]
 }
 
 model VerificationToken {
@@ -50,4 +53,18 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Room {
+  id          String   @id @default(cuid())
+  replicateId String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  inputImage  String
+  outputImage String
+  prompt      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([replicateId, userId])
 }

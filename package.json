@@ -2,10 +2,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "vercel-build": "prisma generate && next build",
-    "prisma:generate": "prisma generate"
+    "build": "prisma generate && prisma migrate deploy && next build",
+    "start": "next start"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",

@@ -114,6 +114,10 @@ export default async function handler(
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
+
+  // add the generated room to the Room Table in the User's account with Prisma
+  // get rid of rate limiting code and decrease the number of credits on the User's table
+
   res.status(200).json(
     generatedImage
       ? {
