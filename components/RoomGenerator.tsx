@@ -15,19 +15,19 @@ export function RoomGeneration({
           <Image
             alt="Original room"
             src={original}
-            className="w-full object-cover h-80 rounded-2xl"
-            width={300}
-            height={300}
+            className="w-full rounded-2xl aspect-auto"
+            width={400}
+            height={400}
           />
         </div>
         <div className="sm:mt-0 mt-8">
           <h3 className="mb-1 font-medium text-lg">Generated</h3>
           <Image
             alt="Generated room"
-            width={300}
-            height={300}
+            width={400}
+            height={400}
             src={generated}
-            className="w-full object-cover h-80 rounded-2xl sm:mt-0 mt-2"
+            className="w-full rounded-2xl sm:mt-0 mt-2 aspect-auto"
           />
         </div>
       </div>

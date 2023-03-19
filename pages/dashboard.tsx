@@ -23,7 +23,8 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
         </h1>
         {rooms ? (
           <p className="text-gray-300">
-            Browse through your previous room generations below.
+            Browse through your previous room generations below. Any feedback?
+            Email hassan@hey.com
           </p>
         ) : (
           <p className="text-gray-300">

@@ -16,7 +16,6 @@ export default function Header({ photo }: { photo?: string }) {
           roomGPT.io
         </h1>
       </Link>
-      {/* TODO: Maybe try to add a "New" label on it like the Tailwind site */}
       {/* TODO: Eventually add a dropdown where folks can click to logout and buy credits */}
       {/* TODO: Maybe add another link to purchase credits next to dashboard */}
       {/* TODO: Also add "see previous generations in our new dashboard" note */}
@@ -24,9 +23,12 @@ export default function Header({ photo }: { photo?: string }) {
         <div className="flex items-center space-x-4">
           <Link
             href="/dashboard"
-            className="underline-offset-2 hover:underline transition"
+            className="border-r border-gray-300 pr-4 flex space-x-2 hover:text-blue-400 transition"
           >
-            Dashboard
+            <div>Dashboard</div>
+            <div className="text-blue-500 bg-blue-200 rounded-full px-2 text-xs flex justify-center items-center font-semibold">
+              New
+            </div>
           </Link>
           <Image
             alt="Profile picture"
