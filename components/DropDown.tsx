@@ -17,7 +17,6 @@ interface DropDownProps {
   themes: themeType[] | roomType[];
 }
 
-// TODO: Change names since this is a generic dropdown now
 export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
   return (
     <Menu as="div" className="relative block text-left">

@@ -1,9 +1,9 @@
 import { Ratelimit } from "@upstash/ratelimit";
 import type { NextApiRequest, NextApiResponse } from "next";
-import requestIp from "request-ip";
 import redis from "../../utils/redis";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
+import prisma from "../../lib/prismadb";
 
 export type GenerateResponseData = {
   original: string | null;
@@ -62,6 +62,11 @@ export default async function handler(
   }
 
   const { imageUrl, theme, room } = req.body;
+  const prompt =
+    room === "Gaming Room"
+      ? "a room for gaming with gaming computers, gaming consoles, and gaming chairs"
+      : `a ${theme.toLowerCase()} ${room.toLowerCase()}`;
+
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
@@ -74,10 +79,7 @@ export default async function handler(
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt:
-          room === "Gaming Room"
-            ? "a room for gaming with gaming computers, gaming consoles, and gaming chairs"
-            : `a ${theme.toLowerCase()} ${room.toLowerCase()}`,
+        prompt: prompt,
         a_prompt:
           "best quality, extremely detailed, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning",
         n_prompt:
@@ -114,6 +116,24 @@ export default async function handler(
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
+
+  // TODO: get rid of rate limiting code and decrease the number of credits on the User's table
+  if (generatedImage) {
+    await prisma.room.create({
+      data: {
+        replicateId: roomId,
+        user: {
+          connect: {
+            email: session.user.email!,
+          },
+        },
+        inputImage: originalImage,
+        outputImage: generatedImage,
+        prompt: prompt,
+      },
+    });
+  }
+
   res.status(200).json(
     generatedImage
       ? {
