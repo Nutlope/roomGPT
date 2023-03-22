@@ -164,14 +164,19 @@ const Home: NextPage = () => {
             <span className="font-semibold text-gray-300">
               {data.remainingGenerations} generations
             </span>{" "}
-            left. Buy more generations{" "}
-            <Link
-              href="/buy-credits"
-              className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
-            >
-              here
-            </Link>
-            .
+            left.{" "}
+            {data.remainingGenerations < 2 && (
+              <span>
+                Buy more generations{" "}
+                <Link
+                  href="/buy-credits"
+                  className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
+                >
+                  here
+                </Link>
+                .
+              </span>
+            )}
           </p>
         )}
         <ResizablePanel>

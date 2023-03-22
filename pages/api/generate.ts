@@ -76,8 +76,9 @@ export default async function handler(
           input: {
             image: imageUrl,
             prompt: prompt,
+            scale: 9,
             a_prompt:
-              "best quality, extremely detailed, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning",
+              "best quality, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning, interior design",
             n_prompt:
               "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
           },

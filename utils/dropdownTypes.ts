@@ -3,7 +3,9 @@ export type themeType =
   | "Vintage"
   | "Minimalist"
   | "Professional"
-  | "Tropical";
+  | "Tropical"
+  | "Industrial"
+  | "Neoclassic";
 
 export type roomType =
   | "Living Room"
@@ -12,6 +14,7 @@ export type roomType =
   | "Bathroom"
   | "Office"
   | "Kitchen"
+  | "Basement"
   | "Gaming Room";
 
 export const themes: themeType[] = [
@@ -20,6 +23,8 @@ export const themes: themeType[] = [
   "Professional",
   "Tropical",
   "Vintage",
+  "Industrial",
+  "Neoclassic",
 ];
 export const rooms: roomType[] = [
   "Living Room",
@@ -27,6 +32,7 @@ export const rooms: roomType[] = [
   "Office",
   "Bedroom",
   "Bathroom",
-  "Gaming Room",
+  "Basement",
   "Kitchen",
+  "Gaming Room",
 ];
