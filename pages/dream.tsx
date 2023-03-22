@@ -118,7 +118,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (router.query.success === "true") {
-      toast.success("Payment successful! You can now use your credits.");
+      toast.success("Payment successful!");
     }
   }, [router.query.success]);
 
