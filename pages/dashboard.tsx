@@ -10,7 +10,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Dashboard({ rooms }: { rooms: Room[] }) {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>

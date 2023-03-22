@@ -16,8 +16,6 @@ export default function Header({ photo }: { photo?: string }) {
           roomGPT.io
         </h1>
       </Link>
-      {/* TODO: Eventually add a dropdown where folks can click to logout and buy credits */}
-      {/* TODO: Maybe add another link to purchase credits next to dashboard */}
       {photo ? (
         <div className="flex items-center space-x-4">
           <Link

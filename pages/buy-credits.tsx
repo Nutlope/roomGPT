@@ -4,16 +4,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Head from "next/head";
 import useSWR from "swr";
-import Link from "next/link";
 
 export default function Pricing() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data, mutate } = useSWR("/api/remaining", fetcher);
+  const { data } = useSWR("/api/remaining", fetcher);
 
-  // TODO: See if I can refactor this to import code from an npm library OR use a custom API route and build this code myself
-  // TODO: Make it w-6xl later
   return (
     <div className="flex mx-auto max-w-7xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -161,10 +158,3 @@ export default function Pricing() {
     </div>
   );
 }
-
-// TODO:
-// add a query param with ?success=true to the redirect url so I can share a "Congrats you bought credits" message or toast
-// redirect to the /dream page if user is not logged in
-// use my own upload.io account and replicate account
-// eventually build a "successful payment" page
-// add "higher quality room generations" as feedback

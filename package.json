@@ -13,8 +13,6 @@
     "@prisma/client": "^4.11.0",
     "@tailwindcss/forms": "^0.5.3",
     "@vercel/analytics": "^0.1.9-beta.4",
-    "date-fns": "^2.29.3",
-    "date-fns-tz": "^2.0.0",
     "framer-motion": "^8.2.4",
     "micro": "^10.0.1",
     "micro-cors": "^0.1.1",

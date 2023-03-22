@@ -19,7 +19,6 @@ import { GenerateResponseData } from "./api/generate";
 import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { Rings } from "react-loader-spinner";
-import getRemainingTime from "../utils/getRemainingTime";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Toaster, toast } from "react-hot-toast";
@@ -45,9 +44,6 @@ const Home: NextPage = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
   const { data: session, status } = useSession();
-  const { hours, minutes } = getRemainingTime();
-
-  // TODO: Don't even show the uploader when folks have 0 credits. Just show a call to action that links to "buy-credits". Could also just embed stripe checkout thing in buy-credits here
 
   const options = {
     maxFileCount: 1,
@@ -82,7 +78,6 @@ const Home: NextPage = () => {
       onUpdate={(file) => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
-          // TODO: Make sure these are the image dimensions we want
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }

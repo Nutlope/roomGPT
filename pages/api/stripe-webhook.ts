@@ -51,9 +51,10 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log(`💰 PaymentIntent: ${JSON.stringify(paymentIntent)}`);
 
       // @ts-ignore
-      const userEmail = paymentIntent.charges.data[0].billing_details.email; // API version mismatch - TODO: TEST IN PROD
+      const userEmail = paymentIntent.charges.data[0].billing_details.email;
       let creditAmount = 0;
 
+      // This is where the magic happens
       switch (paymentIntent.amount) {
         case 500:
         case 1000:

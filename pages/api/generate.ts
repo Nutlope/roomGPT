@@ -142,6 +142,7 @@ export default async function handler(
         : "Failed to restore image"
     );
   } catch (error) {
+    // Increment their credit if something went wrong
     await prisma.user.update({
       where: {
         email: session.user.email!,
