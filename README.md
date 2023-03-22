@@ -60,3 +60,12 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY,NEXTAUTH_SECRET,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,DATABASE_URL,SHADOW_DATABASE_URL,NEXTAUTH_URL&project-name=room-GPT&repo-name=roomGPT)
 
 > Note: You will need to configure auth by following the setup above by using Neon and next-auth
+
+When I create the PR:
+
+- Add Vercel preview URL to Google for auth as a redirect URL
+- Add the webhook URL to Stripe
+- Add DIRECT_DATABASE_URL to the specific preview environment for Neon to work
+- Change environment variables on Vercel to Stripe production ones
+- On Stripe, make sure products are in production like pricing table
+- Test with a real credit card to make sure it's working

@@ -35,16 +35,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
-  credits       Int       @default(5)
-  boughtCredits Int       @default(0)
+  credits       Int        @default(5)
+  boughtCredits Int        @default(0) // remove boughtCredits
   accounts      Account[]
   sessions      Session[]
   rooms         Room[]
+  purchases     Purchase[]
 }
 
 model VerificationToken {
@@ -67,4 +68,13 @@ model Room {
   updatedAt   DateTime @updatedAt
 
   @@unique([replicateId, userId])
+}
+
+model Purchase {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  creditAmount Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

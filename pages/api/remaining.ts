@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import redis from "../../utils/redis";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
+import prisma from "../../lib/prismadb";
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,16 +14,15 @@ export default async function handler(
     return res.status(401).json("Login to upload.");
   }
 
-  // Query the redis database by email to get the number of generations left
-  const identifier = session.user.email;
-  const windowDuration = 24 * 60 * 60 * 1000;
-  const bucket = Math.floor(Date.now() / windowDuration);
+  // Query the database by email to get the number of generations left
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email!,
+    },
+    select: {
+      credits: true,
+    },
+  });
 
-  const usedGenerations =
-    (await redis?.get(`@upstash/ratelimit:${identifier!}:${bucket}`)) || 0;
-
-  const remainingGenerations =
-    Number(usedGenerations) > 3 ? 0 : 3 - Number(usedGenerations);
-
-  return res.status(200).json({ remainingGenerations });
+  return res.status(200).json({ remainingGenerations: user?.credits });
 }

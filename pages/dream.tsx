@@ -20,6 +20,7 @@ import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { Rings } from "react-loader-spinner";
 import getRemainingTime from "../utils/getRemainingTime";
+import Link from "next/link";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -44,6 +45,8 @@ const Home: NextPage = () => {
   const { data: session, status } = useSession();
   const { hours, minutes } = getRemainingTime();
 
+  // TODO: Don't even show the uploader when folks have 0 credits. Just show a call to action that links to "buy-credits". Could also just embed stripe checkout thing in buy-credits here
+
   const options = {
     maxFileCount: 1,
     mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
@@ -65,7 +68,7 @@ const Home: NextPage = () => {
     },
     onValidate: async (file: File): Promise<undefined | string> => {
       return data.remainingGenerations === 0
-        ? `No more generations left. Try again in ${hours} hours and ${minutes} minutes.`
+        ? `No more generations left. Buy more above.`
         : undefined;
     },
   };
@@ -121,15 +124,13 @@ const Home: NextPage = () => {
       </Head>
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <a
-          href="https://twitter.com/nutlope/status/1633529333565251595"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          href="/buy-credits"
           className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
         >
-          <span className="font-semibold">728,000 rooms</span> generated and
-          counting
-        </a>
+          Use coupon <span className="font-semibold">ROOMGPT50</span> FOR 50%
+          off for this week!
+        </Link>
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
@@ -139,10 +140,14 @@ const Home: NextPage = () => {
             <span className="font-semibold text-gray-300">
               {data.remainingGenerations} generations
             </span>{" "}
-            left today. Your generations will renew in{" "}
-            <span className="font-semibold text-gray-300">
-              {hours} hours and {minutes} minutes.
-            </span>
+            left. Buy more generations{" "}
+            <Link
+              href="/buy-credits"
+              className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
+            >
+              here
+            </Link>
+            .
           </p>
         )}
         <ResizablePanel>
@@ -244,8 +249,8 @@ const Home: NextPage = () => {
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
                       Sign in below with Google to create a free account and
-                      redesign your room today. You will be able to do 3
-                      redesigns per day for free.
+                      redesign your room today. You will get 5 generations for
+                      free.
                     </div>
                     <button
                       onClick={() => signIn("google")}
