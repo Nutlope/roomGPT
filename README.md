@@ -6,7 +6,7 @@ This project generates new designs of your room with AI.
 
 ## How it works
 
-It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet) to generate variations of rooms. This application gives you the ability to upload a photo of any room, which will send it through this ML Model using a Next.js API route, and return your generated room. The ML Model is hosted on [Replicate](https://replicate.com) and [Upload](https://upload.io) is used for image storage.
+It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet) to generate variations of rooms. This application gives you the ability to upload a photo of any room, which will send it through this ML Model using a Next.js API route, and return your generated room. The ML Model is hosted on [Replicate](https://replicate.com) and [Upload](https://upload.io) is used for image storage. [Loops](https://loops.so/) is used for emails.
 
 ## Running Locally
 
@@ -59,15 +59,4 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY,NEXTAUTH_SECRET,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,DATABASE_URL,SHADOW_DATABASE_URL,NEXTAUTH_URL&project-name=room-GPT&repo-name=roomGPT)
 
-> Note: You will need to configure auth by following the setup above by using Neon and next-auth
-
-When I create the PR:
-
-- Add Vercel preview URL to Google for auth as a redirect URL
-- Add the webhook URL to Stripe
-- Add DIRECT_DATABASE_URL to the specific preview environment for Neon to work
-- Change environment variables on Vercel to Stripe production ones
-- Make sure I add all secrets on Vercel for production as well
-- Verify the pricing ID table
-- On Stripe, make sure products are in production like pricing table
-- Test with a real credit card to make sure it's working
+> Note: You will need to configure auth by following the setup above by using Neon and next-auth and payments

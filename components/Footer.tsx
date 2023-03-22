@@ -21,6 +21,14 @@ export default function Footer() {
         >
           Upload,{" "}
         </a>
+        <a
+          href="https://loops.so"
+          target="_blank"
+          rel="noreferrer"
+          className="font-bold hover:underline hover:text-gray-300 transition underline-offset-2"
+        >
+          Loops,{" "}
+        </a>
         and{" "}
         <a
           href="https://vercel.com/"
