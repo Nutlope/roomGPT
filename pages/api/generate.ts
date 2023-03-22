@@ -58,7 +58,7 @@ export default async function handler(
     const { imageUrl, theme, room } = req.body;
     const prompt =
       room === "Gaming Room"
-        ? "a room for gaming with gaming computers, gaming consoles, and gaming chairs"
+        ? "a video gaming room"
         : `a ${theme.toLowerCase()} ${room.toLowerCase()}`;
 
     // POST request to Replicate to start the image restoration generation process
