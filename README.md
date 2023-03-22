@@ -67,5 +67,7 @@ When I create the PR:
 - Add the webhook URL to Stripe
 - Add DIRECT_DATABASE_URL to the specific preview environment for Neon to work
 - Change environment variables on Vercel to Stripe production ones
+- Make sure I add all secrets on Vercel for production as well
+- Verify the pricing ID table
 - On Stripe, make sure products are in production like pricing table
 - Test with a real credit card to make sure it's working

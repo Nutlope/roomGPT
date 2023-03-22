@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../components/CompareSlider";
@@ -21,6 +21,8 @@ import useSWR from "swr";
 import { Rings } from "react-loader-spinner";
 import getRemainingTime from "../utils/getRemainingTime";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Toaster, toast } from "react-hot-toast";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -117,6 +119,14 @@ const Home: NextPage = () => {
     }, 1300);
   }
 
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.success === "true") {
+      toast.success("Payment successful! You can now use your credits.");
+    }
+  }, [router.query.success]);
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -124,13 +134,27 @@ const Home: NextPage = () => {
       </Head>
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <Link
-          href="/buy-credits"
-          className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
-        >
-          Use coupon <span className="font-semibold">ROOMGPT50</span> FOR 50%
-          off for this week!
-        </Link>
+        {status === "authenticated" ? (
+          <Link
+            href="/buy-credits"
+            className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
+          >
+            Use coupon{" "}
+            <span className="font-semibold text-gray-200">ROOMGPT50</span> for
+            50% off credits - only for this week!
+          </Link>
+        ) : (
+          <a
+            href="https://twitter.com/nutlope/status/1635674124738523139?cxt=HHwWhsCz1ei8irMtAAAA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
+          >
+            Over{" "}
+            <span className="font-semibold text-gray-200">1 million users</span>{" "}
+            have used roomGPT so far
+          </a>
+        )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
@@ -357,6 +381,7 @@ const Home: NextPage = () => {
             </motion.div>
           </AnimatePresence>
         </ResizablePanel>
+        <Toaster position="top-center" reverseOrder={false} />
       </main>
       <Footer />
     </div>

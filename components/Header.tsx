@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header({ photo }: { photo?: string }) {
   return (
     <header className="flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
-      <Link href="/" className="flex space-x-2">
+      <Link href="/dream" className="flex space-x-2">
         <Image
           alt="header text"
           src="/bed.svg"
@@ -25,6 +25,12 @@ export default function Header({ photo }: { photo?: string }) {
             className="border-r border-gray-300 pr-4 flex space-x-2 hover:text-blue-400 transition"
           >
             <div>Dashboard</div>
+          </Link>
+          <Link
+            href="/buy-credits"
+            className="border-r border-gray-300 pr-4 flex space-x-2 hover:text-blue-400 transition"
+          >
+            <div>Buy Credits</div>
             <div className="text-blue-500 bg-blue-200 rounded-full px-2 text-xs flex justify-center items-center font-semibold">
               New
             </div>
