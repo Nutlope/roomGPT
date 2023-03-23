@@ -17,6 +17,7 @@ export default function Pricing() {
         <title>RoomGPT Pricing</title>
       </Head>
       <Script src="https://js.stripe.com/v3/pricing-table.js" />
+      <script src="https://cdn.paritydeals.com/banner.js"></script>
       <Header
         photo={session?.user?.image || undefined}
         email={session?.user?.email || undefined}
