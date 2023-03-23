@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../components/CompareSlider";
@@ -19,7 +19,9 @@ import { GenerateResponseData } from "./api/generate";
 import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { Rings } from "react-loader-spinner";
-import getRemainingTime from "../utils/getRemainingTime";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Toaster, toast } from "react-hot-toast";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -42,7 +44,6 @@ const Home: NextPage = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
   const { data: session, status } = useSession();
-  const { hours, minutes } = getRemainingTime();
 
   const options = {
     maxFileCount: 1,
@@ -65,7 +66,7 @@ const Home: NextPage = () => {
     },
     onValidate: async (file: File): Promise<undefined | string> => {
       return data.remainingGenerations === 0
-        ? `No more generations left. Try again in ${hours} hours and ${minutes} minutes.`
+        ? `No more generations left. Buy more above.`
         : undefined;
     },
   };
@@ -77,7 +78,6 @@ const Home: NextPage = () => {
       onUpdate={(file) => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
-          // TODO: Make sure these are the image dimensions we want
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
@@ -114,6 +114,14 @@ const Home: NextPage = () => {
     }, 1300);
   }
 
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.success === "true") {
+      toast.success("Payment successful!");
+    }
+  }, [router.query.success]);
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -121,15 +129,27 @@ const Home: NextPage = () => {
       </Head>
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <a
-          href="https://twitter.com/nutlope/status/1633529333565251595"
-          target="_blank"
-          rel="noreferrer"
-          className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
-        >
-          <span className="font-semibold">728,000 rooms</span> generated and
-          counting
-        </a>
+        {status === "authenticated" ? (
+          <Link
+            href="/buy-credits"
+            className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
+          >
+            Use coupon{" "}
+            <span className="font-semibold text-gray-200">ROOMGPT50</span> for
+            50% off credits - only for this week!
+          </Link>
+        ) : (
+          <a
+            href="https://twitter.com/nutlope/status/1635674124738523139?cxt=HHwWhsCz1ei8irMtAAAA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
+          >
+            Over{" "}
+            <span className="font-semibold text-gray-200">1 million users</span>{" "}
+            have used roomGPT so far
+          </a>
+        )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
@@ -139,10 +159,19 @@ const Home: NextPage = () => {
             <span className="font-semibold text-gray-300">
               {data.remainingGenerations} generations
             </span>{" "}
-            left today. Your generations will renew in{" "}
-            <span className="font-semibold text-gray-300">
-              {hours} hours and {minutes} minutes.
-            </span>
+            left.{" "}
+            {data.remainingGenerations < 2 && (
+              <span>
+                Buy more generations{" "}
+                <Link
+                  href="/buy-credits"
+                  className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
+                >
+                  here
+                </Link>
+                .
+              </span>
+            )}
           </p>
         )}
         <ResizablePanel>
@@ -244,8 +273,8 @@ const Home: NextPage = () => {
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
                       Sign in below with Google to create a free account and
-                      redesign your room today. You will be able to do 3
-                      redesigns per day for free.
+                      redesign your room today. You will get 5 generations for
+                      free.
                     </div>
                     <button
                       onClick={() => signIn("google")}
@@ -352,6 +381,7 @@ const Home: NextPage = () => {
             </motion.div>
           </AnimatePresence>
         </ResizablePanel>
+        <Toaster position="top-center" reverseOrder={false} />
       </main>
       <Footer />
     </div>

@@ -10,7 +10,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Dashboard({ rooms }: { rooms: Room[] }) {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -21,12 +22,7 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           View your <span className="text-blue-600">room</span> generations
         </h1>
-        {rooms ? (
-          <p className="text-gray-300">
-            Browse through your previous room generations below. Any feedback?
-            Email hassan@hey.com
-          </p>
-        ) : (
+        {rooms.length === 0 ? (
           <p className="text-gray-300">
             You have no room generations. Generate one{" "}
             <Link
@@ -35,6 +31,11 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
             >
               here
             </Link>
+          </p>
+        ) : (
+          <p className="text-gray-300">
+            Browse through your previous room generations below. Any feedback?
+            Email hassan@roomgpt.io
           </p>
         )}
         {rooms.map((room) => (
