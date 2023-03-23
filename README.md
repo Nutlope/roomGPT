@@ -1,6 +1,6 @@
 # [roomGPT.io](https://roomGPT.io)
 
-This project generates new designs of your room using AI.
+This project generates new designs of your room with AI.
 
 [![Room GPT](./public/screenshot.png)](https://roomGPT.io)
 
