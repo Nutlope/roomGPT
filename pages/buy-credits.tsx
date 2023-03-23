@@ -17,7 +17,10 @@ export default function Pricing() {
         <title>RoomGPT Pricing</title>
       </Head>
       <Script src="https://js.stripe.com/v3/pricing-table.js" />
-      <Header photo={session?.user?.image || undefined} />
+      <Header
+        photo={session?.user?.image || undefined}
+        email={session?.user?.email || undefined}
+      />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mb-0 mb-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
