@@ -12,7 +12,7 @@ export default function Pricing() {
   const { data } = useSWR("/api/remaining", fetcher);
 
   return (
-    <div className="flex mx-auto max-w-7xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
+    <div className="flex mx-auto max-w-6xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
       <Head>
         <title>RoomGPT Pricing</title>
       </Head>
@@ -50,7 +50,7 @@ export default function Pricing() {
           />
         )}
       </div>
-      <div className="mt-14 text-center">
+      <div className="mt-10 text-center">
         <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
           What’s included
         </h4>
