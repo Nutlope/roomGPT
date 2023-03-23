@@ -33,7 +33,8 @@ export default function Pricing() {
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-500 mb-10">
           You currently have{" "}
           <span className="font-semibold text-gray-400">
-            {data?.remainingGenerations} credits
+            {data?.remainingGenerations}{" "}
+            {data?.remainingGenerations > 1 ? "credits" : "credit"}
           </span>
           . Purchase more below.
         </p>
@@ -53,9 +54,6 @@ export default function Pricing() {
         <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
           What’s included
         </h4>
-        <p className="text-gray-300 mt-5">
-          Have any pricing questions or feedback? Email hassan@roomgpt.io
-        </p>
       </div>
       <ul
         role="list"
@@ -152,9 +150,13 @@ export default function Pricing() {
               clip-rule="evenodd"
             />
           </svg>
-          Early access to future features
+          Early access to new features
         </li>
       </ul>
+      <p className="text-gray-400 mb-5">
+        Interested in team pricing or have any pricing questions? Email{" "}
+        <span className="text-gray-300">hassan@roomgpt.io</span>
+      </p>
       <Footer />
     </div>
   );

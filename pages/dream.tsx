@@ -67,7 +67,7 @@ const Home: NextPage = () => {
     },
     onValidate: async (file: File): Promise<undefined | string> => {
       return data.remainingGenerations === 0
-        ? `No more generations left. Buy more above.`
+        ? `No more credits left. Buy more above.`
         : undefined;
     },
   };
@@ -136,13 +136,11 @@ const Home: NextPage = () => {
         {status === "authenticated" ? (
           <Link
             href="/buy-credits"
-            className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
+            className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 hover:scale-105 transition"
           >
-            <span className="font-semibold text-gray-200">
-              Pricing is now available.
-            </span>{" "}
-            Click <span className="font-semibold text-gray-200">here</span> to
-            buy credits, discounted only for this week!
+            Pricing is now available.{" "}
+            <span className="font-semibold text-gray-200">Click here</span> to
+            buy credits!
           </Link>
         ) : (
           <a
@@ -163,12 +161,13 @@ const Home: NextPage = () => {
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
-              {data.remainingGenerations} credits
+              {data.remainingGenerations}{" "}
+              {data?.remainingGenerations > 1 ? "credits" : "credit"}
             </span>{" "}
             left.{" "}
             {data.remainingGenerations < 2 && (
               <span>
-                Buy more generations{" "}
+                Buy more credits{" "}
                 <Link
                   href="/buy-credits"
                   className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
