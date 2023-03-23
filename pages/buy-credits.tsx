@@ -36,7 +36,7 @@ export default function Pricing() {
           <span className="font-semibold text-gray-400">
             {data?.remainingGenerations} credits
           </span>
-          . Purchase more below.
+          . Purchase more below. Questions / feedback? Email hassan@roomgpt.io.
         </p>
       </main>
       <div className="w-full">
