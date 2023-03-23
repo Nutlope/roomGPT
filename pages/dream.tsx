@@ -49,6 +49,7 @@ const Home: NextPage = () => {
     maxFileCount: 1,
     mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
     editor: { images: { crop: false } },
+    tags: [data.remainingGenerations > 5 ? "paid" : "free"],
     styles: {
       colors: {
         primary: "#2563EB", // Primary buttons & links
