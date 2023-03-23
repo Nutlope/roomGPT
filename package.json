@@ -31,7 +31,8 @@
     "request-ip": "^3.3.0",
     "stripe": "^11.15.0",
     "swr": "^2.1.0",
-    "uploader": "^3.9.0"
+    "uploader": "^3.9.0",
+    "vercel": "^28.18.0"
   },
   "devDependencies": {
     "@types/micro-cors": "^0.1.3",

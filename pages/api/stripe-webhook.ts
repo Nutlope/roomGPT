@@ -105,7 +105,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
     }
 
-    // Return a response to acknowledge receipt of the event.
+    // Return a response to acknowledge receipt of the event. Upgraded.
     res.json({ received: true });
   } else {
     res.setHeader("Allow", "POST");
