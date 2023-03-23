@@ -36,7 +36,7 @@ export default function Pricing() {
           <span className="font-semibold text-gray-400">
             {data?.remainingGenerations} credits
           </span>
-          . Purchase more below. Questions / feedback? Email hassan@roomgpt.io.
+          . Purchase more below.
         </p>
       </main>
       <div className="w-full">
@@ -50,11 +50,13 @@ export default function Pricing() {
           />
         )}
       </div>
-      <div className="mt-10 flex items-center gap-x-4">
+      <div className="mt-14 text-center">
         <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
           What’s included
         </h4>
-        <div className="h-px flex-auto bg-gray-100"></div>
+        <p className="text-gray-300 mt-5">
+          Have any pricing questions or feedback? Email hassan@roomgpt.io
+        </p>
       </div>
       <ul
         role="list"

@@ -157,7 +157,7 @@ const Home: NextPage = () => {
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
-              {data.remainingGenerations} generations
+              {data.remainingGenerations} credits
             </span>{" "}
             left.{" "}
             {data.remainingGenerations < 2 && (
