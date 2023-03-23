@@ -54,23 +54,20 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log(`💰 PaymentIntent: ${JSON.stringify(paymentIntent)}`);
 
       // @ts-ignore
-      const userEmail = paymentIntent.charges.data[0].billing_details.email;
+      const userEmail = paymentIntent.customer_details.email;
       let creditAmount = 0;
 
-      // This is where the magic happens
-      switch (paymentIntent.amount) {
-        case 500:
+      // @ts-ignore
+      switch (paymentIntent.amount_subtotal) {
         case 1000:
           creditAmount = 20;
           break;
-        case 1500:
         case 3000:
           creditAmount = 80;
           break;
-        case 2500:
+        case 5000:
           creditAmount = 160;
           break;
-        case 5000:
         case 10000:
           creditAmount = 400;
           break;
