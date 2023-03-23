@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header({ photo }: { photo?: string }) {
+export default function Header({
+  photo,
+  email,
+}: {
+  photo?: string;
+  email?: string;
+}) {
   return (
     <header className="flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
       <Link href="/dream" className="flex space-x-2">
@@ -16,7 +22,7 @@ export default function Header({ photo }: { photo?: string }) {
           roomGPT.io
         </h1>
       </Link>
-      {photo ? (
+      {email ? (
         <div className="flex items-center space-x-4">
           <Link
             href="/dashboard"
@@ -33,13 +39,17 @@ export default function Header({ photo }: { photo?: string }) {
               New
             </div>
           </Link>
-          <Image
-            alt="Profile picture"
-            src={photo}
-            className="w-10 rounded-full"
-            width={32}
-            height={28}
-          />
+          {photo ? (
+            <Image
+              alt="Profile picture"
+              src={photo}
+              className="w-10 rounded-full"
+              width={32}
+              height={28}
+            />
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-white" />
+          )}
         </div>
       ) : (
         <Link

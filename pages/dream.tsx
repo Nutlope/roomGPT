@@ -127,16 +127,21 @@ const Home: NextPage = () => {
       <Head>
         <title>RoomGPT</title>
       </Head>
-      <Header photo={session?.user?.image || undefined} />
+      <Header
+        photo={session?.user?.image || undefined}
+        email={session?.user?.email || undefined}
+      />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         {status === "authenticated" ? (
           <Link
             href="/buy-credits"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
           >
-            Use coupon{" "}
-            <span className="font-semibold text-gray-200">ROOMGPT50</span> for
-            50% off credits - only for this week!
+            <span className="font-semibold text-gray-200">
+              Pricing is now available.
+            </span>{" "}
+            Click <span className="font-semibold text-gray-200">here</span> to
+            buy credits, discounted only for this week!
           </Link>
         ) : (
           <a

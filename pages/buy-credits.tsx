@@ -12,18 +12,13 @@ export default function Pricing() {
   const { data } = useSWR("/api/remaining", fetcher);
 
   return (
-    <div className="flex mx-auto max-w-6xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
+    <div className="flex mx-auto max-w-7xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
       <Head>
         <title>RoomGPT Pricing</title>
       </Head>
       <Script src="https://js.stripe.com/v3/pricing-table.js" />
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mb-0 mb-8">
-        <div className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition">
-          Use coupon{" "}
-          <span className="font-semibold text-gray-200">ROOMGPT50</span> for
-          half off the prices below - only for this week!
-        </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
