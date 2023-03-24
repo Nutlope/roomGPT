@@ -41,7 +41,7 @@ model User {
   email         String?    @unique
   emailVerified DateTime?
   image         String?
-  credits       Int        @default(5)
+  credits       Int        @default(3)
   boughtCredits Int        @default(0) // remove boughtCredits
   accounts      Account[]
   sessions      Session[]
