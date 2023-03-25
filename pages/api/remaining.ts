@@ -41,7 +41,7 @@ export default async function handler(
       },
     });
 
-    console.log("Updated user location");
+    console.log(`Updated user location to ${location.country_code}`);
   }
 
   return res.status(200).json({ remainingGenerations: user?.credits });
