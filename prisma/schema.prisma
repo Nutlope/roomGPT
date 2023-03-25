@@ -42,7 +42,7 @@ model User {
   emailVerified DateTime?
   image         String?
   credits       Int        @default(3)
-  boughtCredits Int        @default(0) // remove boughtCredits
+  location      String?
   accounts      Account[]
   sessions      Session[]
   rooms         Room[]
