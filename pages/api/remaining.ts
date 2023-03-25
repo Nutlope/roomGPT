@@ -29,18 +29,19 @@ export default async function handler(
   if (!user?.location) {
     const ip = requestIp.getClientIp(req);
     const location = await fetch(
-      `http://api.ipstack.com/${ip}?access_key=31ad79df45feb22c2e29e3f92c6455e4`
+      `http://api.ipstack.com/${ip}?access_key=${process.env.IPSTACK_API_KEY}`
     ).then((res) => res.json());
 
-    console.log({ ip, location });
-    // await prisma.user.update({
-    //   where: {
-    //     email: session.user.email!,
-    //   },
-    //   data: {
-    //     location: location.country_name,
-    //   },
-    // });
+    await prisma.user.update({
+      where: {
+        email: session.user.email!,
+      },
+      data: {
+        location: location.country_code,
+      },
+    });
+
+    console.log("Updated user location");
   }
 
   return res.status(200).json({ remainingGenerations: user?.credits });
