@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
+import { rooms, themes } from "../../lib/prompts";
+import { roomType, themeType } from "../../utils/dropdownTypes";
 import prisma from "../../lib/prismadb";
 
 export type GenerateResponseData = {
@@ -56,10 +58,9 @@ export default async function handler(
 
   try {
     const { imageUrl, theme, room } = req.body;
-    const prompt =
-      room === "Gaming Room"
-        ? "a video gaming room"
-        : `a ${theme.toLowerCase()} ${room.toLowerCase()}`;
+    const room_prompt = rooms[room as roomType] || "a room";
+    const style_prompt: string = themes[theme as themeType] || "def";
+    const prompt = `photorealistic picture of ${room_prompt} in ${style_prompt}`;
 
     // POST request to Replicate to start the image restoration generation process
     let startResponse = await fetch(
@@ -77,10 +78,9 @@ export default async function handler(
             image: imageUrl,
             prompt: prompt,
             scale: 9,
-            a_prompt:
-              "best quality, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning, interior design, natural lighting",
+            a_prompt: "shot by Hasselblad H6D, Zeiss, Kodachrome",
             n_prompt:
-              "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
+              "poorly drawn furniture, poorly drawn room, watermark, text, clipping objects, merging objects, blurred lines, surrealistic, messy floor, dirty, artefacts",
           },
         }),
       }
