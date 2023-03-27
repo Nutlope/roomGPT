@@ -59,7 +59,7 @@ export default async function handler(
   try {
     const { imageUrl, theme, room } = req.body;
     const room_prompt = rooms[room as roomType] || "a room";
-    const style_prompt: string = themes[theme as themeType] || "def";
+    const style_prompt: string = themes[theme as themeType] || "";
     const prompt = `photorealistic picture of ${room_prompt} in ${style_prompt}`;
 
     // POST request to Replicate to start the image restoration generation process
