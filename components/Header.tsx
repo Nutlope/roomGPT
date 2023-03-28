@@ -13,14 +13,14 @@ export default function Header({
       <Link href="/dream" className="flex space-x-2">
         <Image
           alt="header text"
-          src="/bed.svg"
-          className="sm:w-10 sm:h-10 w-9 h-9"
-          width={24}
+          src="/logo_w.png"
+          className="sm:h-10 h-9"
+          width={82}
           height={24}
         />
-        <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
-          roomGPT.io
-        </h1>
+        {/* <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
+          GetVisual
+        </h1> */}
       </Link>
       {email ? (
         <div className="flex items-center space-x-4">

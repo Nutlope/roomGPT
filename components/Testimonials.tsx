@@ -13,8 +13,7 @@ const testimonials = [
     },
 
     {
-      content:
-        "Finally! Something to help me get over my indecisiveness when decorating my house!",
+      content: "Finally! Something to help me create my content fast",
       link: "https://twitter.com/arthur_dvorkin/status/1631402865209274369",
       author: {
         name: "Arthur Dvorkin",

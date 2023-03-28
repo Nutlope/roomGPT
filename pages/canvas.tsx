@@ -218,7 +218,7 @@ const Home: NextPage = () => {
                     ariaLabel="rings-loading"
                   />
                 </div>
-              ) : status === "authenticated" && !originalPhoto ? (
+              ) : true ? (
                 <>
                   <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-3 items-center space-x-3">
@@ -228,50 +228,75 @@ const Home: NextPage = () => {
                         height={30}
                         alt="1 icon"
                       />
-                      <p className="text-left font-medium">
-                        Choose your room theme.
-                      </p>
+                      <p className="text-left font-medium">Title</p>
                     </div>
-                    <DropDown
-                      theme={theme}
-                      // @ts-ignore
-                      setTheme={(newTheme) => setTheme(newTheme)}
-                      themes={themes}
-                    />
+                    <input className="w-full h-12" />
                   </div>
+
                   <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-10 items-center space-x-3">
+                    <div className="flex mt-3 items-center space-x-3">
                       <Image
                         src="/number-2-white.svg"
                         width={30}
                         height={30}
                         alt="1 icon"
                       />
-                      <p className="text-left font-medium">
-                        Choose your room type.
-                      </p>
+                      <p className="text-left font-medium">Introduction</p>
                     </div>
-                    <DropDown
-                      theme={room}
-                      // @ts-ignore
-                      setTheme={(newRoom) => setRoom(newRoom)}
-                      themes={rooms}
-                    />
+                    <input className="w-full h-12" />
                   </div>
-                  <div className="mt-4 w-full max-w-sm">
-                    <div className="flex mt-6 w-96 items-center space-x-3">
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-3 items-center space-x-3">
                       <Image
                         src="/number-3-white.svg"
                         width={30}
                         height={30}
                         alt="1 icon"
                       />
-                      <p className="text-left font-medium">
-                        Upload a picture of your room.
-                      </p>
+                      <p className="text-left font-medium">Point 1</p>
                     </div>
+                    <input className="w-full h-12" />
                   </div>
-                  <UploadDropZone />
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-3 items-center space-x-3">
+                      <Image
+                        src="/number-3-white.svg"
+                        width={30}
+                        height={30}
+                        alt="1 icon"
+                      />
+                      <p className="text-left font-medium">Point 2</p>
+                    </div>
+                    <input className="w-full h-12" />
+                  </div>
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-3 items-center space-x-3">
+                      <Image
+                        src="/number-1-white.svg"
+                        width={30}
+                        height={30}
+                        alt="1 icon"
+                      />
+                      <p className="text-left font-medium">Point 3</p>
+                    </div>
+                    <input className="w-full h-12" />
+                  </div>
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-3 items-center space-x-3">
+                      <Image
+                        src="/number-1-white.svg"
+                        width={30}
+                        height={30}
+                        alt="1 icon"
+                      />
+                      <p className="text-left font-medium">Conculsion</p>
+                    </div>
+                    <input className="w-full h-12" />
+                  </div>
                 </>
               ) : (
                 !originalPhoto && (
