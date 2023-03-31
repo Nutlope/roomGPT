@@ -25,8 +25,8 @@ const testimonials = [
   [
     {
       content:
-        "This is incredible, you don't need an interior designer anymore.",
-      link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=roomgpt.io&t=1677909079689",
+        "This is incredible, you don't need an designer anymore.",
+      link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=skia.ai&t=1677909079689",
       author: {
         name: "Ade Dada",
         role: "Startup Founder",
@@ -35,7 +35,7 @@ const testimonials = [
     },
     {
       content:
-        "I haven't changed my room layout for 5 years, but this app may change that. Great job.",
+        "I haven't changed my visual layout for 5 years, but this app may change that. Great job.",
       link: "https://twitter.com/RobAttfield/status/1631545265281974273",
       author: {
         name: "Rob Attfield",

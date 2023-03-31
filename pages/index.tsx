@@ -33,7 +33,7 @@ const Home: NextPage = () => {
         ></textarea>
         <Link
           className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
-          href="/dream"
+          href="/canvas"
         >
           Generate Your Visualisation
         </Link>
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
               <div>
                 {/* <h3 className="mb-1 font-medium text-lg">Original Room</h3> */}
                 <Image
-                  alt="Original photo of a room with roomGPT.io"
+                  alt="Original photo of a room with skia.ai"
                   src="/sample1/1.png"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with roomGPT.io"
+                  alt="Generated photo of a room with skia.ai"
                   width={400}
                   height={400}
                   src="/sample1/2.png"
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
               </div>
               {/* <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with roomGPT.io"
+                  alt="Generated photo of a room with skia.ai"
                   width={400}
                   height={400}
                   src="/sample1/3.png"
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
               </div> */}
               {/* <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with roomGPT.io"
+                  alt="Generated photo of a room with skia.ai"
                   width={400}
                   height={400}
                   src="/sample1/4.png"

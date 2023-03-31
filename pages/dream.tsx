@@ -126,7 +126,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>RoomGPT</title>
+        <title>Skia</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
@@ -151,11 +151,11 @@ const Home: NextPage = () => {
           >
             Over{" "}
             <span className="font-semibold text-gray-200">1 million users</span>{" "}
-            have used roomGPT so far
+            have used Skia so far
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your <span className="text-blue-600">dream</span> room
+          Generate your <span className="text-blue-600">canvas</span> room
         </h1>
         {status === "authenticated" && data && !restoredImage && (
           <p className="text-gray-400">
@@ -286,7 +286,7 @@ const Home: NextPage = () => {
                       className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
                     >
                       <Image
-                        src="/linkedin.png"
+                        src="/google.png"
                         width={20}
                         height={20}
                         alt="linkedin's logo"

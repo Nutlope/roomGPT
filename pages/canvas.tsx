@@ -22,6 +22,7 @@ import { Rings } from "react-loader-spinner";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Toaster, toast } from "react-hot-toast";
+import CanvasPage from "../components/Canvas";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -126,7 +127,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>RoomGPT</title>
+        <title>Skia</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
@@ -151,11 +152,11 @@ const Home: NextPage = () => {
           >
             Over{" "}
             <span className="font-semibold text-gray-200">1 million users</span>{" "}
-            have used roomGPT so far
+            have used Skia so far
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your <span className="text-blue-600">dream</span> room
+          Generate amazing <span className="text-blue-600">visualisation</span>
         </h1>
         {status === "authenticated" && data && !restoredImage && (
           <p className="text-gray-400">
@@ -219,85 +220,7 @@ const Home: NextPage = () => {
                   />
                 </div>
               ) : true ? (
-                <>
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-1-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
-                      <p className="text-left font-medium">Title</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-2-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
-                      <p className="text-left font-medium">Introduction</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-3-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
-                      <p className="text-left font-medium">Point 1</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-3-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
-                      <p className="text-left font-medium">Point 2</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-1-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
-                      <p className="text-left font-medium">Point 3</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-1-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
-                      <p className="text-left font-medium">Conculsion</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-                </>
+                <CanvasPage/>
               ) : (
                 !originalPhoto && (
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
@@ -343,7 +266,7 @@ const Home: NextPage = () => {
                     />
                   </div>
                   <div className="sm:mt-0 mt-8">
-                    <h2 className="mb-1 font-medium text-lg">Generated Room</h2>
+                    <h2 className="mb-1 font-medium text-lg">Generated Visual</h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
                       <Image
                         alt="restored photo"
@@ -404,7 +327,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download Generated Room
+                    Download Visual
                   </button>
                 )}
               </div>

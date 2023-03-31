@@ -14,7 +14,7 @@ export default function Pricing() {
   return (
     <div className="flex mx-auto max-w-7xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Buy RoomGPT Credits</title>
+        <title>Buy Skia Credits</title>
       </Head>
       <Script src="https://js.stripe.com/v3/pricing-table.js" />
       <Script src="https://cdn.paritydeals.com/banner.js" />
@@ -26,7 +26,7 @@ export default function Pricing() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Buy RoomGPT Credits
+              Buy Skia Credits
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Pricing() {
               clip-rule="evenodd"
             />
           </svg>
-          Save your generated rooms
+          Save your generated visuals
         </li>
 
         <li className="flex gap-x-3">
@@ -88,7 +88,7 @@ export default function Pricing() {
               clip-rule="evenodd"
             />
           </svg>
-          Get more room styles and room types
+          Get more visual styles and themes
         </li>
 
         <li className="flex gap-x-3">
@@ -155,7 +155,7 @@ export default function Pricing() {
       </ul>
       <p className="text-gray-400 mb-5">
         Interested in team pricing or have any pricing questions? Email{" "}
-        <span className="text-gray-300">hassan@roomgpt.io</span>
+        <span className="text-gray-300">team@skia.ai</span>
       </p>
       <Footer />
     </div>

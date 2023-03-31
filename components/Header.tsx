@@ -10,7 +10,7 @@ export default function Header({
 }) {
   return (
     <header className="flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
-      <Link href="/dream" className="flex space-x-2">
+      <Link href="/canvas" className="flex space-x-2">
         <Image
           alt="header text"
           src="/logo_w.png"
@@ -54,7 +54,7 @@ export default function Header({
       ) : (
         <Link
           className="flex max-w-fit items-center justify-center space-x-2 rounded-lg border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-blue-400 bg-blue-600 font-medium transition"
-          href="/dream"
+          href="/canvas"
         >
           <p>Sign Up </p>
         </Link>
