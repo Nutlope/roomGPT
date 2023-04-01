@@ -33,8 +33,6 @@ const uploader = Uploader({
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
-  const [content, setContent] = useState<string>("");
-  const [contentSum, setContentSum] = useState<string>("");
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
@@ -90,10 +88,6 @@ const Home: NextPage = () => {
       height="250px"
     />
   );
-
-  const generateContent=(c)=>{
-    setContentSum(c)
-  }
 
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 200));
@@ -162,7 +156,7 @@ const Home: NextPage = () => {
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your <span className="text-blue-600">canvas</span> room
+          Generate amazing <span className="text-blue-600">visualisation</span>
         </h1>
         {status === "authenticated" && data && !restoredImage && (
           <p className="text-gray-400">
@@ -225,29 +219,14 @@ const Home: NextPage = () => {
                     ariaLabel="rings-loading"
                   />
                 </div>
-              ) : status === "authenticated" && !contentSum? (
-                <>
-                  <textarea
-          className="rounded-xl mt-8 bg-black"
-          rows={5}
-          cols={80}
-          value={content}
-          onChange={(e)=>setContent(e.target.value)}
-        ></textarea>
-        <button
-          className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
-          onClick={()=>generateContent(content)}
-        >
-          Generate Your Visualisation
-        </button>
-                </>
+              ) : status === "authenticated" ? (
+                <CanvasPage />
               ) : (
-                !contentSum&& (
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
                       Sign in below with LinkedIn to create a free account and
-                      redesign your room today. You will get 3 generations for
-                      free.
+                      visualize your content today. You will get 3 generations
+                      for free.
                     </div>
                     <button
                       onClick={() => signIn("linkedin")}
@@ -255,18 +234,15 @@ const Home: NextPage = () => {
                     >
                       <Image
                         src="/linkedin.webp"
-                        width={20}
-                        height={20}
+                        width={32}
+                        height={32}
                         alt="linkedin's logo"
                       />
                       <span>Sign in with LinkedIn</span>
                     </button>
                   </div>
-                )
-              )}
-              {contentSum && (
-                <CanvasPage/>
-              )}
+                )}
+
               {loading && (
                 <button
                   disabled
@@ -291,20 +267,20 @@ const Home: NextPage = () => {
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
-                {contentSum&& !loading && !error && (
+                {status==="authenticated" && !loading && !error && (
                   <button
                     onClick={() => {
-                      setContentSum("");
-                      // setRestoredImage(null);
-                      // setRestoredLoaded(false);
+                      setOriginalPhoto(null);
+                      setRestoredImage(null);
+                      setRestoredLoaded(false);
                       setError(null);
                     }}
                     className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
                   >
-                    Generate New Visuals
+                    Generate New Visual
                   </button>
                 )}
-                {contentSum && (
+                {status==="authenticated" && (
                   <button
                     onClick={() => {
                       downloadPhoto(
@@ -314,7 +290,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download Generated Visuals
+                    Download Visual
                   </button>
                 )}
               </div>
