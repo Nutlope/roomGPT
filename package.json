@@ -15,6 +15,7 @@
     "@vercel/analytics": "^0.1.9-beta.4",
     "fabric": "^5.3.0",
     "framer-motion": "^8.2.4",
+    "jsdom": "^19.0.0",
     "micro": "^10.0.1",
     "micro-cors": "^0.1.1",
     "next": "latest",
