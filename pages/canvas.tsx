@@ -91,7 +91,7 @@ const Home: NextPage = () => {
     />
   );
 
-  const generateContent=(c)=>{
+  const generateContent=(c:string)=>{
     setContentSum(c)
   }
 
