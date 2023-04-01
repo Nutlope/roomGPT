@@ -17,3 +17,8 @@
     pointer-events: none;
   }
 }
+
+@font-face {
+  font-family: "League Gothic";
+  src: url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
+}

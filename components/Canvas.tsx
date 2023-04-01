@@ -1,135 +1,161 @@
-import { useEffect, useRef, useState } from 'react'
-import { fabric } from 'fabric';
-import { StaticCanvas } from 'fabric/fabric-impl';
+import { useEffect, useRef, useState } from "react";
+import { fabric } from "fabric";
+import { StaticCanvas } from "fabric/fabric-impl";
+import Card from "./Card";
+import TextInput from "./TextInput";
 
 const CanvasPage = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [title, settitle] = useState("second")
-  const [canvas, setCanvas] = useState<StaticCanvas>();
-  const [textObj, settextObj] = useState<StaticCanvas>()
-  const [canvasBackgroundImage, setcanvasBackgroundImage] = useState<StaticCanvas>()
-  const textRef = useRef<fabric.Textbox>();
-  const [inputText, setInputText] = useState('heelo');
-    useEffect(() => {
-        if (!canvasRef.current) return;
-        const cnv=  new fabric.Canvas(canvasRef.current, {
-      width: 800,
-      height: 800
-      
-    }); 
-    setCanvas(cnv)
-      fabric.Image.fromURL('temp1/1.png', (backgroundImage:any) => {
-            // console.log(canvasBackgroundImage)
-            if (cnv._objects.length>0){
-            cnv.setBackgroundImage(backgroundImage, cnv.renderAll.bind(cnv))
-            }
-        })
-      const text = new fabric.Textbox(inputText, {
-        left: 10,
-        top: 10,
-        fontSize: 20,
-        minWidth:30
-        
-      });
-
-      textRef.current = text;
-  
-      cnv.add(text);
-  
-      const updateText = (value:string) => {
-        text.set({ text: value });
-        // cnv.renderAll();
-      };
-  
-      setInputText((prev) => {
-        updateText(prev);
-        return prev;
-      });
-  
-      return () => {
-        cnv.dispose();
-      };
-    }, []);
-  
-    const handleChange = (event:any) => {
-      setInputText(event.target.value);
-      if (textRef.current) {
-        textRef.current.set({ text: event.target.value });
-        canvas?.renderAll()
-      }
-    };
-    
-  
-    return (
-      <div>
-        <h1>Text Input and Canvas Binding with Fabric.js</h1>
-        <input
-          type="text"
-          className='text-black'
-          value={inputText}
-          onChange={handleChange}
-          placeholder="Enter text here"
-        />
-        <div style={{ marginTop: '20px' }}>
-          <canvas
-            ref={canvasRef}
-            width={window.innerWidth}
-            height={window.innerHeight}
-            style={{ border: '1px solid #c0c0c0' }}
-          />
-        </div>
-      </div>
-    );
-
+  const [title, settitle] = useState("second");
 
   return (
-    <>
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-                      <p className="text-left font-medium">Title</p>
-                    </div>
-                    <input value={title} onChange={(e)=>settitle(e.target.value)} className="w-full h-12 text-black px-4" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-
-                      <p className="text-left font-medium">Introduction</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-
-                      <p className="text-left font-medium">Point 1</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-
-                      <p className="text-left font-medium">Point 2</p>                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-3 items-center space-x-3">
-
-                      <p className="text-left font-medium">Point 3</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-
-                  <div className="space-y-4 w-full max-w-sm">                    <div className="flex mt-3 items-center space-x-3">
-
-                      <p className="text-left font-medium">Conculsion</p>
-                    </div>
-                    <input className="w-full h-12" />
-                  </div>
-                  <canvas className='mt-8' ref={canvasRef} width={800} height={600} />
-                </>
-  )
-}
+    <div className="flex">
+      {/* <div className="flex flex-col mx-8">
+        <TextInput name="Title" txt={title} handleChange={settitle} />
+        <TextInput name="Introduction" txt={title} handleChange={settitle} />
+        <TextInput name="Point 1" txt={title} handleChange={settitle} />
+        <TextInput name="Point 2" txt={title} handleChange={settitle} />
+        <TextInput name="Point 2" txt={title} handleChange={settitle} />
+        <TextInput name="Conclustion" txt={title} handleChange={settitle} />
+      </div> */}
+      <div className="flex flex-row flex-wrap">
+        <Card
+          content="STOP WRITING EMAILS LIKE THIS"
+          handleChange={settitle}
+          name="title"
+          textOpt={{
+            left: 20,
+            top: 30,
+            fontSize: 30,
+            width: 90,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+          }}
+          imageURL="temp1/1.png"
+        />
+        {/* <Card
+          content="Engage with Other Users"
+          handleChange={settitle}
+          name="title"
+          textOpt={{
+            left: 20,
+            top: 40,
+            fontSize: 30,
+            width: 90,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+          }}
+          imageURL="temp1/2.png"
+        /> */}
+        <Card
+          content="Trust"
+          textOpt={{
+            left: 10,
+            top: 68,
+            fontSize: 30,
+            width: 180,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+            textAlign: "center",
+          }}
+          desc="Trust takes time. Once you lose
+          trust with a consumer, it is hard to regain."
+          descOpt={{
+            left: 10,
+            top: 104,
+            fontSize: 16,
+            width: 170,
+            fontFamily: "League Gothic",
+            fontWeight: "light",
+            lineHeight: 1,
+            textAlign: "center",
+          }}
+          handleChange={settitle}
+          name="title"
+          imageURL="temp1/3.png"
+        />
+        <Card
+          content="Delivery"
+          textOpt={{
+            left: 0,
+            top: 68,
+            fontSize: 30,
+            width: 200,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+            textAlign: "center",
+          }}
+          desc="Be sure you deliver on your promises."
+          descOpt={{
+            left: 0,
+            top: 104,
+            fontSize: 16,
+            width: 200,
+            fontFamily: "League Gothic",
+            fontWeight: "light",
+            lineHeight: 1,
+            textAlign: "center",
+          }}
+          handleChange={settitle}
+          name="title"
+          imageURL="temp1/4.png"
+        />
+        {/* <Card
+          content="Text Placeholder"
+          textOpt={{
+            left: 20,
+            top: 40,
+            fontSize: 30,
+            width: 90,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+          }}
+          handleChange={settitle}
+          name="title"
+          imageURL="temp1/5.png"
+        />
+        <Card
+          content="Text Placeholder"
+          handleChange={settitle}
+          name="title"
+          textOpt={{
+            left: 20,
+            top: 40,
+            fontSize: 30,
+            width: 90,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+          }}
+          imageURL="temp1/6.png"
+        /> */}
+        <Card
+          content="WAS THIS HELPFUL?"
+          textOpt={{
+            left: 20,
+            top: 36,
+            fontSize: 30,
+            width: 160,
+            fontFamily: "League Gothic",
+            lineHeight: 1,
+            textAlign: "center",
+          }}
+          desc="Share with a friend who needs it!"
+          descOpt={{
+            left: 0,
+            top: 100,
+            fontSize: 16,
+            width: 200,
+            fontFamily: "League Gothic",
+            fontWeight: "light",
+            lineHeight: 1,
+            textAlign: "center",
+          }}
+          handleChange={settitle}
+          name="title"
+          imageURL="temp1/7.png"
+        />
+      </div>
+    </div>
+  );
+};
 
 export default CanvasPage;

@@ -20,6 +20,14 @@ class MyDocument extends Document {
           <meta name="twitter:description" content={description} />
           <meta property="og:image" content={ogimage} />
           <meta name="twitter:image" content={ogimage} />
+          <link
+            href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body className="bg-[#17181C] text-white">
           <Main />

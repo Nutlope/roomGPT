@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                 {/* <h3 className="mb-1 font-medium text-lg">Original Room</h3> */}
                 <Image
                   alt="Original photo of a room with skia.ai"
-                  src="/sample1/1.png"
+                  src="/sample2/1.png"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
                   height={400}
@@ -57,7 +57,16 @@ const Home: NextPage = () => {
                   alt="Generated photo of a room with skia.ai"
                   width={400}
                   height={400}
-                  src="/sample1/2.png"
+                  src="/sample2/2.png"
+                  className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
+                />
+              </div>
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Generated photo of a room with skia.ai"
+                  width={400}
+                  height={400}
+                  src="/sample2/3.png"
                   className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
                 />
               </div>

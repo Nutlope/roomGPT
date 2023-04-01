@@ -219,24 +219,24 @@ const Home: NextPage = () => {
                     ariaLabel="rings-loading"
                   />
                 </div>
-              ) : true ? (
-                <CanvasPage/>
+              ) : status === "authenticated" && !originalPhoto ? (
+                <CanvasPage />
               ) : (
                 !originalPhoto && (
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
-                      Sign in below with Google to create a free account and
-                      redesign your room today. You will get 3 generations for
-                      free.
+                      Sign in below with LinkedIn to create a free account and
+                      visualize your content today. You will get 3 generations
+                      for free.
                     </div>
                     <button
                       onClick={() => signIn("linkedin")}
                       className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
                     >
                       <Image
-                        src="/linkedin.png"
-                        width={20}
-                        height={20}
+                        src="/linkedin.webp"
+                        width={32}
+                        height={32}
                         alt="linkedin's logo"
                       />
                       <span>Sign in with LinkedIn</span>
@@ -266,7 +266,9 @@ const Home: NextPage = () => {
                     />
                   </div>
                   <div className="sm:mt-0 mt-8">
-                    <h2 className="mb-1 font-medium text-lg">Generated Visual</h2>
+                    <h2 className="mb-1 font-medium text-lg">
+                      Generated Visual
+                    </h2>
                     <a href={restoredImage} target="_blank" rel="noreferrer">
                       <Image
                         alt="restored photo"
