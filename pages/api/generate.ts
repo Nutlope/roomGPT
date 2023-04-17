@@ -72,9 +72,10 @@ export default async function handler(
         },
         body: JSON.stringify({
           version:
-            "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
+            "d55b9f2dcfb156089686b8f767776d5b61b007187a4e1e611881818098100fbb",
           input: {
             image: imageUrl,
+            structure: "hough",
             prompt: prompt,
             scale: 9,
             a_prompt:
