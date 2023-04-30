@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
+import { rooms, themes } from "../../lib/prompts";
+import { roomType, themeType } from "../../utils/dropdownTypes";
 import prisma from "../../lib/prismadb";
 
 export type GenerateResponseData = {
@@ -56,10 +58,9 @@ export default async function handler(
 
   try {
     const { imageUrl, theme, room } = req.body;
-    const prompt =
-      room === "Gaming Room"
-        ? "a video gaming room"
-        : `a ${theme.toLowerCase()} ${room.toLowerCase()}`;
+    const room_prompt = rooms[room as roomType] || "a room";
+    const style_prompt: string = themes[theme as themeType] || "";
+    const prompt = `photorealistic picture of ${room_prompt} in ${style_prompt}`;
 
     // POST request to Replicate to start the image restoration generation process
     let startResponse = await fetch(
