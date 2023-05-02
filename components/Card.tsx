@@ -9,18 +9,18 @@ interface CardProps {
   item?: any;
 }
 
-function startDownload() {
-  let imageURL =
-    "https://cdn.glitch.com/4c9ebeb9-8b9a-4adc-ad0a-238d9ae00bb5%2Fmdn_logo-only_color.svg?1535749917189";
-  let imageDescription = "The Mozilla logo";
+// function startDownload() {
+//   let imageURL =
+//     "https://cdn.glitch.com/4c9ebeb9-8b9a-4adc-ad0a-238d9ae00bb5%2Fmdn_logo-only_color.svg?1535749917189";
+//   let imageDescription = "The Mozilla logo";
 
-  let downloadedImg = new Image();
-  var imageReceived;
-  downloadedImg.crossOrigin = "anonymous";
-  downloadedImg.addEventListener("load", imageReceived, false);
-  downloadedImg.alt = imageDescription;
-  downloadedImg.src = imageURL;
-}
+//   let downloadedImg = new Image();
+//   var imageReceived;
+//   downloadedImg.crossOrigin = "anonymous";
+//   downloadedImg.addEventListener("load", imageReceived, false);
+//   downloadedImg.alt = imageDescription;
+//   downloadedImg.src = imageURL;
+// }
 
 export default function Card({ template, item }: CardProps) {
   const { imageURL, textOpt, descOpt } = template;
@@ -40,7 +40,7 @@ export default function Card({ template, item }: CardProps) {
       width: 200,
       height: 200,
     });
-    console.log(cnv, cnv._contextContainer, !cnv.getContext());
+    // console.log(cnv, cnv._contextContainer, !cnv.getContext());
     if (!cnv.getContext()) return;
     setCanvas(cnv);
     fabric.Image.fromURL(imageURL, (img: any) => {
