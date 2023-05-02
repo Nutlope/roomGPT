@@ -1,4 +1,4 @@
-# [skia.ai](https://skia.ai)
+# [Eureka.ai](https://Eureka.ai)
 
 ## Running Locally
 
@@ -44,6 +44,5 @@ npm run dev
 ## One-Click Deploy
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
 
 > Note: You will need to configure auth by following the setup above by using Neon and next-auth and payments

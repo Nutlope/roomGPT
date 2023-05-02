@@ -13,7 +13,7 @@ export default function Header({
       <Link href="/" className="flex space-x-2">
         <Image
           alt="header text"
-          src="/logo_w.png"
+          src="/logo_w2.png"
           className="sm:h-10 h-9"
           width={100}
           height={24}

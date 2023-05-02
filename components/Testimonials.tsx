@@ -24,9 +24,8 @@ const testimonials = [
   ],
   [
     {
-      content:
-        "This is incredible, you don't need an designer anymore.",
-      link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=skia.ai&t=1677909079689",
+      content: "This is incredible, you don't need an designer anymore.",
+      link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=Eureka.ai&t=1677909079689",
       author: {
         name: "Ade Dada",
         role: "Startup Founder",

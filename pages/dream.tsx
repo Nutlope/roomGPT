@@ -126,7 +126,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Skia</title>
+        <title>Eureka</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
@@ -151,7 +151,7 @@ const Home: NextPage = () => {
           >
             Over{" "}
             <span className="font-semibold text-gray-200">1 million users</span>{" "}
-            have used Skia so far
+            have used Eureka so far
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">

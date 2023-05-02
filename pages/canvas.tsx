@@ -91,9 +91,9 @@ const Home: NextPage = () => {
     />
   );
 
-  const generateContent=(c:string)=>{
-    setContentSum(c)
-  }
+  const generateContent = (c: string) => {
+    setContentSum(c);
+  };
 
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 200));
@@ -133,7 +133,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Skia</title>
+        <title>Eureka</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
@@ -158,11 +158,11 @@ const Home: NextPage = () => {
           >
             Over{" "}
             <span className="font-semibold text-gray-200">1 million users</span>{" "}
-            have used Skia so far
+            have used Eureka so far
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your <span className="text-blue-600">canvas</span> room
+          Generate your <span className="text-blue-600">visualisation</span>
         </h1>
         {status === "authenticated" && data && !restoredImage && (
           <p className="text-gray-400">
@@ -225,24 +225,23 @@ const Home: NextPage = () => {
                     ariaLabel="rings-loading"
                   />
                 </div>
-              ) : status === "authenticated" && !contentSum? (
+              ) : status === "authenticated" && !contentSum ? (
                 <>
                   <textarea
-          className="rounded-xl mt-8 bg-black"
-          rows={5}
-          cols={80}
-          value={content}
-          onChange={(e)=>setContent(e.target.value)}
-        ></textarea>
-        <button
-          className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
-          onClick={()=>generateContent(content)}
-        >
-          Generate Your Visualisation
-        </button>
+                    className="rounded-xl bg-black w-full max-w-2xl "
+                    rows={5}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                  ></textarea>
+                  <button
+                    className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 mt-10 hover:bg-blue-500 transition"
+                    onClick={() => generateContent(content)}
+                  >
+                    Generate Your Visualisation
+                  </button>
                 </>
               ) : (
-                !contentSum&& (
+                !contentSum && (
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
                       Sign in below with LinkedIn to create a free account and
@@ -264,9 +263,7 @@ const Home: NextPage = () => {
                   </div>
                 )
               )}
-              {contentSum && (
-                <CanvasPage/>
-              )}
+              {contentSum && <CanvasPage />}
               {loading && (
                 <button
                   disabled
@@ -291,7 +288,7 @@ const Home: NextPage = () => {
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
-                {contentSum&& !loading && !error && (
+                {contentSum && !loading && !error && (
                   <button
                     onClick={() => {
                       setContentSum("");

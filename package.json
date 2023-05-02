@@ -14,8 +14,10 @@
     "@prisma/client": "^4.11.0",
     "@tailwindcss/forms": "^0.5.3",
     "@vercel/analytics": "^0.1.9-beta.4",
+    "axios": "^1.3.6",
     "canvas": "2.8.0",
     "fabric": "^5.3.0",
+    "fontfaceobserver": "^2.3.0",
     "framer-motion": "^8.2.4",
     "jsdom": "^19.0.0",
     "micro": "^10.0.1",
@@ -41,6 +43,7 @@
   },
   "devDependencies": {
     "@types/fabric": "^5.3.0",
+    "@types/fontfaceobserver": "^2.1.0",
     "@types/micro-cors": "^0.1.3",
     "@types/node": "18.11.3",
     "@types/objects-to-csv": "^1.3.1",

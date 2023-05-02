@@ -127,14 +127,14 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Skia</title>
+        <title>Eureka</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
         email={session?.user?.email || undefined}
       />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        {status === "authenticated" ? (
+        {true ? (
           <Link
             href="/buy-credits"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 hover:scale-105 transition"
@@ -152,13 +152,13 @@ const Home: NextPage = () => {
           >
             Over{" "}
             <span className="font-semibold text-gray-200">1 million users</span>{" "}
-            have used Skia so far
+            have used Eureka so far
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
           Generate amazing <span className="text-blue-600">visualisation</span>
         </h1>
-        {status === "authenticated" && data && !restoredImage && (
+        {true && data && !restoredImage && (
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
@@ -219,29 +219,29 @@ const Home: NextPage = () => {
                     ariaLabel="rings-loading"
                   />
                 </div>
-              ) : status === "authenticated" ? (
+              ) : true ? (
                 <CanvasPage />
               ) : (
-                  <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
-                    <div className="max-w-xl text-gray-300">
-                      Sign in below with LinkedIn to create a free account and
-                      visualize your content today. You will get 3 generations
-                      for free.
-                    </div>
-                    <button
-                      onClick={() => signIn("linkedin")}
-                      className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
-                    >
-                      <Image
-                        src="/linkedin.webp"
-                        width={32}
-                        height={32}
-                        alt="linkedin's logo"
-                      />
-                      <span>Sign in with LinkedIn</span>
-                    </button>
+                <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
+                  <div className="max-w-xl text-gray-300">
+                    Sign in below with LinkedIn to create a free account and
+                    visualize your content today. You will get 3 generations for
+                    free.
                   </div>
-                )}
+                  <button
+                    onClick={() => signIn("linkedin")}
+                    className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
+                  >
+                    <Image
+                      src="/linkedin.webp"
+                      width={32}
+                      height={32}
+                      alt="linkedin's logo"
+                    />
+                    <span>Sign in with LinkedIn</span>
+                  </button>
+                </div>
+              )}
 
               {loading && (
                 <button
@@ -267,7 +267,7 @@ const Home: NextPage = () => {
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
-                {status==="authenticated" && !loading && !error && (
+                {status === "authenticated" && !loading && !error && (
                   <button
                     onClick={() => {
                       setOriginalPhoto(null);
@@ -280,7 +280,7 @@ const Home: NextPage = () => {
                     Generate New Visual
                   </button>
                 )}
-                {status==="authenticated" && (
+                {status === "authenticated" && (
                   <button
                     onClick={() => {
                       downloadPhoto(

@@ -23,16 +23,8 @@ const Home: NextPage = () => {
             <span className="relative">Your Content</span>
           </span>{" "}
         </h1>
-        <h2 className="mx-auto mt-12 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
-          Start with pasting your content below
-        </h2>
-        <textarea
-          className="rounded-xl mt-8 bg-black"
-          rows={5}
-          cols={80}
-        ></textarea>
         <Link
-          className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
+          className="mt-12 bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
           href="/canvas"
         >
           Generate Your Visualisation
@@ -45,7 +37,7 @@ const Home: NextPage = () => {
               <div>
                 {/* <h3 className="mb-1 font-medium text-lg">Original Room</h3> */}
                 <Image
-                  alt="Original photo of a room with skia.ai"
+                  alt="Original photo of a room with Eureka.ai"
                   src="/sample2/1.png"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
@@ -54,7 +46,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with skia.ai"
+                  alt="Generated photo of a room with Eureka.ai"
                   width={400}
                   height={400}
                   src="/sample2/2.png"
@@ -63,7 +55,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with skia.ai"
+                  alt="Generated photo of a room with Eureka.ai"
                   width={400}
                   height={400}
                   src="/sample2/3.png"
@@ -72,7 +64,7 @@ const Home: NextPage = () => {
               </div>
               {/* <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with skia.ai"
+                  alt="Generated photo of a room with Eureka.ai"
                   width={400}
                   height={400}
                   src="/sample1/3.png"
@@ -81,7 +73,7 @@ const Home: NextPage = () => {
               </div> */}
               {/* <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with skia.ai"
+                  alt="Generated photo of a room with Eureka.ai"
                   width={400}
                   height={400}
                   src="/sample1/4.png"
