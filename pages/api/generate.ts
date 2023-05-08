@@ -1,7 +1,16 @@
+import { Configuration, OpenAIApi } from "openai";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "./auth/[...nextauth]";
-import prisma from "../../lib/prismadb";
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+interface ExtendedNextApiRequest extends NextApiRequest {
+  body: {
+    prompt: string;
+  };
+}
 
 export type GenerateResponseData = {
   original: string | null;
@@ -9,151 +18,70 @@ export type GenerateResponseData = {
   id: string;
 };
 
-interface ExtendedNextApiRequest extends NextApiRequest {
-  body: {
-    imageUrl: string;
-    theme: string;
-    room: string;
-  };
-}
-
-export default async function handler(
+export default async function (
   req: ExtendedNextApiRequest,
-  res: NextApiResponse<GenerateResponseData | string>
+  res: NextApiResponse<GenerateResponseData | any>
 ) {
-  // Check if user is logged in
-  const session = await getServerSession(req, res, authOptions);
-  if (!session || !session.user) {
-    return res.status(500).json("Login to upload.");
-  }
-
-  // Get user from DB
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session.user.email!,
-    },
-    select: {
-      credits: true,
-    },
-  });
-
-  // Check if user has any credits left
-  if (user?.credits === 0) {
-    return res.status(400).json(`You have no generations left`);
-  }
-
-  // If they have credits, decrease their credits by one and continue
-  await prisma.user.update({
-    where: {
-      email: session.user.email!,
-    },
-    data: {
-      credits: {
-        decrement: 1,
-      },
-    },
-  });
-
-  try {
-    const { imageUrl, theme, room } = req.body;
-    const prompt =
-      room === "Gaming Room"
-        ? "a video gaming room"
-        : `a ${theme.toLowerCase()} ${room.toLowerCase()}`;
-
-    // POST request to Replicate to start the image restoration generation process
-    let startResponse = await fetch(
-      "https://api.replicate.com/v1/predictions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Token " + process.env.REPLICATE_API_KEY,
-        },
-        body: JSON.stringify({
-          version:
-            "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
-          input: {
-            image: imageUrl,
-            prompt: prompt,
-            scale: 9,
-            a_prompt:
-              "best quality, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning, interior design, natural lighting",
-            n_prompt:
-              "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
-          },
-        }),
-      }
-    );
-
-    let jsonStartResponse = await startResponse.json();
-
-    let endpointUrl = jsonStartResponse.urls.get;
-    const originalImage = jsonStartResponse.input.image;
-    const roomId = jsonStartResponse.id;
-
-    // GET request to get the status of the image restoration process & return the result when it's ready
-    let generatedImage: string | null = null;
-    while (!generatedImage) {
-      // Loop in 1s intervals until the alt text is ready
-      let finalResponse = await fetch(endpointUrl, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Token " + process.env.REPLICATE_API_KEY,
-        },
-      });
-      let jsonFinalResponse = await finalResponse.json();
-
-      if (jsonFinalResponse.status === "succeeded") {
-        generatedImage = jsonFinalResponse.output[1] as string;
-      } else if (jsonFinalResponse.status === "failed") {
-        break;
-      } else {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-    }
-
-    if (generatedImage) {
-      await prisma.room.create({
-        data: {
-          replicateId: roomId,
-          user: {
-            connect: {
-              email: session.user.email!,
-            },
-          },
-          inputImage: originalImage,
-          outputImage: generatedImage,
-          prompt: prompt,
-        },
-      });
-    } else {
-      throw new Error("Failed to restore image");
-    }
-
-    res.status(200).json(
-      generatedImage
-        ? {
-            original: originalImage,
-            generated: generatedImage,
-            id: roomId,
-          }
-        : "Failed to restore image"
-    );
-  } catch (error) {
-    // Increment their credit if something went wrong
-    await prisma.user.update({
-      where: {
-        email: session.user.email!,
-      },
-      data: {
-        credits: {
-          increment: 1,
-        },
+  if (!configuration.apiKey) {
+    res.status(500).json({
+      error: {
+        message:
+          "OpenAI API key not configured, please follow instructions in README.md",
       },
     });
-    console.error(error);
-    res.status(500).json("Failed to restore image");
+    return;
   }
+
+  const prompt = req.body.prompt || "";
+  if (prompt.trim().length === 0) {
+    res.status(400).json({
+      error: {
+        message: "Please enter a valid prompt",
+      },
+    });
+    return;
+  }
+
+  try {
+    const completion = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: generatePrompt(prompt),
+      temperature: 0.6,
+      max_tokens: 300,
+    });
+    console.log(completion);
+    res.status(200).json({ result: completion.data.choices[0].text });
+  } catch (error: any) {
+    // Consider adjusting the error handling logic for your use case
+    if (error.response) {
+      console.error(error.response.status, error.response.data);
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      console.error(`Error with OpenAI API request: ${error.message}`);
+      res.status(500).json({
+        error: {
+          message: "An error occurred during your request.",
+        },
+      });
+    }
+  }
+}
+
+function generatePrompt(prompt: string) {
+  // const capitalizedprompt =
+  //   prompt[0].toUpperCase() + prompt.slice(1).toLowerCase();
+  return `Given a linkedin post, summarize the post in form of image carousels to tell a story. Create the copies for the carousels with the following structure:
+  First slide: Hook to get people to read more
+  Subsequent slides: content summaries in form of heading and excerpts
+  Last slide: Click to action
+  
+  Sample output:
+  1. Unlock the secrets to maximizing your productivity with these proven tips!
+  2. Set specific goals: Define clear objectives that you want to achieve and create a plan of action to accomplish them. This will help you prioritize your tasks and stay focused on what's most important.
+  3. Use the Pomodoro technique: Break down your work into 25-minute intervals with short breaks in between. This method can help you stay productive and avoid burnout.
+  4. Avoid multitasking: Multitasking can be counterproductive as it can decrease your efficiency and focus. Instead, focus on one task at a time to achieve better results.
+  5. Ready to boost your productivity? Try these time management strategies today!
+  
+  LinkedIn Post:
+ ${prompt}`;
 }
