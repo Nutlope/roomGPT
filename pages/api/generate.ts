@@ -76,6 +76,7 @@ export default async function handler(
           input: {
             image: imageUrl,
             structure: "hough",
+            image_resolution: "768",
             prompt: prompt,
             scale: 9,
             a_prompt:
@@ -107,7 +108,7 @@ export default async function handler(
       let jsonFinalResponse = await finalResponse.json();
 
       if (jsonFinalResponse.status === "succeeded") {
-        generatedImage = jsonFinalResponse.output[1] as string;
+        generatedImage = jsonFinalResponse.output[0] as string;
       } else if (jsonFinalResponse.status === "failed") {
         break;
       } else {

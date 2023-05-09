@@ -49,7 +49,7 @@ const Home: NextPage = () => {
               <div>
                 <h3 className="mb-1 font-medium text-lg">Original Room</h3>
                 <Image
-                  alt="Original photo of a room with roomGPT.io"
+                  alt="Original photo of a room"
                   src="/1.jpg"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
