@@ -2,8 +2,8 @@ import { fabric } from "fabric";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
-async function convertCanvasToImage(canvas) {
-  const image = await html2canvas(canvas, {
+async function convertCanvasToImage(canvas: Element) {
+  const image = await html2canvas(canvas as HTMLElement, {
     useCORS: true,
     allowTaint: true,
   });
@@ -56,7 +56,7 @@ async function download() {
   const images = [];
   for (let i = 0; i < canvases.length; i++) {
     const canvas = canvases[i];
-    pdf.html(canvas);
+    pdf.html(canvas as HTMLElement);
     if (i < images.length - 1) {
       pdf.addPage();
     }

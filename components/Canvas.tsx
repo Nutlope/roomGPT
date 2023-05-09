@@ -617,10 +617,10 @@ const temp7 = {
   },
 };
 interface contentProps {
-  index: number;
+  index: any;
   content: string;
   desc?: string;
-  type: string;
+  type: keyof typeof temp3;
 }
 
 const craw = `1. Put yourself first: Stop people pleasing and start taking care of yourself! 
