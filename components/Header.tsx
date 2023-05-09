@@ -13,10 +13,11 @@ export default function Header({
       <Link href="/" className="flex space-x-2">
         <Image
           alt="header text"
-          src="/logo_w2.png"
-          className="sm:h-10 h-9"
-          width={100}
-          height={24}
+          src="/IC_logo/text_w.png"
+          className="sm:h-10 h-9 w-auto"
+          width="0"
+          height="0"
+          sizes="100vw"
         />
         {/* <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
           GetVisual

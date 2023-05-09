@@ -23,6 +23,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Toaster, toast } from "react-hot-toast";
 import CanvasPage from "../components/Canvas";
+import downloadPDF from "../utils/downloadPDF";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -267,6 +268,18 @@ const Home: NextPage = () => {
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
+                {status === "authenticated" && (
+                  <button
+                    onClick={() => {
+                      downloadPDF().then((e) => {
+                        console.log(e);
+                      });
+                    }}
+                    className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                  >
+                    Download Visual
+                  </button>
+                )}
                 {status === "authenticated" && !loading && !error && (
                   <button
                     onClick={() => {
@@ -275,22 +288,9 @@ const Home: NextPage = () => {
                       setRestoredLoaded(false);
                       setError(null);
                     }}
-                    className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
-                  >
-                    Generate New Visual
-                  </button>
-                )}
-                {status === "authenticated" && (
-                  <button
-                    onClick={() => {
-                      downloadPhoto(
-                        restoredImage!,
-                        appendNewToName(photoName!)
-                      );
-                    }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download Visual
+                    Generate New Visual
                   </button>
                 )}
               </div>

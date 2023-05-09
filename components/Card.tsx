@@ -23,7 +23,7 @@ interface CardProps {
 // }
 
 export default function Card({ template, item }: CardProps) {
-  const { imageURL, textOpt, descOpt } = template;
+  const { imageURL, textOpt, descOpt, backgroundColor } = template;
   const { content, desc, contentIndex } = item;
   const { data: session } = useSession();
 
@@ -39,60 +39,110 @@ export default function Card({ template, item }: CardProps) {
     const cnv = new fabric.Canvas(canvasRef.current, {
       width: 200,
       height: 200,
+      backgroundColor: backgroundColor,
     });
     // console.log(cnv, cnv._contextContainer, !cnv.getContext());
     if (!cnv.getContext()) return;
     setCanvas(cnv);
-    fabric.Image.fromURL(imageURL, (img: any) => {
-      // console.log(cnv._objects.length, cnv, cnv.getContext());
-      if (cnv._objects.length > 0 && cnv.getContext()) {
-        cnv.setBackgroundImage(img, cnv.renderAll.bind(cnv), {
-          scaleX: (cnv.width || 1) / img.width,
-          scaleY: ((cnv.height || 1) * 0.9) / img.height,
-        });
-        // cnv.renderAll();
-      }
-    });
+
+    if (imageURL) {
+      fabric.Image.fromURL(imageURL, (img: any) => {
+        // console.log(cnv._objects.length, cnv, cnv.getContext());
+        if (cnv._objects.length > 0 && cnv.getContext()) {
+          cnv.setBackgroundImage(img, cnv.renderAll.bind(cnv), {
+            scaleX: (cnv.width || 1) / img.width,
+            scaleY: ((cnv.height || 1) * 0.9) / img.height,
+          });
+          // cnv.renderAll();
+        }
+      });
+    }
     const text = new fabric.Textbox(content, textOpt as ITextboxOptions);
-    // fabric.Image.fromURL(
-    //   `http://localhost:3000/_next/image?url=${encodeURIComponent(
-    //     session?.user?.image as string
-    //   )}&w=64&q=75`,
-    //   (img: any) => {
-    //     // console.log(canvasBackgroundImage)
-    //     if (cnv._objects.length > 0) {
-    //       cnv.add(img);
-    //       cnv.renderAll();
-    //     }
-    //   },
-    //   { crossOrigin: "anonymous" }
-    // );
+    if (template.profile) {
+      fabric.Image.fromURL(
+        `/_next/image?url=${encodeURIComponent(
+          session?.user?.image as string
+        )}&w=64&q=75`,
+        (img: fabric.Image) => {
+          // console.log(canvasBackgroundImage)
+          if (cnv._objects.length > 0) {
+            img.set(template.profile);
+            cnv.add(img);
+            cnv.renderAll();
+          }
+        },
+        { crossOrigin: "anonymous" }
+      );
+
+      // textRef.current = text;
+      var nameFont = new FontFaceObserver(template.profile.fontFamily);
+      const name = new fabric.Textbox(
+        session?.user?.name as string,
+        // template.profile as ITextboxOptions
+        {
+          top: template?.profile.top + 0,
+          left: template?.profile.left + 40,
+          fontSize: 10,
+          width: 120,
+          fill: template?.profile?.fill,
+        }
+      );
+      const usertag = new fabric.Textbox(
+        `@${session?.user?.name?.split(" ").join("")}` as string,
+        // template.profile as ITextboxOptions
+        {
+          top: template?.profile.top + 20,
+          left: template?.profile.left + 40,
+          fontSize: 10,
+          width: 120,
+          fill: "gray",
+        }
+      );
+      cnv.add(name);
+      cnv.add(usertag);
+      // nameFont
+      //   .load(null, 10000)
+      //   .then((v) => {
+      //     cnv.add(name);
+      //     cnv.add(name);
+      //     // cnv.renderAll();
+      //   })
+      //   .catch((e) => console.log(e));
+    }
 
     // textRef.current = text;
-    var textFont = new FontFaceObserver(textOpt.fontFamily);
+    if (textOpt.fontFamily) {
+      var textFont = new FontFaceObserver(textOpt.fontFamily);
 
-    textFont
-      .load(null, 10000)
-      .then((v) => {
-        cnv.add(text);
-        // cnv.renderAll();
-      })
-      .catch((e) => console.log(e));
-
-    if (desc) {
-      const description = new fabric.Textbox(desc, descOpt as ITextboxOptions);
-      var descFont = new FontFaceObserver(descOpt?.fontFamily);
-
-      descFont
+      textFont
         .load(null, 10000)
         .then((v) => {
-          cnv.add(description);
+          cnv.add(text);
           // cnv.renderAll();
         })
         .catch((e) => console.log(e));
+    } else {
+      cnv.add(text);
+    }
+
+    if (desc) {
+      const description = new fabric.Textbox(desc, descOpt as ITextboxOptions);
+
+      if (descOpt.fontFamily) {
+        var descFont = new FontFaceObserver(descOpt?.fontFamily);
+
+        descFont
+          .load(null, 10000)
+          .then((v) => {
+            cnv.add(description);
+            // cnv.renderAll();
+          })
+          .catch((e) => console.log(e));
+      } else {
+        cnv.add(description);
+      }
     }
     return () => {
-      console.log();
       cnv.dispose();
       setCanvas(undefined);
       // console.log("hello");
@@ -104,8 +154,8 @@ export default function Card({ template, item }: CardProps) {
       <canvas
         className="mt-8 sm:w-full"
         ref={canvasRef}
-        width={100}
-        height={100}
+        width={500}
+        height={500}
       />
     </div>
   );

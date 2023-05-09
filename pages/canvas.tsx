@@ -23,6 +23,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Toaster, toast } from "react-hot-toast";
 import CanvasPage from "../components/Canvas";
+import axios from "axios";
+import downloadPDF from "../utils/downloadPDF";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -30,10 +32,13 @@ const uploader = Uploader({
     ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
     : "free",
 });
+type ChatGPTResponse = {
+  result: string;
+};
 
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
-  const [content, setContent] = useState<string>("");
+  const [prompt, setPrompt] = useState<string>("");
   const [contentSum, setContentSum] = useState<string>("");
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -91,8 +96,36 @@ const Home: NextPage = () => {
     />
   );
 
-  const generateContent = (c: string) => {
-    setContentSum(c);
+  const generateContent = async (event: any) => {
+    event.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: prompt }),
+      });
+
+      const data = await response.json();
+      if (response.status !== 200) {
+        throw (
+          data.error ||
+          new Error(`Request failed with status ${response.status}`)
+        );
+      }
+
+      setContentSum(data.result);
+      setPrompt("");
+      setLoading(false);
+    } catch (error: any) {
+      // Consider implementing your own error handling logic here
+      console.error(error);
+      setLoading(false);
+      // alert(error.message);
+    }
   };
 
   async function generatePhoto(fileUrl: string) {
@@ -228,15 +261,22 @@ const Home: NextPage = () => {
               ) : status === "authenticated" && !contentSum ? (
                 <>
                   <textarea
-                    className="rounded-xl bg-black w-full max-w-2xl "
+                    className="rounded-xl bg-black w-full max-w-2xl p-4"
                     rows={5}
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
                   ></textarea>
                   <button
+                    type="submit"
                     className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 mt-10 hover:bg-blue-500 transition"
-                    onClick={() => generateContent(content)}
+                    onClick={generateContent}
+                    disabled={loading}
                   >
+                    {loading && (
+                      <span className="pr-4">
+                        <LoadingDots color="white" style="large" />
+                      </span>
+                    )}
                     Generate Your Visualisation
                   </button>
                 </>
@@ -263,8 +303,8 @@ const Home: NextPage = () => {
                   </div>
                 )
               )}
-              {contentSum && <CanvasPage />}
-              {loading && (
+              {contentSum && <CanvasPage contentSum={contentSum} />}
+              {/* {loading && (
                 <button
                   disabled
                   className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
@@ -273,7 +313,7 @@ const Home: NextPage = () => {
                     <LoadingDots color="white" style="large" />
                   </span>
                 </button>
-              )}
+              )} */}
               {error && (
                 <div
                   className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8 max-w-[575px]"
@@ -291,27 +331,26 @@ const Home: NextPage = () => {
                 {contentSum && !loading && !error && (
                   <button
                     onClick={() => {
-                      setContentSum("");
-                      // setRestoredImage(null);
-                      // setRestoredLoaded(false);
-                      setError(null);
+                      downloadPDF().then((e) => {
+                        console.log(e);
+                      });
                     }}
                     className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
                   >
-                    Generate New Visuals
+                    Download Visuals
                   </button>
                 )}
                 {contentSum && (
                   <button
                     onClick={() => {
-                      downloadPhoto(
-                        restoredImage!,
-                        appendNewToName(photoName!)
-                      );
+                      setContentSum("");
+                      // setRestoredImage(null);
+                      // setRestoredLoaded(false);
+                      setError(null);
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Download Generated Visuals
+                    Generate New Visuals
                   </button>
                 )}
               </div>

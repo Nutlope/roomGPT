@@ -9,14 +9,14 @@ import { Testimonials } from "../components/Testimonials";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
+    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen bg-white">
       <Head>
         <title>Instacarol - Create LinkedIn Carousels - Instantly ⚡</title>
       </Head>
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
-        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-gray-300 sm:text-7xl">
+        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-black sm:text-7xl">
           Create LinkedIn Carousels
           <span className="relative whitespace-nowrap text-blue-600">
             <SquigglyLines />
@@ -34,34 +34,34 @@ const Home: NextPage = () => {
             Instacarol supercharges your storytelling
           </h1>
           <div className="container px-4 mx-auto">
-            <div className="flex flex-wrap max-w-5xl mx-auto -m-3">
-              <div className="w-full md:w-1/3 p-3 border-2 border-black">
+            <div className="flex flex-wrap max-w-5xl mx-auto -m-3 ">
+              <div className="w-full md:w-1/3 p-3 border-black border ">
                 <div className="py-8 px-12 h-full text-center bg-white rounded-xl">
-                  <h2 className="mb-3 text-6xl md:text-5xl xl:text-10xl text-blue-600 text-center font-bold font-heading tracking-px-n leading-none  ">
-                    10x cheaper
+                  <h2 className="mb-3 text-6xl md:text-8xl xl:text-10xl text-blue-600 text-center font-bold font-heading tracking-px-n leading-none ">
+                    2x
                   </h2>
                   <p className="text-gray-700 font-medium leading-relaxed">
-                    than hiring a designer
+                    Engagement growth within a month of posting with Skia
                   </p>
                 </div>
               </div>
               <div className="w-full md:w-1/3 p-3">
                 <div className="py-8 px-12 h-full text-center bg-white rounded-xl">
-                  <h2 className="mb-3 text-6xl md:text-5xl xl:text-10xl text-blue-600 text-center font-bold font-heading tracking-px-n leading-none">
-                    20x faster
+                  <h2 className="mb-3 text-6xl md:text-8xl xl:text-10xl text-blue-600 text-center font-bold font-heading tracking-px-n leading-none">
+                    50%
                   </h2>
                   <p className="text-gray-700 font-medium leading-relaxed">
-                    than using canva
+                    Reduction in marketing cost
                   </p>
                 </div>
               </div>
               <div className="w-full md:w-1/3 p-3">
                 <div className="py-8 px-12 h-full text-center bg-white rounded-xl">
-                  <h2 className="mb-3 text-6xl md:text-5xl xl:text-10xl text-blue-600 text-center font-bold font-heading tracking-px-n leading-none">
-                    Spend more time creating
+                  <h2 className="mb-3 text-6xl md:text-8xl xl:text-10xl text-blue-600 text-center font-bold font-heading tracking-px-n leading-none">
+                    100+
                   </h2>
                   <p className="text-gray-700 font-medium leading-relaxed">
-                    Instacarol takes care of the editing and designing for you.
+                    Beta users have experienced the power of Skia
                   </p>
                 </div>
               </div>

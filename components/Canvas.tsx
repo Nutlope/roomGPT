@@ -65,96 +65,6 @@ const temp3 = {
     imageURL: "temp1/7.png",
   },
 };
-
-const temp5 = {
-  sample: "temp3/s1.png",
-  title: {
-    textOpt: {
-      left: 20,
-      top: 30,
-      fontSize: 30,
-      width: 90,
-      fontFamily: "League Gothic",
-      lineHeight: 1,
-      fill: "white",
-    },
-    imageURL: "temp3/1.png",
-    descOpt: {},
-  },
-  content: {
-    textOpt: {
-      left: 10,
-      top: 68,
-      fontSize: 30,
-      width: 180,
-      fontFamily: "League Gothic",
-      lineHeight: 1,
-      textAlign: "center",
-    },
-    descOpt: {
-      left: 10,
-      top: 104,
-      fontSize: 16,
-      width: 170,
-      fontFamily: "League Gothic",
-      fontWeight: "light",
-      lineHeight: 1,
-      textAlign: "center",
-      fill: "white",
-    },
-    imageURL: "temp3/1.png",
-  },
-  end: {
-    textOpt: {
-      left: 20,
-      top: 36,
-      fontSize: 30,
-      width: 160,
-      fontFamily: "League Gothic",
-      lineHeight: 1,
-      textAlign: "center",
-    },
-    descOpt: {
-      left: 0,
-      top: 100,
-      fontSize: 16,
-      width: 200,
-      fontFamily: "League Gothic",
-      fontWeight: "light",
-      lineHeight: 1,
-      textAlign: "center",
-    },
-    imageURL: "temp3/1.png",
-  },
-};
-interface contentProps {
-  content: string;
-  type: keyof typeof temp3;
-  desc?: string;
-  contentIndex?: number;
-}
-
-const content: contentProps[] = [
-  { content: "STOP WRITING EMAILS LIKE THIS", type: "title" },
-  {
-    content: "Trust",
-    desc: "Trust takes time. Once you lose, trust with a consumer, it is hard to regain.",
-    type: "content",
-    contentIndex: 1,
-  },
-  {
-    content: "Delivery",
-    desc: "Be sure you deliver on your promises.",
-    type: "content",
-    contentIndex: 2,
-  },
-  {
-    content: "WAS THIS HELPFUL?",
-    desc: "Share with a friend who needs it!",
-    type: "end",
-  },
-];
-
 const temp1 = [
   {
     name: "title",
@@ -265,7 +175,7 @@ const temp4 = {
       fill: "white",
       left: 10,
       top: 20,
-      fontSize: 30,
+      fontSize: 20,
       width: 180,
       fontFamily: "Montserrat",
       lineHeight: 1,
@@ -290,7 +200,7 @@ const temp4 = {
       fill: "white",
       left: 20,
       top: 36,
-      fontSize: 30,
+      fontSize: 20,
       width: 160,
       fontFamily: "Montserrat",
       lineHeight: 1,
@@ -407,16 +317,399 @@ const temp2 = [
     imageURL: "temp2/3.png",
   },
 ];
-const template = [temp3, temp4, temp5, temp4, temp3];
 
-const CanvasPage = () => {
+const temp5 = {
+  sample: "sample/1.png",
+  title: {
+    textOpt: {
+      left: 10,
+      top: 80,
+      fontSize: 20,
+      width: 180,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      fill: "black",
+      textAlign: "center",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#F6F7F1",
+
+    descOpt: {
+      left: 10,
+      top: 104,
+      fontSize: 12,
+      width: 170,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+  },
+  content: {
+    textOpt: {
+      left: 10,
+      top: 70,
+      fontSize: 20,
+      width: 180,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    descOpt: {
+      left: 10,
+      top: 104,
+      fontSize: 12,
+      width: 170,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#F6F7F1",
+  },
+  end: {
+    textOpt: {
+      left: 20,
+      top: 75,
+      fontSize: 20,
+      width: 160,
+      // fontFamily: "League Gothic",`
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    descOpt: {
+      left: 0,
+      top: 125,
+      fontSize: 12,
+      width: 200,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#F6F7F1",
+  },
+};
+const temp6 = {
+  sample: "sample/2.png",
+  title: {
+    textOpt: {
+      left: 10,
+      top: 80,
+      fontSize: 20,
+      width: 180,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      fill: "white",
+      textAlign: "center",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "white",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#1B2528",
+
+    descOpt: {
+      left: 10,
+      top: 104,
+      fontSize: 12,
+      width: 170,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+  },
+  content: {
+    textOpt: {
+      left: 10,
+      top: 70,
+      fontSize: 20,
+      width: 180,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "white",
+    },
+    descOpt: {
+      left: 10,
+      top: 104,
+      fontSize: 12,
+      width: 170,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "white",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "white",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#1B2528",
+  },
+  end: {
+    textOpt: {
+      left: 20,
+      top: 75,
+      fontSize: 20,
+      width: 160,
+      // fontFamily: "League Gothic",`
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "white",
+    },
+    descOpt: {
+      left: 0,
+      top: 125,
+      fontSize: 12,
+      width: 200,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "white",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "white",
+    },
+    // imageURL: "temp3/3.png",
+    backgroundColor: "#1B2528",
+  },
+};
+
+const temp7 = {
+  sample: "sample/1.png",
+  title: {
+    textOpt: {
+      left: 10,
+      top: 80,
+      fontSize: 20,
+      width: 180,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      fill: "black",
+      textAlign: "center",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#FFFFFF",
+
+    descOpt: {
+      left: 10,
+      top: 104,
+      fontSize: 12,
+      width: 170,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+  },
+  content: {
+    textOpt: {
+      left: 10,
+      top: 70,
+      fontSize: 20,
+      width: 180,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    descOpt: {
+      left: 10,
+      top: 104,
+      fontSize: 12,
+      width: 170,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#FFFFFF",
+  },
+  end: {
+    textOpt: {
+      left: 20,
+      top: 75,
+      fontSize: 20,
+      width: 160,
+      // fontFamily: "League Gothic",`
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    descOpt: {
+      left: 0,
+      top: 125,
+      fontSize: 12,
+      width: 200,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    profile: {
+      left: 20, // set left position
+      top: 10, // set top position
+      scaleX: 0.5,
+      scaleY: 0.5,
+      fill: "black",
+    },
+    // imageURL: "temp3/3.png",
+    backgroundColor: "#FFFFFF",
+  },
+};
+interface contentProps {
+  index: number;
+  content: string;
+  desc?: string;
+  type: string;
+}
+
+const craw = `1. Put yourself first: Stop people pleasing and start taking care of yourself! 
+2. Learn to say no: Don't feel obligated to do things that don't make you happy. 
+3. Take time for yourself: Enjoy the little things and make time for yourself. 
+4. Join the newsletter: Get these comics delivered to your inbox weekly. 
+5. Click here to sign up now and make self-care a priority!`;
+
+function parseContent(c: string): contentProps[] {
+  const pattern: RegExp = /(\d+)\.\s(.*?):\s(.*?)(?=\n\d+\.|$)/gs;
+  const matches: RegExpMatchArray[] = Array.from(c.matchAll(pattern));
+  const points: contentProps[] = matches.map((match, index) => ({
+    index: match[0],
+    type:
+      index !== 0 ? "content" : index === matches.length - 1 ? "end" : "title",
+    content: match[2],
+    desc: match[3],
+  }));
+
+  return points;
+}
+
+function parseContent2(raw: string): any {
+  const regex = /^\s*\d+\.\s*(.*)$/gm;
+  const points = [];
+  let match;
+
+  while ((match = regex.exec(raw))) {
+    points.push(match[1]);
+  }
+
+  return points.map((item, index) => {
+    var point = item.replace(/^\d+\.\s*/, "").split(":");
+    return {
+      index,
+      type:
+        index === 0
+          ? "content"
+          : index !== points.length - 1
+          ? "content"
+          : "end",
+      content: point[0],
+      desc: point[1],
+    };
+  });
+  // return point;
+}
+// [
+//   {
+//     content: "Discover the best way to achieve balance in your life!",
+//     type: "title",
+//   },
+//   {
+//     content: "Set your priorities",
+//     desc: "Evaluate your needs and wants to determine what's most important to you. This will help you create a plan of action to achieve balance in your life.",
+//     type: "content",
+//     contentIndex: 1,
+//   },
+//   {
+//     content: "Take breaks",
+//     desc: "Allow yourself to step away from work to pursue personal interests or hobbies. This can help you recharge and give you the energy to tackle your responsibilities.",
+//     type: "content",
+//     contentIndex: 2,
+//   },
+//   {
+//     content: "Find the right balance",
+//     desc: "Create a unique balance that fits your own individual needs and priorities. This can help you stay motivated and productive.",
+//     type: "content",
+//   },
+//   {
+//     content: "Ready to find balance?",
+//     desc: "Take the first step todav!",
+//     type: "end",
+//   },
+// ];
+
+const template = [temp5, temp6, temp7];
+
+const CanvasPage = ({ contentSum }: { contentSum: string }) => {
   const [title, settitle] = useState("second");
-  const [selTemp, setselTemp] = useState(temp4);
+  const [selTemp, setselTemp] = useState(temp5);
   const [isOpen, setIsOpen] = useState(true);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const content: contentProps[] = parseContent2(contentSum);
+
   return (
     <div className={styles.sidebarWrapper}>
       <nav
