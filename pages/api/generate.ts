@@ -72,11 +72,9 @@ export default async function handler(
         },
         body: JSON.stringify({
           version:
-            "d55b9f2dcfb156089686b8f767776d5b61b007187a4e1e611881818098100fbb",
+            "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
           input: {
             image: imageUrl,
-            structure: "hough",
-            image_resolution: "768",
             prompt: prompt,
             scale: 9,
             a_prompt:
@@ -108,7 +106,7 @@ export default async function handler(
       let jsonFinalResponse = await finalResponse.json();
 
       if (jsonFinalResponse.status === "succeeded") {
-        generatedImage = jsonFinalResponse.output[0] as string;
+        generatedImage = jsonFinalResponse.output[1] as string;
       } else if (jsonFinalResponse.status === "failed") {
         break;
       } else {
