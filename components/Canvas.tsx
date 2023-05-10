@@ -636,7 +636,7 @@ function parseContent(c: string): contentProps[] {
     index: match[0],
     type:
       index !== 0 ? "content" : index === matches.length - 1 ? "end" : "title",
-    content: match[2],
+    content: match[2].substring(1),
     desc: match[3],
   }));
 

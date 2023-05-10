@@ -50,6 +50,7 @@ export default async function (
       max_tokens: 300,
     });
     console.log(completion);
+    console.log(completion.data.choices[0].text);
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error: any) {
     // Consider adjusting the error handling logic for your use case
@@ -70,18 +71,19 @@ export default async function (
 function generatePrompt(prompt: string) {
   // const capitalizedprompt =
   //   prompt[0].toUpperCase() + prompt.slice(1).toLowerCase();
-  return `Given a linkedin post, summarize the post in form of image carousels to tell a story. Create the copies for the carousels with the following structure:
-  First slide: Hook to get people to read more
-  Subsequent slides: content summaries in form of heading and excerpts
-  Last slide: Click to action
-  
-  Sample output:
-  1. Unlock the secrets to maximizing your productivity with these proven tips!
-  2. Set specific goals: Define clear objectives that you want to achieve and create a plan of action to accomplish them. This will help you prioritize your tasks and stay focused on what's most important.
-  3. Use the Pomodoro technique: Break down your work into 25-minute intervals with short breaks in between. This method can help you stay productive and avoid burnout.
-  4. Avoid multitasking: Multitasking can be counterproductive as it can decrease your efficiency and focus. Instead, focus on one task at a time to achieve better results.
-  5. Ready to boost your productivity? Try these time management strategies today!
-  
-  LinkedIn Post:
+  // return `Given a linkedin post, summarize the post in form of image carousels to tell a story. Create the copies for the carousels with the following structure:
+  // First slide: Hook to get people to read more
+  // Subsequent slides: content summaries in form of heading and excerpts
+  // Last slide: Click to action
+
+  // Sample output:
+  // 1. Unlock the secrets to maximizing your productivity with these proven tips!
+  // 2. Set specific goals: Define clear objectives that you want to achieve and create a plan of action to accomplish them. This will help you prioritize your tasks and stay focused on what's most important.
+  // 3. Use the Pomodoro technique: Break down your work into 25-minute intervals with short breaks in between. This method can help you stay productive and avoid burnout.
+  // 4. Avoid multitasking: Multitasking can be counterproductive as it can decrease your efficiency and focus. Instead, focus on one task at a time to achieve better results.
+  // 5. Ready to boost your productivity? Try these time management strategies today!
+
+  // LinkedIn Post:
+  return `Turn this copy into 5-7 slide linkedin carousel, with less than 50 words per slide to tell a story. The first slide should be a hook to get people to read more and the last slide should be a call to action. Make sure to display the carousel in the following format {slide #}. {heading}: {description} in continous sentences. Do not explicity mention the text "Slide", "Hook", or "Call to Action". Do not use any emojis. LinkedIn copy:
  ${prompt}`;
 }
