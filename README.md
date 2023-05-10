@@ -1,6 +1,6 @@
 # [roomGPT.io](https://roomGPT.io)
 
-roomGPT helps design rooms in seconds with AI.
+roomGPT helps design rooms in seconds using AI.
 
 [![Room GPT](./public/screenshot.png)](https://roomGPT.io)
 
