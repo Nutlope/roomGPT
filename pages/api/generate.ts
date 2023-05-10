@@ -34,12 +34,24 @@ export default async function handler(
     },
     select: {
       credits: true,
+      _count: {
+        select: {
+          purchases: true,
+        },
+      },
     },
   });
 
   // Check if user has any credits left
   if (user?.credits === 0) {
     return res.status(400).json(`You have no generations left`);
+  }
+
+  let REPLICATE_KEY = process.env.REPLICATE_API_KEY;
+
+  // Check to see if user is a paying customer
+  if (user?._count?.purchases && user?._count?.purchases > 0) {
+    REPLICATE_KEY = process.env.REPLICATE_API_KEY_PAID;
   }
 
   // If they have credits, decrease their credits by one and continue
@@ -68,7 +80,7 @@ export default async function handler(
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Token " + process.env.REPLICATE_API_KEY,
+          Authorization: "Token " + REPLICATE_KEY,
         },
         body: JSON.stringify({
           version:
@@ -100,7 +112,7 @@ export default async function handler(
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Token " + process.env.REPLICATE_API_KEY,
+          Authorization: "Token " + REPLICATE_KEY,
         },
       });
       let jsonFinalResponse = await finalResponse.json();
