@@ -6,6 +6,7 @@ async function convertCanvasToImage(canvas: Element) {
   const image = await html2canvas(canvas as HTMLElement, {
     useCORS: true,
     allowTaint: true,
+    scale: 5,
   });
   return image;
 }
@@ -23,12 +24,12 @@ async function convertAllCanvasesToImages() {
 
 async function generatePDFFromImages(images: HTMLCanvasElement[]) {
   //   const pdf = new jsPDF("l", "px", [images[0].height, images[0].width]);
+  console.log(images[0].height, images[0].width);
   const pdf = new jsPDF({
     unit: "px",
-    format: [images[0].height, images[0].width],
+    format: [images[0].height * 100, images[0].width * 100],
     orientation: "l",
     // compress: true,
-    userUnit: 300,
   });
   for (let i = 0; i < images.length; i++) {
     const image = images[i];
@@ -49,9 +50,10 @@ async function generatePDFFromImages(images: HTMLCanvasElement[]) {
 
 async function download() {
   const canvases = document.getElementsByClassName("lower-canvas");
+  console.log(parseFloat(canvases[0].getAttribute("height") as string));
   const pdf = new jsPDF("l", "px", [
     parseFloat(canvases[0].getAttribute("width") as string),
-    parseFloat(canvases[0].getAttribute("width") as string),
+    parseFloat(canvases[0].getAttribute("height") as string),
   ]);
   const images = [];
   for (let i = 0; i < canvases.length; i++) {

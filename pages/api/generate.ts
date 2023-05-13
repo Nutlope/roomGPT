@@ -84,6 +84,8 @@ function generatePrompt(prompt: string) {
   // 5. Ready to boost your productivity? Try these time management strategies today!
 
   // LinkedIn Post:
-  return `Turn this copy into 5-7 slide linkedin carousel, with less than 50 words per slide to tell a story. The first slide should be a hook to get people to read more and the last slide should be a call to action. Make sure to display the carousel in the following format {slide #}. {heading}: {description} in continous sentences. Do not explicity mention the text "Slide", "Hook", or "Call to Action". Do not use any emojis. LinkedIn copy:
+  return `You have a piece of copy that you would like to turn into a Linkedin carousel post. Your goal is to maintain the same tone of voice and accurately 
+  convey the message of the original copy in a a Linkedin carousel format. The first slide should be a hook and the last slide should be a call to action. 
+  Make sure to display the post in the following format: [slide number].[copy]. Double check to make sure the Linkedin carousel is complete.
  ${prompt}`;
 }

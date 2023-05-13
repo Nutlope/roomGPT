@@ -3,10 +3,13 @@ import { fabric } from "fabric";
 import { ITextboxOptions, StaticCanvas } from "fabric/fabric-impl";
 import FontFaceObserver from "fontfaceobserver";
 import { useSession } from "next-auth/react";
+import { userInfo } from "os";
 
 interface CardProps {
   template?: any;
   item?: any;
+  globalCanvasHeight: number;
+  setGlobalCanvasHeight: Dispatch<SetStateAction<number>>;
 }
 
 // function startDownload() {
@@ -22,7 +25,12 @@ interface CardProps {
 //   downloadedImg.src = imageURL;
 // }
 
-export default function Card({ template, item }: CardProps) {
+export default function Card({
+  template,
+  item,
+  globalCanvasHeight,
+  setGlobalCanvasHeight,
+}: CardProps) {
   const { imageURL, textOpt, descOpt, backgroundColor } = template;
   const { content, desc, contentIndex } = item;
   const { data: session } = useSession();
@@ -33,32 +41,85 @@ export default function Card({ template, item }: CardProps) {
   const [canvasBackgroundImage, setcanvasBackgroundImage] =
     useState<StaticCanvas>();
   const textRef = useRef<fabric.Textbox>();
+
+  const repos = (cnv: StaticCanvas) => {
+    var totalHeight = 0;
+    cnv.forEachObject((obj) => {
+      if (obj.note !== "profilePic") {
+        totalHeight += obj.height as number;
+      }
+    });
+    totalHeight += 30;
+    var offsetY = (globalCanvasHeight - totalHeight) / 2;
+
+    var currentY = offsetY;
+    cnv.forEachObject(function (obj) {
+      // console.log(obj);
+      const objectHeight = obj.height as number;
+      switch (obj.note) {
+        case "userfullname":
+          // console.log(obj.text, obj.note, currentY, objectHeight);
+          obj
+            .set({
+              top: currentY,
+            })
+            .setCoords();
+          break;
+        case "username":
+          obj
+            .set({
+              top: currentY + 5,
+            })
+            .setCoords();
+          break;
+        case "desc":
+          obj
+            .set({
+              top: currentY + 20,
+            })
+            .setCoords();
+          break;
+        case "profilePic":
+          obj
+            .set({
+              top: offsetY,
+            })
+            .setCoords();
+          break;
+        default:
+          break;
+      }
+      currentY += objectHeight;
+    });
+    cnv.renderAll();
+  };
   useEffect(() => {
     // console.log("load", contentIndex, content, template);
     if (!canvasRef.current) return;
     const cnv = new fabric.Canvas(canvasRef.current, {
       width: 200,
-      height: 200,
+      height: globalCanvasHeight,
       backgroundColor: backgroundColor,
     });
     // console.log(cnv, cnv._contextContainer, !cnv.getContext());
     if (!cnv.getContext()) return;
     setCanvas(cnv);
+    const canvasHeight = cnv.height as number;
+    const canvasWidth = cnv.width as number;
 
     if (imageURL) {
       fabric.Image.fromURL(imageURL, (img: any) => {
         // console.log(cnv._objects.length, cnv, cnv.getContext());
         if (cnv._objects.length > 0 && cnv.getContext()) {
           cnv.setBackgroundImage(img, cnv.renderAll.bind(cnv), {
-            scaleX: (cnv.width || 1) / img.width,
-            scaleY: ((cnv.height || 1) * 0.9) / img.height,
+            scaleX: (canvasWidth || 1) / img.width,
+            scaleY: ((canvasHeight || 1) * 0.9) / img.height,
           });
           // cnv.renderAll();
         }
       });
     }
-    const text = new fabric.Textbox(content, textOpt as ITextboxOptions);
-    if (template.profile) {
+    if (template.profile && session?.user) {
       fabric.Image.fromURL(
         `/_next/image?url=${encodeURIComponent(
           session?.user?.image as string
@@ -66,9 +127,22 @@ export default function Card({ template, item }: CardProps) {
         (img: fabric.Image) => {
           // console.log(canvasBackgroundImage)
           if (cnv._objects.length > 0) {
-            img.set(template.profile);
+            img.set({ ...template.profile, note: "profilePic" });
             cnv.add(img);
-            cnv.renderAll();
+
+            var totalHeight = 0;
+            cnv.forEachObject((obj) => {
+              if (obj.note !== "profilePic") {
+                totalHeight += obj.height as number;
+              }
+            });
+            totalHeight += 30;
+            if (totalHeight + 50 > globalCanvasHeight) {
+              cnv.renderAll();
+              setGlobalCanvasHeight(totalHeight + 50);
+            } else {
+              repos(cnv);
+            }
           }
         },
         { crossOrigin: "anonymous" }
@@ -85,7 +159,8 @@ export default function Card({ template, item }: CardProps) {
           fontSize: 10,
           width: 120,
           fill: template?.profile?.fill,
-        }
+          note: "userfullname",
+        } as ITextboxOptions
       );
       const usertag = new fabric.Textbox(
         `@${session?.user?.name?.split(" ").join("")}` as string,
@@ -96,7 +171,8 @@ export default function Card({ template, item }: CardProps) {
           fontSize: 10,
           width: 120,
           fill: "gray",
-        }
+          note: "username",
+        } as ITextboxOptions
       );
       cnv.add(name);
       cnv.add(usertag);
@@ -111,22 +187,28 @@ export default function Card({ template, item }: CardProps) {
     }
 
     // textRef.current = text;
-    if (textOpt.fontFamily) {
-      var textFont = new FontFaceObserver(textOpt.fontFamily);
+    if (content) {
+      const text = new fabric.Textbox(content, textOpt as ITextboxOptions);
+      if (textOpt.fontFamily) {
+        var textFont = new FontFaceObserver(textOpt.fontFamily);
 
-      textFont
-        .load(null, 10000)
-        .then((v) => {
-          cnv.add(text);
-          // cnv.renderAll();
-        })
-        .catch((e) => console.log(e));
-    } else {
-      cnv.add(text);
+        textFont
+          .load(null, 10000)
+          .then((v) => {
+            cnv.add(text);
+            // cnv.renderAll();
+          })
+          .catch((e) => console.log(e));
+      } else {
+        cnv.add(text);
+      }
     }
 
     if (desc) {
-      const description = new fabric.Textbox(desc, descOpt as ITextboxOptions);
+      const description = new fabric.Textbox(desc, {
+        ...descOpt,
+        note: "desc",
+      } as ITextboxOptions);
 
       if (descOpt.fontFamily) {
         var descFont = new FontFaceObserver(descOpt?.fontFamily);
@@ -142,12 +224,21 @@ export default function Card({ template, item }: CardProps) {
         cnv.add(description);
       }
     }
+
     return () => {
       cnv.dispose();
       setCanvas(undefined);
       // console.log("hello");
     };
   }, [template]);
+
+  useEffect(() => {
+    if (canvas && canvas._objects?.length > 0 && globalCanvasHeight > 200) {
+      console.log(canvas, globalCanvasHeight);
+      canvas.setHeight(globalCanvasHeight as number);
+      repos(canvas);
+    }
+  }, [globalCanvasHeight]);
 
   return (
     <div className="m-4">

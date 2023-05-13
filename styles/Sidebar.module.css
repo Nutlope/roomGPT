@@ -15,8 +15,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 300px;
-  height: 100%;
+  width: 265px;
   /* background-color: #f1f1f1; */
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;

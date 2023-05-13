@@ -332,7 +332,7 @@ const temp5 = {
       textAlign: "center",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -376,7 +376,7 @@ const temp5 = {
       fill: "black",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -393,21 +393,21 @@ const temp5 = {
       width: 160,
       // fontFamily: "League Gothic",`
       lineHeight: 1,
-      textAlign: "center",
+      textAlign: "left",
       fill: "black",
     },
     descOpt: {
-      left: 0,
+      left: 10,
       top: 125,
       fontSize: 12,
-      width: 200,
+      width: 180,
       // fontFamily: "League Gothic",
       lineHeight: 1,
-      textAlign: "center",
+      textAlign: "left",
       fill: "black",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -431,7 +431,7 @@ const temp6 = {
       textAlign: "center",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -475,7 +475,7 @@ const temp6 = {
       fill: "white",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -496,17 +496,17 @@ const temp6 = {
       fill: "white",
     },
     descOpt: {
-      left: 0,
+      left: 10,
       top: 125,
       fontSize: 12,
-      width: 200,
+      width: 180,
       // fontFamily: "League Gothic",
       lineHeight: 1,
-      textAlign: "center",
+      textAlign: "left",
       fill: "white",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -528,10 +528,10 @@ const temp7 = {
       // fontFamily: "League Gothic",
       lineHeight: 1,
       fill: "black",
-      textAlign: "center",
+      textAlign: "left",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -560,7 +560,7 @@ const temp7 = {
       width: 180,
       // fontFamily: "League Gothic",
       lineHeight: 1,
-      textAlign: "center",
+      textAlign: "left",
       fill: "black",
     },
     descOpt: {
@@ -575,7 +575,7 @@ const temp7 = {
       fill: "black",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -596,17 +596,17 @@ const temp7 = {
       fill: "black",
     },
     descOpt: {
-      left: 0,
+      left: 10,
       top: 125,
       fontSize: 12,
-      width: 200,
+      width: 180,
       // fontFamily: "League Gothic",
       lineHeight: 1,
-      textAlign: "center",
+      textAlign: "left",
       fill: "black",
     },
     profile: {
-      left: 20, // set left position
+      left: 10, // set left position
       top: 10, // set top position
       scaleX: 0.5,
       scaleY: 0.5,
@@ -644,16 +644,24 @@ function parseContent(c: string): contentProps[] {
 }
 
 function parseContent2(raw: string): any {
+  // const regex = /^\s*\d+\.\s*(.*)$/gm;
   const regex = /^\s*\d+\.\s*(.*)$/gm;
   const points = [];
   let match;
+  // console.log(raw);
 
   while ((match = regex.exec(raw))) {
     points.push(match[1]);
+    // console.log(match);
   }
 
   return points.map((item, index) => {
-    var point = item.replace(/^\d+\.\s*/, "").split(":");
+    // var point = item.replace(/^\d+\. \s*/, "").split(":");
+    var point = item
+      .replace(/^\d+\. \s*/, "")
+      .replace("[Hook] ", "")
+      .replace("[Call to Action] ", "");
+    // console.log(point);
     return {
       index,
       type:
@@ -662,11 +670,28 @@ function parseContent2(raw: string): any {
           : index !== points.length - 1
           ? "content"
           : "end",
-      content: point[0],
-      desc: point[1],
+      // content: point,
+      desc: point,
     };
   });
   // return point;
+}
+
+function parseContent3(raw: string): any {
+  const points = raw.split("\n\n");
+  return points.map((slide, index) => {
+    return {
+      index,
+      type:
+        index === 0
+          ? "content"
+          : index !== points.length - 1
+          ? "content"
+          : "end",
+      content: slide.replace(/Slide \d+: /, ""),
+    };
+  });
+  // return slideArray;
 }
 // [
 //   {
@@ -703,6 +728,7 @@ const CanvasPage = ({ contentSum }: { contentSum: string }) => {
   const [title, settitle] = useState("second");
   const [selTemp, setselTemp] = useState(temp5);
   const [isOpen, setIsOpen] = useState(true);
+  const [globalCanvasHeight, setGlobalCanvasHeight] = useState(200);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -712,13 +738,14 @@ const CanvasPage = ({ contentSum }: { contentSum: string }) => {
 
   return (
     <div className={styles.sidebarWrapper}>
-      <nav
-        className={`${styles.sidebar} ${
-          isOpen ? styles.open : ""
-        } md:flex flex-wrap hidden`}
-      >
-        <TemplateCarousel template={template} setselTemp={setselTemp} />
-      </nav>
+      <div>
+        <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
+          <h2>Templates</h2>
+          <div className="md:flex flex-wrap hidden content-center ">
+            <TemplateCarousel template={template} setselTemp={setselTemp} />
+          </div>
+        </nav>
+      </div>
       {/* <button onClick={handleToggle}>Toggle Sidebar</button> */}
       <div
         className={`flex flex-row flex-wrap ${
@@ -731,6 +758,8 @@ const CanvasPage = ({ contentSum }: { contentSum: string }) => {
               key={`card-"${index}`}
               template={selTemp[item.type]}
               item={item}
+              globalCanvasHeight={globalCanvasHeight}
+              setGlobalCanvasHeight={setGlobalCanvasHeight}
               // content={item.content}
               // textOpt={selTemp[item.type]?.textOpt}
               // desc={item.desc}

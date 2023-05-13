@@ -221,7 +221,13 @@ const Home: NextPage = () => {
                   />
                 </div>
               ) : true ? (
-                <CanvasPage contentSum={""} />
+                <CanvasPage
+                  contentSum={`1. [Hook] Have you ever felt like you were fighting an uphill battle when it comes to cold emailing?
+                2. AI, spam filters and smart inboxes can make it difficult to get your message across.
+                3. To win this battle, your cold emails have to be like spears - straight, to the point, no fluff.
+                4. Cold emails should have a 2-3 word subject line that looks sent internally, address a relevant trigger or research observation, include a problem statement related to the trigger, highlight the business impact of said problem, have a "naked" signature (no links or GIFs), fit on a mobile screen without scrolling, have a low-friction validating question, and be 50 words or less.
+                5. [Call to Action] What other tips do you have for successful cold emailing? Share your tips in the comments below!`}
+                />
               ) : (
                 <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                   <div className="max-w-xl text-gray-300">
