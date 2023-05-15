@@ -45,6 +45,7 @@ export default function Card({
   const repos = (cnv: StaticCanvas) => {
     var totalHeight = 0;
     cnv.forEachObject((obj) => {
+      // @ts-ignore
       if (obj.note !== "profilePic") {
         totalHeight += obj.height as number;
       }
@@ -56,6 +57,7 @@ export default function Card({
     cnv.forEachObject(function (obj) {
       // console.log(obj);
       const objectHeight = obj.height as number;
+      // @ts-ignore
       switch (obj.note) {
         case "userfullname":
           // console.log(obj.text, obj.note, currentY, objectHeight);
@@ -132,6 +134,7 @@ export default function Card({
 
             var totalHeight = 0;
             cnv.forEachObject((obj) => {
+              // @ts-ignore
               if (obj.note !== "profilePic") {
                 totalHeight += obj.height as number;
               }
