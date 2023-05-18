@@ -175,12 +175,12 @@ const Home: NextPage = () => {
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         {status === "authenticated" ? (
           <Link
-            href="/buy-credits"
+            href="/pricing"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 hover:scale-105 transition"
           >
             Pricing is now available.{" "}
             <span className="font-semibold text-gray-200">Click here</span> to
-            buy credits!
+            upgrade!
           </Link>
         ) : (
           <a
@@ -194,22 +194,35 @@ const Home: NextPage = () => {
             have used Eureka so far
           </a>
         )}
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your <span className="text-blue-600">visualisation</span>
-        </h1>
+        {status === "authenticated" && !contentSum && (
+          <>
+            <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
+              Transform Your Copy into Engaging{" "}
+              <div className="text-blue-600">Linkedin Carousels</div>
+            </h1>
+          </>
+        )}
+        {status === "authenticated" && contentSum && (
+          <>
+            <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
+              Download your{" "}
+              <span className="text-blue-600"> Linkedin Carousel</span>
+            </h1>
+          </>
+        )}
         {status === "authenticated" && data && !restoredImage && (
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
               {data.remainingGenerations}{" "}
-              {data?.remainingGenerations > 1 ? "credits" : "credit"}
+              {data?.remainingGenerations > 1 ? "downloads" : "download"}
             </span>{" "}
             left.{" "}
             {data.remainingGenerations < 2 && (
               <span>
-                Buy more credits{" "}
+                Upgrade{" "}
                 <Link
-                  href="/buy-credits"
+                  href="/pricing"
                   className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
                 >
                   here
@@ -265,6 +278,7 @@ const Home: NextPage = () => {
                     rows={5}
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
+                    placeholder="Two products, different jobs: Snickers fights hunger, KitKat provides a break. JTBD framework explains why customers buv. People seek specific outcomes. Snickers keeps vou satisfied on a road trip, while KitKat offers stress relief. Positioning matters- Snickers became more than a treat by understanding customers' job. They expanded their market by meeting customer needs. Successful outcome: increased sales"
                   ></textarea>
                   <button
                     type="submit"
@@ -277,7 +291,7 @@ const Home: NextPage = () => {
                         <LoadingDots color="white" style="large" />
                       </span>
                     )}
-                    Generate Your Visualisation
+                    Generate Your Carousel
                   </button>
                 </>
               ) : (
@@ -337,7 +351,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
                   >
-                    Download Visuals
+                    Download
                   </button>
                 )}
                 {contentSum && (
@@ -350,7 +364,7 @@ const Home: NextPage = () => {
                     }}
                     className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
                   >
-                    Generate New Visuals
+                    New
                   </button>
                 )}
               </div>

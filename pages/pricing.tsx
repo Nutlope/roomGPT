@@ -10,7 +10,7 @@ export default function Pricing() {
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data } = useSWR("/api/remaining", fetcher);
-
+  console.log(process.env.STRIPE_PUB_KEY);
   return (
     <div className="flex mx-auto max-w-7xl overflow-visible flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -41,10 +41,10 @@ export default function Pricing() {
       </main>
       <div className="w-full">
         {session?.user?.email && (
-          // @ts-ignore
+          //@ts-ignore
           <stripe-pricing-table
-            pricing-table-id="prctbl_1MobnNK4W9ejG97elHjeFCEq"
-            publishable-key="pk_live_51HGpOvK4W9ejG97eYSm02d1hgagCOAAcKQCtH7258w6fA8wxo2PRv2xs2wSUG2xkV2YLBc0h3HxKITTFeJGtWai500o6bqGFHF"
+            pricing-table-id="prctbl_1N97J9KBSJq0gsuFfeA9TbdN"
+            publishable-key="pk_test_51Ml98BKBSJq0gsuFrQq5qfiaKhrTQpMHTMNIA8e1ymjmKK73lUBuaCfPP0VMH3Y4FfWyNrYpDA4CjKV42HMK3f9S00YV94bSlN"
             client-reference-id={session.user.email}
             customer-email={session.user.email}
           />
@@ -52,7 +52,7 @@ export default function Pricing() {
       </div>
       <div className="mt-10 text-center">
         <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
-          What’s included
+          What’s included Unlimited downloads
         </h4>
       </div>
       <ul

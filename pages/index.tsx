@@ -11,25 +11,30 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Instacarol - Create LinkedIn Carousels - Instantly ⚡</title>
+        <title>Instacarol - Create LinkedIn Carousels Instantly ⚡</title>
       </Head>
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-gray-300 sm:text-7xl">
-          Create LinkedIn Carousels
+          Elevate your LinkedIn
           <span className="relative whitespace-nowrap text-blue-600">
             <SquigglyLines />
-            <span className="relative"> Instantly ⚡</span>
+            <span className="relative"> Presence </span>
           </span>{" "}
+          with Instant Carousel Creation!
         </h1>
+        <h2 className="mx-auto mt-12 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
+          Transform your written copy into captivating LinkedIn carousels in a
+          snap. Stand out, engage, and impress!
+        </h2>
         <Link
           className="mt-12 bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
           href="/canvas"
         >
           Try for Free
         </Link>
-        <section className="py-24 overflow-hidden">
+        {/* <section className="py-24 overflow-hidden">
           <h1 className="mb-8 font-medium text-4xl">
             Instacarol supercharges your storytelling
           </h1>
@@ -67,7 +72,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
           <h3 className="mb-1 font-medium text-lg">Generated Contents</h3>
 
@@ -122,7 +127,7 @@ const Home: NextPage = () => {
           </div>
         </div> */}
       </main>
-      {/* <Testimonials /> */}
+      <Testimonials />
       <Footer />
     </div>
   );

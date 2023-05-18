@@ -137,7 +137,7 @@ const Home: NextPage = () => {
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         {true ? (
           <Link
-            href="/buy-credits"
+            href="/pricing"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 hover:scale-105 transition"
           >
             Pricing is now available.{" "}
@@ -171,7 +171,7 @@ const Home: NextPage = () => {
               <span>
                 Buy more credits{" "}
                 <Link
-                  href="/buy-credits"
+                  href="/pricing"
                   className="font-semibold text-gray-300 underline underline-offset-2 hover:text-gray-200 transition"
                 >
                   here

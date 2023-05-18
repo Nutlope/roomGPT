@@ -11,13 +11,13 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>GetVisual</title>
+        <title>Instacarol</title>
       </Head>
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-gray-300 sm:text-7xl">
-          Generate Visuals from{" "}
+          Elevate your LinkedIn Presence with Instant Carousel Creation!
           <span className="relative whitespace-nowrap text-blue-600">
             <SquigglyLines />
             <span className="relative">Your Content</span>
