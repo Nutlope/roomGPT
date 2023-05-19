@@ -740,7 +740,7 @@ const CanvasPage = ({ contentSum }: { contentSum: string }) => {
     <div className={styles.sidebarWrapper}>
       <div>
         <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-          <h2>Templates</h2>
+          <h2>Choose Template</h2>
           <div className="md:flex flex-wrap hidden content-center ">
             <TemplateCarousel template={template} setselTemp={setselTemp} />
           </div>

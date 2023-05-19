@@ -15,7 +15,7 @@ const testimonials = [
 
     {
       content:
-        "InstaCarol has transformed the way I engage my audience on LinkedIn. Highly recommended!",
+        "Instacarol has transformed the way I engage my audience on LinkedIn. Highly recommended!",
       // link: "https://twitter.com/arthur_dvorkin/status/1631402865209274369",
       author: {
         name: "Michael P.",
@@ -27,7 +27,7 @@ const testimonials = [
   [
     {
       content:
-        "As a content creator, InstaCarol has taken my LinkedIn posts to a whole new level. Love the results!",
+        "As a content creator, Instacarol has taken my LinkedIn posts to a whole new level. Love the results!",
       // link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=Eureka.ai&t=1677909079689",
       author: {
         name: "Sarah R.",
@@ -37,7 +37,7 @@ const testimonials = [
     },
     {
       content:
-        "I can't imagine my Linkedin strategy without InstaCarol. It's a must-have tool for anv serious LinkedIn creator!",
+        "I can't imagine my Linkedin strategy without Instacarol. It's a must-have tool for anv serious LinkedIn creator!",
       // link: "https://twitter.com/RobAttfield/status/1631545265281974273",
       author: {
         name: "Alex M.",
@@ -49,7 +49,7 @@ const testimonials = [
   [
     {
       content:
-        "InstaCarol has helped me create carousels that grab attention and generate leads. Thank you for this amazing tool!",
+        "Instacarol has helped me create carousels that grab attention and generate leads. Thank you for this amazing tool!",
       // link: "https://twitter.com/Music4UsAll/status/1631622608595607552",
       author: {
         name: "Music",
@@ -59,7 +59,7 @@ const testimonials = [
     },
     {
       content:
-        "InstaCarol has helped me Crazv good! InstaCarol has revolutionized my Linkedin game. My engagement and connections have skyrocketed since I started using it!",
+        "Instacarol crazv good! Instacarol has revolutionized my Linkedin game. My engagement and connections have skyrocketed since I started using it!",
       // link: "https://twitter.com/github/status/1631821360619028482",
       author: {
         name: "Lisa T.",
@@ -80,10 +80,10 @@ export function Testimonials() {
       <div className="mx-auto px-4 sm:px-6 lg:px-8 md:px-7">
         <div className="mx-auto md:text-center">
           <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-300 sm:text-6xl">
-            Loved by many worldwide.
+            Trusted and loved by LinkedIn Creators
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
-            See what our over 1 million users are saying about the product.
+            Discover what people are saying about the product
           </p>
         </div>
         <ul

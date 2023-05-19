@@ -162,7 +162,6 @@ const Home: NextPage = () => {
       toast.success("Payment successful!");
     }
   }, [router.query.success]);
-
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -190,7 +189,9 @@ const Home: NextPage = () => {
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
           >
             Over{" "}
-            <span className="font-semibold text-gray-200">1 million users</span>{" "}
+            <span className="font-semibold text-gray-200">
+              Thousands of users
+            </span>{" "}
             have used Eureka so far
           </a>
         )}
@@ -205,12 +206,12 @@ const Home: NextPage = () => {
         {status === "authenticated" && contentSum && (
           <>
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-              Download your{" "}
+              Edit & Download your{" "}
               <span className="text-blue-600"> Linkedin Carousel</span>
             </h1>
           </>
         )}
-        {status === "authenticated" && data && !restoredImage && (
+        {status === "authenticated" && data && contentSum && (
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
