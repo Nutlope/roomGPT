@@ -8,7 +8,7 @@ const testimonials = [
       // link: "https://twitter.com/eveporcello/status/1631438728999899136",
       author: {
         name: "Jane S.",
-        role: "LinkedIn Marketer",
+        role: "Growth Marketer",
         image: "/eve.jpg",
       },
     },
@@ -19,7 +19,7 @@ const testimonials = [
       // link: "https://twitter.com/arthur_dvorkin/status/1631402865209274369",
       author: {
         name: "Michael P.",
-        role: "Business Consultant",
+        role: "Management Consultant",
         image: "/arthur.jpg",
       },
     },
@@ -41,7 +41,7 @@ const testimonials = [
       // link: "https://twitter.com/RobAttfield/status/1631545265281974273",
       author: {
         name: "Alex M.",
-        role: "Sales Professional",
+        role: "People Talent",
         image: "/rob.jpg",
       },
     },
@@ -49,21 +49,21 @@ const testimonials = [
   [
     {
       content:
-        "Instacarol has helped me create carousels that grab attention and generate leads. Thank you for this amazing tool!",
+        "Instacarol has helped me create carousels that grab attention and generate leads.",
       // link: "https://twitter.com/Music4UsAll/status/1631622608595607552",
       author: {
-        name: "Music",
-        role: "Some dude on the internet",
+        name: "Samuel L.",
+        role: "Business Owner",
         image: "/music.jpg",
       },
     },
     {
       content:
-        "Instacarol crazv good! Instacarol has revolutionized my Linkedin game. My engagement and connections have skyrocketed since I started using it!",
+        "My engagement and connections have skyrocketed since I started using it!",
       // link: "https://twitter.com/github/status/1631821360619028482",
       author: {
         name: "Lisa T.",
-        role: "Marketing Professional",
+        role: "Account Manager",
         image: "/github.jpg",
       },
     },

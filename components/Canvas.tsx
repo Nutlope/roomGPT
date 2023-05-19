@@ -347,7 +347,6 @@ const temp5 = {
       fontSize: 12,
       width: 170,
       // fontFamily: "League Gothic",
-      // fontWeight: "light",
       lineHeight: 1,
       textAlign: "left",
       fill: "black",

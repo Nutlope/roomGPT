@@ -73,59 +73,34 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section> */}
-        {/* <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
-          <h3 className="mb-1 font-medium text-lg">Generated Contents</h3>
-
+        <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
           <div className="flex flex-col space-y-10 mt-4 mb-16">
             <div className="flex sm:space-x-8 sm:flex-row flex-col">
               <div>
+                <h3 className="mb-1 font-medium text-lg">Written copy</h3>
                 <Image
-                  alt="Original photo of a room with Eureka.ai"
-                  src="/sample2/1.png"
+                  alt="Original photo of a room"
+                  src="/1-i.jpeg"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
                   height={400}
                 />
               </div>
               <div className="sm:mt-0 mt-8">
+                <h3 className="mb-1 font-medium text-lg">
+                  Generated Carousels
+                </h3>
                 <Image
-                  alt="Generated photo of a room with Eureka.ai"
+                  alt="Generated photo of a room with roomGPT.io"
                   width={400}
                   height={400}
-                  src="/sample2/2.png"
-                  className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
-                />
-              </div>
-              <div className="sm:mt-0 mt-8">
-                <Image
-                  alt="Generated photo of a room with Eureka.ai"
-                  width={400}
-                  height={400}
-                  src="/sample2/3.png"
-                  className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
-                />
-              </div>
-              <div className="sm:mt-0 mt-8">
-                <Image
-                  alt="Generated photo of a room with Eureka.ai"
-                  width={400}
-                  height={400}
-                  src="/sample1/3.png"
-                  className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
-                />
-              </div>
-              <div className="sm:mt-0 mt-8">
-                <Image
-                  alt="Generated photo of a room with Eureka.ai"
-                  width={400}
-                  height={400}
-                  src="/sample1/4.png"
+                  src="/2-i.jpeg"
                   className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
                 />
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </main>
       <Testimonials />
       <Footer />

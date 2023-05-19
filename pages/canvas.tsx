@@ -124,7 +124,7 @@ const Home: NextPage = () => {
       // Consider implementing your own error handling logic here
       console.error(error);
       setLoading(false);
-      // alert(error.message);
+      alert(error.message);
     }
   };
 

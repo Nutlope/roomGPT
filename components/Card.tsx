@@ -70,7 +70,7 @@ export default function Card({
         case "username":
           obj
             .set({
-              top: currentY + 5,
+              top: currentY + 3,
             })
             .setCoords();
           break;
@@ -163,13 +163,14 @@ export default function Card({
           width: 120,
           fill: template?.profile?.fill,
           note: "userfullname",
+          fontWeight: "bold",
         } as ITextboxOptions
       );
       const usertag = new fabric.Textbox(
-        `@${session?.user?.name?.split(" ").join("")}` as string,
+        `@${session?.user?.name?.toLowerCase().split(" ").join("")}` as string,
         // template.profile as ITextboxOptions
         {
-          top: template?.profile.top + 20,
+          top: template?.profile.top + 10,
           left: template?.profile.left + 40,
           fontSize: 10,
           width: 120,
