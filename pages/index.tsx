@@ -80,7 +80,7 @@ const Home: NextPage = () => {
                 <h3 className="mb-1 font-medium text-lg">Written copy</h3>
                 <Image
                   alt="Original photo of a room"
-                  src="/1-i.jpeg"
+                  src="/1-j.jpeg"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
                   height={400}
