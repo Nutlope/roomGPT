@@ -77,7 +77,7 @@ model Purchase {
   userId       String
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   creditAmount Int
-  paymentAmount Int
+  paymentAmount Int @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
