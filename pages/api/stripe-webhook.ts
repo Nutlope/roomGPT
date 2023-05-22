@@ -26,7 +26,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     const sig = req.headers["stripe-signature"]!;
 
     let event: Stripe.Event;
-
     try {
       event = stripe.webhooks.constructEvent(
         buf.toString(),
@@ -44,7 +43,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // Successfully constructed event.
     console.log("✅ Success:", event.id);
-
+    console.log(event.type);
     // Cast event data to Stripe object.
     if (
       event.type === "payment_intent.succeeded" ||
@@ -52,18 +51,24 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     ) {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(`💰 PaymentIntent: ${JSON.stringify(paymentIntent)}`);
-
+      console.log(paymentIntent);
       // @ts-ignore
       const userEmail = paymentIntent.customer_details.email;
       let creditAmount = 0;
-
+      let plan = "basic";
       // @ts-ignore
-      switch (paymentIntent.amount_subtotal) {
-        case 500:
+      const paymentAmount = paymentIntent.amount_subtotal;
+      console.log("emailprint", userEmail);
+      switch (paymentAmount) {
+        case 900:
+          plan = "creator";
+          break;
         case 1000:
           creditAmount = 20;
           break;
         case 1900:
+          plan = "pro";
+          break;
         case 3000:
           creditAmount = 100;
           break;
@@ -77,7 +82,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           creditAmount = 750;
           break;
       }
-      await prisma.user.update({
+      const update = await prisma.user.update({
         where: {
           email: userEmail,
         },
@@ -85,12 +90,14 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           credits: {
             increment: creditAmount,
           },
+          plan: plan,
         },
       });
-
+      console.log(update);
       await prisma.purchase.create({
         data: {
-          creditAmount: creditAmount,
+          paymentAmount: paymentAmount,
+          creditAmount: 0,
           user: {
             connect: {
               email: userEmail,
