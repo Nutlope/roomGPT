@@ -28,7 +28,7 @@ const testimonials = [
     {
       content:
         "As a content creator, Instacarol has taken my LinkedIn posts to a whole new level. Love the results!",
-      // link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=Eureka.ai&t=1677909079689",
+      // link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=Instacarol.ai&t=1677909079689",
       author: {
         name: "Sarah R.",
         role: "Career Coach",

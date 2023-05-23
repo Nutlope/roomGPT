@@ -5,7 +5,7 @@
 
 */
 -- AlterTable
-ALTER TABLE "Purchase" ADD COLUMN     "paymentAmount" INTEGER NOT NULL;
+ALTER TABLE "Purchase" ADD COLUMN "paymentAmount" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "User" ADD COLUMN     "plan" TEXT NOT NULL DEFAULT 'basic';
+ALTER TABLE "User" ADD COLUMN "plan" TEXT NOT NULL DEFAULT 'basic';

@@ -3,8 +3,8 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     let description = "Generate visualisation from your content";
-    let ogimage = "https://www.Eureka.ai/logo.png";
-    let sitename = "Eureka.ai";
+    let ogimage = "https://www.Instacarol.ai/logo.png";
+    let sitename = "Instacarol.ai";
     let title = "Content Visualiser";
 
     return (

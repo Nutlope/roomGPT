@@ -165,7 +165,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Eureka</title>
+        <title>Instacarol</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
@@ -192,7 +192,7 @@ const Home: NextPage = () => {
             <span className="font-semibold text-gray-200">
               Thousands of users
             </span>{" "}
-            have used Eureka so far
+            have used Instacarol so far
           </a>
         )}
         {status === "authenticated" && !contentSum && (

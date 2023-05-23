@@ -1,4 +1,4 @@
-# [Eureka.ai](https://Eureka.ai)
+# [Instacarol.ai](https://Instacarol.ai)
 
 ## Running Locally
 

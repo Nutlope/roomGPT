@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="text-gray-500"></div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         {/* <Link
-          href="https://twitter.com/Eureka_ai"
+          href="https://twitter.com/Instacarol_ai"
           className="group"
           aria-label="TaxPal on Twitter"
           target="_blank"

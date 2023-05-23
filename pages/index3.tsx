@@ -75,7 +75,7 @@ const Home: NextPage = () => {
             <div className="flex sm:space-x-8 sm:flex-row flex-col">
               <div>
                 <Image
-                  alt="Original photo of a room with Eureka.ai"
+                  alt="Original photo of a room with Instacarol.ai"
                   src="/sample2/1.png"
                   className="w-full object-cover h-96 rounded-2xl"
                   width={400}
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with Eureka.ai"
+                  alt="Generated photo of a room with Instacarol.ai"
                   width={400}
                   height={400}
                   src="/sample2/2.png"
@@ -93,7 +93,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with Eureka.ai"
+                  alt="Generated photo of a room with Instacarol.ai"
                   width={400}
                   height={400}
                   src="/sample2/3.png"
@@ -102,7 +102,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with Eureka.ai"
+                  alt="Generated photo of a room with Instacarol.ai"
                   width={400}
                   height={400}
                   src="/sample1/3.png"
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
               </div>
               <div className="sm:mt-0 mt-8">
                 <Image
-                  alt="Generated photo of a room with Eureka.ai"
+                  alt="Generated photo of a room with Instacarol.ai"
                   width={400}
                   height={400}
                   src="/sample1/4.png"

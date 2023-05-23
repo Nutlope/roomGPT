@@ -15,7 +15,7 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Eureka Dashboard</title>
+        <title>Instacarol Dashboard</title>
       </Head>
       <Header
         photo={session?.user?.image || undefined}
@@ -38,7 +38,7 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
         ) : (
           <p className="text-gray-300">
             Browse through your previous visual generations below. Any feedback?
-            Email team@Eureka.ai
+            Email team@Instacarol.ai
           </p>
         )}
         {rooms.map((room) => (
