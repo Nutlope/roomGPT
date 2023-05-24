@@ -10,13 +10,13 @@ It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet
 
 ## Running Locally
 
-### Cloning the repository the local machine.
+### Cloning the repository to the local machine.
 
 ```bash
 git clone https://github.com/Nutlope/roomGPT
 ```
 
-### Creating a account on Replicate to get an API key.
+### Creating an account on Replicate to get an API key.
 
 1. Go to [Replicate](https://replicate.com/) to make an account.
 2. Click on your profile picture in the top right corner, and click on "Dashboard".
@@ -24,7 +24,7 @@ git clone https://github.com/Nutlope/roomGPT
 
 ### Storing the API keys in .env
 
-Create a file in root directory of project with env. And store your API key in it, as shown in the .example.env file.
+Create a file in the root directory of the project with env. And store your API key in it, as shown in the .example.env file.
 
 If you'd also like to do rate limiting, create an account on UpStash, create a Redis database, and populate the two environment variables in `.env` as well. If you don't want to do rate limiting, you don't need to make any changes.
 
@@ -47,8 +47,8 @@ npm run dev
 1. Use `openssl rand -base64 32` to generate NEXTAUTH_SECRET
 2. Add DB URL and SHADOW DB URL from Neon
 3. Create a new project in console.cloud.google.com
-4. Click configure consent screen in API credentials page and click external
-5. Add an app name, do not upload logo, add authorized domain
+4. Click configure consent screen on the API credentials page and click external
+5. Add an app name, do not upload a logo, add an authorized domain
 6. Publish app
 7. Create credentials -> Oauth client ID
 8. Run npx prisma db push && prisma migrate dev && prisma generate
