@@ -43,9 +43,9 @@ const Home: NextPage = () => {
           </div>
           <ul
             role="list"
-            className="mt-8 flex flex-col text-gray-400 gap-6 mb-10 "
+            className="mt-8 flex flex-col justify-center text-gray-400 gap-6 mb-10 "
           >
-            <li className="flex gap-x-3 justify-center ">
+            <li className="flex gap-x-3  ">
               <svg
                 className="h-6 w-5 flex-none text-blue-500"
                 viewBox="0 0 20 20"
@@ -58,10 +58,12 @@ const Home: NextPage = () => {
                   clipRule="evenodd"
                 />
               </svg>
+              {/* <h1 className="text-center flex justify-center w-full "> */}
               Turn your copy into visualy engaging carousals
+              {/* </h1> */}
             </li>
 
-            <li className="flex gap-x-3 justify-center">
+            <li className="flex gap-x-3 ">
               <svg
                 className="h-6 w-5 flex-none text-blue-500"
                 viewBox="0 0 20 20"
@@ -74,10 +76,12 @@ const Home: NextPage = () => {
                   clipRule="evenodd"
                 />
               </svg>
+              {/* <h1 className="text-center flex justify-center w-full "> */}
               Recycle your previous content and re-post as carousels
+              {/* </h1> */}
             </li>
 
-            <li className="flex gap-x-3 justify-center">
+            <li className="flex gap-x-3 ">
               <svg
                 className="h-6 w-5 flex-none text-blue-500"
                 viewBox="0 0 20 20"
@@ -90,7 +94,9 @@ const Home: NextPage = () => {
                   clipRule="evenodd"
                 />
               </svg>
+              {/* <h1 className="text-center flex justify-center w-full "> */}
               Copy and repurpose popular LinkedIn posts as carousels
+              {/* </h1> */}
             </li>
           </ul>
         </section>
