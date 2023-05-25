@@ -25,8 +25,8 @@ const Home: NextPage = () => {
           with Instant Carousel Creation!
         </h1>
         <h2 className="mx-auto mt-12 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
-          Transform your written copy into captivating LinkedIn carousels in a
-          snap. Stand out, engage, and impress!
+          Transform written copy into captivating LinkedIn carousels in a snap.
+          Stand out, engage, and impress!
         </h2>
         <Link
           className="mt-12 bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 hover:bg-blue-500 transition"
@@ -34,6 +34,66 @@ const Home: NextPage = () => {
         >
           Try for Free
         </Link>
+
+        <section>
+          <div className="mt-10 text-center">
+            <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
+              What’s included
+            </h4>
+          </div>
+          <ul
+            role="list"
+            className="mt-8 flex flex-col text-gray-400 gap-6 mb-10 "
+          >
+            <li className="flex gap-x-3 justify-center ">
+              <svg
+                className="h-6 w-5 flex-none text-blue-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Turn your copy into visualy engaging carousals
+            </li>
+
+            <li className="flex gap-x-3 justify-center">
+              <svg
+                className="h-6 w-5 flex-none text-blue-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Recycle your previous content and re-post as carousels
+            </li>
+
+            <li className="flex gap-x-3 justify-center">
+              <svg
+                className="h-6 w-5 flex-none text-blue-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Copy and repurpose popular LinkedIn posts as carousels
+            </li>
+          </ul>
+        </section>
         {/* <section className="py-24 overflow-hidden">
           <h1 className="mb-8 font-medium text-4xl">
             Instacarol supercharges your storytelling

@@ -45,10 +45,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log("✅ Success:", event.id);
     console.log(event.type);
     // Cast event data to Stripe object.
-    if (
-      event.type === "payment_intent.succeeded" ||
-      event.type === "checkout.session.completed"
-    ) {
+    if (event.type === "checkout.session.completed") {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(`💰 PaymentIntent: ${JSON.stringify(paymentIntent)}`);
       console.log(paymentIntent);
@@ -60,6 +57,9 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       const paymentAmount = paymentIntent.amount_subtotal;
       console.log("emailprint", userEmail);
       switch (paymentAmount) {
+        case 0:
+          plan = "basic";
+          break;
         case 900:
           plan = "creator";
           break;

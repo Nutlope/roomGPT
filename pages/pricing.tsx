@@ -52,7 +52,7 @@ export default function Pricing() {
       </div>
       <div className="mt-10 text-center">
         <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
-          What’s included Unlimited downloads
+          What’s included
         </h4>
       </div>
       <ul
