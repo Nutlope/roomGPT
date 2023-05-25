@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         <section>
           <div className="mt-10 text-center">
             <h4 className="flex-none leading-6 mt-2 text-2xl font-bold tracking-tight text-white sm:text-5xl">
-              What’s included
+              Use Cases
             </h4>
           </div>
           <ul
