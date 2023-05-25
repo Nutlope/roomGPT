@@ -198,7 +198,7 @@ const Home: NextPage = () => {
         {status === "authenticated" && !contentSum && (
           <>
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-              Transform Your Copy into Engaging{" "}
+              Transform Copy into Engaging{" "}
               <div className="text-blue-600">Linkedin Carousels</div>
             </h1>
           </>
