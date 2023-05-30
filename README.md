@@ -1,6 +1,8 @@
-# [roomGPT.io](https://roomGPT.io)
+# [RoomGPT](https://roomGPT.io) - redesign your room with AI
 
-This project generates designs of your room with AI.
+This is the previous and open source version of RoomGPT.io (a paid SaaS product). It's the very first version of roomGPT without the auth, payments, or additional features and it's simple to clone, deploy, and play around with.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY&project-name=room-GPT&repo-name=roomGPT)
 
 [![Room GPT](./public/screenshot.png)](https://roomGPT.io)
 
@@ -47,3 +49,7 @@ npm run dev
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY&project-name=room-GPT&repo-name=roomGPT)
+
+## License
+
+This repo is MIT licensed.
