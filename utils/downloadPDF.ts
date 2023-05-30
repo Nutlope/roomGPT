@@ -27,8 +27,8 @@ async function generatePDFFromImages(images: HTMLCanvasElement[]) {
   console.log(images[0].height, images[0].width);
   const pdf = new jsPDF({
     unit: "px",
-    format: [images[0].height * 100, images[0].width * 100],
-    orientation: "l",
+    format: [images[0].height, images[0].width],
+    orientation: "p",
     // compress: true,
   });
   for (let i = 0; i < images.length; i++) {
@@ -41,24 +41,6 @@ async function generatePDFFromImages(images: HTMLCanvasElement[]) {
       pdf.internal.pageSize.getWidth(),
       pdf.internal.pageSize.getHeight()
     );
-    if (i < images.length - 1) {
-      pdf.addPage();
-    }
-  }
-  return pdf;
-}
-
-async function download() {
-  const canvases = document.getElementsByClassName("lower-canvas");
-  console.log(parseFloat(canvases[0].getAttribute("height") as string));
-  const pdf = new jsPDF("l", "px", [
-    parseFloat(canvases[0].getAttribute("width") as string),
-    parseFloat(canvases[0].getAttribute("height") as string),
-  ]);
-  const images = [];
-  for (let i = 0; i < canvases.length; i++) {
-    const canvas = canvases[i];
-    pdf.html(canvas as HTMLElement);
     if (i < images.length - 1) {
       pdf.addPage();
     }

@@ -334,8 +334,8 @@ const temp5 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -377,8 +377,8 @@ const temp5 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -408,8 +408,8 @@ const temp5 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -432,8 +432,8 @@ const temp6 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "white",
     },
     // imageURL: "temp3/1.png",
@@ -476,8 +476,8 @@ const temp6 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "white",
     },
     // imageURL: "temp3/1.png",
@@ -507,8 +507,8 @@ const temp6 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "white",
     },
     // imageURL: "temp3/3.png",
@@ -532,8 +532,8 @@ const temp7 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -576,8 +576,8 @@ const temp7 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -607,8 +607,8 @@ const temp7 = {
     profile: {
       left: 40, // set left position
       top: 10, // set top position
-      scaleX: 2,
-      scaleY: 2,
+      scaleX: 1.3,
+      scaleY: 1.3,
       fill: "black",
     },
     // imageURL: "temp3/3.png",

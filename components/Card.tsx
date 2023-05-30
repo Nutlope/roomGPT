@@ -115,7 +115,7 @@ export default function Card({
         if (cnv._objects.length > 0 && cnv.getContext()) {
           cnv.setBackgroundImage(img, cnv.renderAll.bind(cnv), {
             scaleX: (canvasWidth || 1) / img.width,
-            scaleY: ((canvasHeight || 1) * 0.9) / img.height,
+            scaleY: (canvasHeight || 1) / img.height,
           });
           // cnv.renderAll();
         }
@@ -125,7 +125,7 @@ export default function Card({
       fabric.Image.fromURL(
         `/_next/image?url=${encodeURIComponent(
           session?.user?.image as string
-        )}&w=64&q=75`,
+        )}&w=256&q=100`,
         (img: fabric.Image) => {
           // console.log(canvasBackgroundImage)
           if (cnv._objects.length > 0) {
