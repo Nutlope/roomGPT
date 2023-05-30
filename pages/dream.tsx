@@ -1,11 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { NextPage } from "next";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import { Rings } from "react-loader-spinner";
 import { UploadDropzone } from "react-uploader";
+import useSWR from "swr";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../components/CompareSlider";
+import DropDown from "../components/DropDown";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
@@ -13,15 +20,8 @@ import ResizablePanel from "../components/ResizablePanel";
 import Toggle from "../components/Toggle";
 import appendNewToName from "../utils/appendNewToName";
 import downloadPhoto from "../utils/downloadPhoto";
-import DropDown from "../components/DropDown";
-import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
+import { RoomType, ThemeType, rooms, themes } from "../utils/dropdownTypes";
 import { GenerateResponseData } from "./api/generate";
-import { useSession, signIn } from "next-auth/react";
-import useSWR from "swr";
-import { Rings } from "react-loader-spinner";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { Toaster, toast } from "react-hot-toast";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -38,8 +38,8 @@ const Home: NextPage = () => {
   const [sideBySide, setSideBySide] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [photoName, setPhotoName] = useState<string | null>(null);
-  const [theme, setTheme] = useState<themeType>("Modern");
-  const [room, setRoom] = useState<roomType>("Living Room");
+  const [theme, setTheme] = useState<ThemeType>("Modern");
+  const [room, setRoom] = useState<RoomType>("Living Room");
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
