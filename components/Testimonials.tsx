@@ -4,7 +4,7 @@ const testimonials = [
   [
     {
       content:
-        "Wow! This tool is a game-changer. I'm creating visually stunning carousels effortlessly!",
+        "With Instacarol, I can effortlessly convert my written copy into engaging carousels that grab attention and spark conversations. It's a fantastic way to breathe new life into my content and connect with my audience on a whole new level.",
       // link: "https://twitter.com/eveporcello/status/1631438728999899136",
       author: {
         name: "Jane S.",
@@ -15,7 +15,7 @@ const testimonials = [
 
     {
       content:
-        "Instacarol has transformed the way I engage my audience on LinkedIn. Highly recommended!",
+        "I've always believed in the power of recycling and repurposing content, and this tool takes it to the next level. It allows me to easily transform my old LinkedIn posts into fresh and visually appealing carousels.",
       // link: "https://twitter.com/arthur_dvorkin/status/1631402865209274369",
       author: {
         name: "Michael P.",
@@ -27,7 +27,7 @@ const testimonials = [
   [
     {
       content:
-        "As a content creator, Instacarol has taken my LinkedIn posts to a whole new level. Love the results!",
+        "Copying and repurposing other people's popular posts as carousels is a genius strategy that this tool enables. I can now curate and transform compelling content into visually captivating carousels that align with my own messaging and branding.",
       // link: "https://www.tiktok.com/@thenubians/video/7206088336044313861?q=Instacarol.ai&t=1677909079689",
       author: {
         name: "Sarah R.",
@@ -37,7 +37,7 @@ const testimonials = [
     },
     {
       content:
-        "I can't imagine my Linkedin strategy without Instacarol. It's a must-have tool for anv serious LinkedIn creator!",
+        "I love the versatility this tool brings to my LinkedIn strategy. Whether I'm sharing industry insights, case studies, or motivational content, converting it into captivating carousels amplifies its impact.",
       // link: "https://twitter.com/RobAttfield/status/1631545265281974273",
       author: {
         name: "Alex M.",
@@ -49,7 +49,7 @@ const testimonials = [
   [
     {
       content:
-        "Instacarol has helped me create carousels that grab attention and generate leads.",
+        "As a LinkedIn creator, my goal is to stand out and captivate my audience. This tool allows me to effortlessly transform my written content into visually stunning carousels that leave a lasting impact.",
       // link: "https://twitter.com/Music4UsAll/status/1631622608595607552",
       author: {
         name: "Samuel L.",
@@ -59,7 +59,7 @@ const testimonials = [
     },
     {
       content:
-        "My engagement and connections have skyrocketed since I started using it!",
+        "Instacarol has revolutionized how I present my expertise on LinkedIn. With just a few clicks, I can deliver my message in a visually captivating way. It's a game-changer for personal branding and establishing thought leadership.",
       // link: "https://twitter.com/github/status/1631821360619028482",
       author: {
         name: "Lisa T.",

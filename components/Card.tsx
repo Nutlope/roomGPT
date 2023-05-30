@@ -70,14 +70,14 @@ export default function Card({
         case "username":
           obj
             .set({
-              top: currentY + 3,
+              top: currentY + 12,
             })
             .setCoords();
           break;
         case "desc":
           obj
             .set({
-              top: currentY + 20,
+              top: currentY + 80,
             })
             .setCoords();
           break;
@@ -99,7 +99,7 @@ export default function Card({
     // console.log("load", contentIndex, content, template);
     if (!canvasRef.current) return;
     const cnv = new fabric.Canvas(canvasRef.current, {
-      width: 200,
+      width: 800,
       height: globalCanvasHeight,
       backgroundColor: backgroundColor,
     });
@@ -139,10 +139,10 @@ export default function Card({
                 totalHeight += obj.height as number;
               }
             });
-            totalHeight += 30;
-            if (totalHeight + 50 > globalCanvasHeight) {
+            totalHeight += 120;
+            if (totalHeight + 200 > globalCanvasHeight) {
               cnv.renderAll();
-              setGlobalCanvasHeight(totalHeight + 50);
+              setGlobalCanvasHeight(totalHeight + 200);
             } else {
               repos(cnv);
             }
@@ -158,9 +158,9 @@ export default function Card({
         // template.profile as ITextboxOptions
         {
           top: template?.profile.top + 0,
-          left: template?.profile.left + 40,
-          fontSize: 10,
-          width: 120,
+          left: template?.profile.left + 160,
+          fontSize: 40,
+          width: 480,
           fill: template?.profile?.fill,
           note: "userfullname",
           fontWeight: "bold",
@@ -171,9 +171,9 @@ export default function Card({
         // template.profile as ITextboxOptions
         {
           top: template?.profile.top + 10,
-          left: template?.profile.left + 40,
-          fontSize: 10,
-          width: 120,
+          left: template?.profile.left + 160,
+          fontSize: 40,
+          width: 480,
           fill: "gray",
           note: "username",
         } as ITextboxOptions
@@ -245,12 +245,20 @@ export default function Card({
   }, [globalCanvasHeight]);
 
   return (
-    <div className="m-4">
+    <div
+      className="m-4"
+      style={{
+        transform: "scale(0.3)",
+        transformOrigin: "top left",
+        width: 240,
+        height: globalCanvasHeight * 0.3,
+      }}
+    >
       <canvas
         className="mt-8 sm:w-full"
         ref={canvasRef}
-        width={500}
-        height={500}
+        width="200"
+        height="200"
       />
     </div>
   );

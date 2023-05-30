@@ -22,19 +22,19 @@ const temp3 = {
   },
   content: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 68,
       fontSize: 30,
-      width: 180,
+      width: 720,
       fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "center",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
       fontSize: 16,
-      width: 170,
+      width: 720,
       fontFamily: "League Gothic",
       fontWeight: "light",
       lineHeight: 1,
@@ -81,20 +81,20 @@ const temp1 = [
   {
     content: "Trust",
     textOpt: {
-      left: 10,
+      left: 40,
       top: 68,
       fontSize: 30,
-      width: 180,
+      width: 720,
       fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "center",
     },
     desc: "Trust takes time. Once you lose, trust with a consumer, it is hard to regain.",
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
       fontSize: 16,
-      width: 170,
+      width: 720,
       fontFamily: "League Gothic",
       fontWeight: "light",
       lineHeight: 1,
@@ -163,7 +163,7 @@ const temp4 = {
       fill: "white",
       left: 20,
       top: 30,
-      fontSize: 20,
+      fontSize: 80,
       width: 160,
       fontFamily: "Montserrat",
       lineHeight: 1,
@@ -173,10 +173,10 @@ const temp4 = {
   content: {
     textOpt: {
       fill: "white",
-      left: 10,
+      left: 40,
       top: 20,
       fontSize: 20,
-      width: 180,
+      width: 720,
       fontFamily: "Montserrat",
       lineHeight: 1,
       textAlign: "center",
@@ -184,10 +184,10 @@ const temp4 = {
     },
     descOpt: {
       fill: "white",
-      left: 10,
+      left: 40,
       top: 60,
       fontSize: 16,
-      width: 170,
+      width: 720,
       fontFamily: "Montserrat",
       fontWeight: "light",
       lineHeight: 1,
@@ -239,10 +239,10 @@ const temp2 = [
     content: "Trust",
     textOpt: {
       fill: "white",
-      left: 10,
+      left: 40,
       top: 68,
       fontSize: 30,
-      width: 180,
+      width: 720,
       fontFamily: "Montserrat",
       lineHeight: 1,
       textAlign: "center",
@@ -250,10 +250,10 @@ const temp2 = [
     desc: "Trust takes time. Once you lose, trust with a consumer, it is hard to regain.",
     descOpt: {
       fill: "white",
-      left: 10,
+      left: 40,
       top: 104,
       fontSize: 16,
-      width: 170,
+      width: 720,
       fontFamily: "Montserrat",
       fontWeight: "light",
       lineHeight: 1,
@@ -322,30 +322,30 @@ const temp5 = {
   sample: "sample/1.png",
   title: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 80,
-      fontSize: 20,
-      width: 180,
+      fontSize: 80,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       fill: "black",
       textAlign: "center",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
     backgroundColor: "#F6F7F1",
 
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
-      fontSize: 12,
-      width: 170,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "left",
@@ -354,20 +354,20 @@ const temp5 = {
   },
   content: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 70,
-      fontSize: 20,
-      width: 180,
+      fontSize: 80,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "center",
       fill: "black",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
-      fontSize: 12,
-      width: 170,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       // fontWeight: "light",
       lineHeight: 1,
@@ -375,10 +375,10 @@ const temp5 = {
       fill: "black",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -388,7 +388,7 @@ const temp5 = {
     textOpt: {
       left: 20,
       top: 75,
-      fontSize: 20,
+      fontSize: 80,
       width: 160,
       // fontFamily: "League Gothic",`
       lineHeight: 1,
@@ -396,20 +396,20 @@ const temp5 = {
       fill: "black",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 125,
-      fontSize: 12,
-      width: 180,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "left",
       fill: "black",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -420,30 +420,30 @@ const temp6 = {
   sample: "sample/2.png",
   title: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 80,
-      fontSize: 20,
-      width: 180,
+      fontSize: 80,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       fill: "white",
       textAlign: "center",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "white",
     },
     // imageURL: "temp3/1.png",
     backgroundColor: "#1B2528",
 
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
-      fontSize: 12,
-      width: 170,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       // fontWeight: "light",
       lineHeight: 1,
@@ -453,20 +453,20 @@ const temp6 = {
   },
   content: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 70,
-      fontSize: 20,
-      width: 180,
+      fontSize: 80,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "center",
       fill: "white",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
-      fontSize: 12,
-      width: 170,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       // fontWeight: "light",
       lineHeight: 1,
@@ -474,10 +474,10 @@ const temp6 = {
       fill: "white",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "white",
     },
     // imageURL: "temp3/1.png",
@@ -487,7 +487,7 @@ const temp6 = {
     textOpt: {
       left: 20,
       top: 75,
-      fontSize: 20,
+      fontSize: 80,
       width: 160,
       // fontFamily: "League Gothic",`
       lineHeight: 1,
@@ -495,20 +495,20 @@ const temp6 = {
       fill: "white",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 125,
-      fontSize: 12,
-      width: 180,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "left",
       fill: "white",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "white",
     },
     // imageURL: "temp3/3.png",
@@ -520,30 +520,30 @@ const temp7 = {
   sample: "sample/1.png",
   title: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 80,
-      fontSize: 20,
-      width: 180,
+      fontSize: 80,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       fill: "black",
       textAlign: "left",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
     backgroundColor: "#FFFFFF",
 
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
-      fontSize: 12,
-      width: 170,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       // fontWeight: "light",
       lineHeight: 1,
@@ -553,20 +553,20 @@ const temp7 = {
   },
   content: {
     textOpt: {
-      left: 10,
+      left: 40,
       top: 70,
-      fontSize: 20,
-      width: 180,
+      fontSize: 80,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "left",
       fill: "black",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 104,
-      fontSize: 12,
-      width: 170,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       // fontWeight: "light",
       lineHeight: 1,
@@ -574,10 +574,10 @@ const temp7 = {
       fill: "black",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "black",
     },
     // imageURL: "temp3/1.png",
@@ -587,7 +587,7 @@ const temp7 = {
     textOpt: {
       left: 20,
       top: 75,
-      fontSize: 20,
+      fontSize: 80,
       width: 160,
       // fontFamily: "League Gothic",`
       lineHeight: 1,
@@ -595,20 +595,20 @@ const temp7 = {
       fill: "black",
     },
     descOpt: {
-      left: 10,
+      left: 40,
       top: 125,
-      fontSize: 12,
-      width: 180,
+      fontSize: 48,
+      width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "left",
       fill: "black",
     },
     profile: {
-      left: 10, // set left position
+      left: 40, // set left position
       top: 10, // set top position
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 2,
+      scaleY: 2,
       fill: "black",
     },
     // imageURL: "temp3/3.png",
@@ -727,7 +727,7 @@ const CanvasPage = ({ contentSum }: { contentSum: string }) => {
   const [title, settitle] = useState("second");
   const [selTemp, setselTemp] = useState(temp5);
   const [isOpen, setIsOpen] = useState(true);
-  const [globalCanvasHeight, setGlobalCanvasHeight] = useState(200);
+  const [globalCanvasHeight, setGlobalCanvasHeight] = useState(800);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
