@@ -2,6 +2,8 @@ import { Ratelimit } from "@upstash/ratelimit";
 import type { NextApiRequest, NextApiResponse } from "next";
 import requestIp from "request-ip";
 import redis from "../../utils/redis";
+import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
@@ -21,26 +23,33 @@ const ratelimit = redis
     })
   : undefined;
 
-export default async function handler(
-  req: ExtendedNextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export async function POST(request: Request) {
   // Rate Limiter Code
   if (ratelimit) {
-    const identifier = requestIp.getClientIp(req);
-    const result = await ratelimit.limit(identifier!);
-    res.setHeader("X-RateLimit-Limit", result.limit);
-    res.setHeader("X-RateLimit-Remaining", result.remaining);
+    const headersList = headers();
+    const referer = headersList.get("RemoteAddr");
+
+    const result = await ratelimit.limit(referer!);
+    // res.setHeader("X-RateLimit-Limit", result.limit);
+    // res.setHeader("X-RateLimit-Remaining", result.remaining);
 
     if (!result.success) {
-      res
-        .status(429)
-        .json("Too many uploads in 1 day. Please try again in a 24 hours.");
-      return;
+      return new Response(
+        "Too many uploads in 1 day. Please try again in a 24 hours.",
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": result.limit,
+            "X-RateLimit-Remaining": result.remaining,
+          } as any,
+        }
+      );
     }
   }
 
-  const { imageUrl, theme, room } = req.body;
+  const { imageUrl, theme, room } = await request.json();
+  // const { imageUrl, theme, room } = req.body;
+
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
@@ -91,7 +100,8 @@ export default async function handler(
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
-  res
-    .status(200)
-    .json(restoredImage ? restoredImage : "Failed to restore image");
+
+  return NextResponse.json(
+    restoredImage ? restoredImage : "Failed to restore image"
+  );
 }

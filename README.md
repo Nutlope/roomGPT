@@ -53,3 +53,7 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 ## License
 
 This repo is MIT licensed.
+
+## Todos
+
+- Update OG image design + include "roomgpt.io"
