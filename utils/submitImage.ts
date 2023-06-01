@@ -1,6 +1,5 @@
 import { Ratelimit } from "@upstash/ratelimit";
-import redis from "../../utils/redis";
-import { NextResponse } from "next/server";
+import redis from "../utils/redis";
 import { headers } from "next/headers";
 
 // Create a new ratelimiter, that allows 5 requests per 24 hours
@@ -12,7 +11,15 @@ const ratelimit = redis
     })
   : undefined;
 
-export async function POST(request: Request) {
+export default async function submitImage({
+  imageUrl,
+  theme,
+  room,
+}: {
+  imageUrl: string;
+  theme: string;
+  room: string;
+}) {
   // Rate Limiter Code
   if (ratelimit) {
     const headersList = headers();
@@ -33,8 +40,6 @@ export async function POST(request: Request) {
       );
     }
   }
-
-  const { imageUrl, theme, room } = await request.json();
 
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
@@ -65,8 +70,8 @@ export async function POST(request: Request) {
   let endpointUrl = jsonStartResponse.urls.get;
 
   // GET request to get the status of the image restoration process & return the result when it's ready
-  let restoredImage: string | null = null;
-  while (!restoredImage) {
+  let redesignedImage: string | null = null;
+  while (!redesignedImage) {
     // Loop in 1s intervals until the alt text is ready
     console.log("polling for result...");
     let finalResponse = await fetch(endpointUrl, {
@@ -79,7 +84,7 @@ export async function POST(request: Request) {
     let jsonFinalResponse = await finalResponse.json();
 
     if (jsonFinalResponse.status === "succeeded") {
-      restoredImage = jsonFinalResponse.output;
+      redesignedImage = jsonFinalResponse.output;
     } else if (jsonFinalResponse.status === "failed") {
       break;
     } else {
@@ -87,7 +92,5 @@ export async function POST(request: Request) {
     }
   }
 
-  return NextResponse.json(
-    restoredImage ? restoredImage : "Failed to restore image"
-  );
+  return redesignedImage ? redesignedImage : "Failed to restore image";
 }

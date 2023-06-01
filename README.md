@@ -57,3 +57,7 @@ This repo is MIT licensed.
 ## Todos
 
 - Update OG image design + include "roomgpt.io"
+- Add Server Actions
+- Use Replicate's nodejs library
+- Migrate to use edge functions
+- Add loading states with suspense and useOptimistic server action hook
