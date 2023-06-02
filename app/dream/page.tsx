@@ -1,20 +1,20 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-import { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
-import { CompareSlider } from "../components/CompareSlider";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import LoadingDots from "../components/LoadingDots";
-import ResizablePanel from "../components/ResizablePanel";
-import Toggle from "../components/Toggle";
-import appendNewToName from "../utils/appendNewToName";
-import downloadPhoto from "../utils/downloadPhoto";
-import DropDown from "../components/DropDown";
-import { roomType, rooms, themeType, themes } from "../utils/dropdownTypes";
+import { CompareSlider } from "../../components/CompareSlider";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import LoadingDots from "../../components/LoadingDots";
+import ResizablePanel from "../../components/ResizablePanel";
+import Toggle from "../../components/Toggle";
+import appendNewToName from "../../utils/appendNewToName";
+import downloadPhoto from "../../utils/downloadPhoto";
+import DropDown from "../../components/DropDown";
+import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -22,6 +22,7 @@ const uploader = Uploader({
     ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
     : "free",
 });
+
 const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
@@ -29,21 +30,21 @@ const options = {
   styles: {
     colors: {
       primary: "#2563EB", // Primary buttons & links
-      error: "#d23f4d",   // Error messages
-      shade100: "#fff",   // Standard text
-      shade200: "#fffe",  // Secondary button text
-      shade300: "#fffd",  // Secondary button text (hover)
-      shade400: "#fffc",  // Welcome text
-      shade500: "#fff9",  // Modal close button
-      shade600: "#fff7",  // Border
-      shade700: "#fff2",  // Progress indicator background
-      shade800: "#fff1",  // File item background
-      shade900: "#ffff"   // Various (draggable crop buttons, etc.)
+      error: "#d23f4d", // Error messages
+      shade100: "#fff", // Standard text
+      shade200: "#fffe", // Secondary button text
+      shade300: "#fffd", // Secondary button text (hover)
+      shade400: "#fffc", // Welcome text
+      shade500: "#fff9", // Modal close button
+      shade600: "#fff7", // Border
+      shade700: "#fff2", // Progress indicator background
+      shade800: "#fff1", // File item background
+      shade900: "#ffff", // Various (draggable crop buttons, etc.)
     },
   },
 };
 
-const Home: NextPage = () => {
+export default function DreamPage() {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -61,7 +62,6 @@ const Home: NextPage = () => {
       onUpdate={(file) => {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
-          // TODO: Make sure these are the image dimensions we want
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
           generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
@@ -72,9 +72,9 @@ const Home: NextPage = () => {
   );
 
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 200)); // TODO: See if I even need this
+    await new Promise((resolve) => setTimeout(resolve, 200));
     setLoading(true);
-    const res = await fetch("/api/generate", {
+    const res = await fetch("/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -95,9 +95,6 @@ const Home: NextPage = () => {
 
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Head>
-        <title>RoomGPT</title>
-      </Head>
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
@@ -122,8 +119,9 @@ const Home: NextPage = () => {
                     </div>
                     <DropDown
                       theme={theme}
-                      // @ts-ignore
-                      setTheme={(newTheme) => setTheme(newTheme)}
+                      setTheme={(newTheme) =>
+                        setTheme(newTheme as typeof theme)
+                      }
                       themes={themes}
                     />
                   </div>
@@ -141,8 +139,7 @@ const Home: NextPage = () => {
                     </div>
                     <DropDown
                       theme={room}
-                      // @ts-ignore
-                      setTheme={(newRoom) => setRoom(newRoom)}
+                      setTheme={(newRoom) => setRoom(newRoom as typeof room)}
                       themes={rooms}
                     />
                   </div>
@@ -274,6 +271,4 @@ const Home: NextPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default Home;
+}
