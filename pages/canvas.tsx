@@ -40,7 +40,7 @@ interface contentProps {
   index: any;
   content: string;
   desc?: string;
-  type: keyof typeof temp3;
+  type: any;
 }
 
 const Home: NextPage = () => {
@@ -413,7 +413,7 @@ const Home: NextPage = () => {
                     </button>
                     <button
                       onClick={() => {
-                        setContentSum("");
+                        setContentSum([]);
                         // setRestoredImage(null);
                         // setRestoredLoaded(false);
                         setError(null);
