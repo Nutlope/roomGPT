@@ -644,35 +644,42 @@ function parseContent(c: string): contentProps[] {
 
 function parseContent2(raw: string): any {
   // const regex = /^\s*\d+\.\s*(.*)$/gm;
-  const regex = /^\s*\d+\.\s*(.*)$/gm;
-  const points = [];
-  let match;
-  // console.log(raw);
+  try {
+    const regex = /^\s*\d+\.\s*(.*)$/gm;
+    const points = [];
+    let match;
 
-  while ((match = regex.exec(raw))) {
-    points.push(match[1]);
-    // console.log(match);
+    // console.log(raw);
+
+    while ((match = regex.exec(raw))) {
+      points.push(match[1]);
+      // console.log(match);
+    }
+
+    return points.map((item, index) => {
+      // var point = item.replace(/^\d+\. \s*/, "").split(":");
+      var point = item
+        .replace(/^\d+\. \s*/, "")
+        .replace("[Hook] ", "")
+        .replace("[Call to Action] ", "");
+      // console.log(point);
+
+      return {
+        index,
+        type:
+          index === 0
+            ? "content"
+            : index !== points.length - 1
+            ? "content"
+            : "end",
+        // content: point,
+        desc: point,
+      };
+    });
+  } catch (error) {
+    alert(error);
   }
 
-  return points.map((item, index) => {
-    // var point = item.replace(/^\d+\. \s*/, "").split(":");
-    var point = item
-      .replace(/^\d+\. \s*/, "")
-      .replace("[Hook] ", "")
-      .replace("[Call to Action] ", "");
-    // console.log(point);
-    return {
-      index,
-      type:
-        index === 0
-          ? "content"
-          : index !== points.length - 1
-          ? "content"
-          : "end",
-      // content: point,
-      desc: point,
-    };
-  });
   // return point;
 }
 
@@ -723,7 +730,7 @@ function parseContent3(raw: string): any {
 
 const template = [temp5, temp6, temp7];
 
-const CanvasPage = ({ contentSum }: { contentSum: string }) => {
+const CanvasPage = ({ contentSum }: { contentSum: contentProps[] }) => {
   const [title, settitle] = useState("second");
   const [selTemp, setselTemp] = useState(temp5);
   const [isOpen, setIsOpen] = useState(true);
@@ -733,7 +740,7 @@ const CanvasPage = ({ contentSum }: { contentSum: string }) => {
     setIsOpen(!isOpen);
   };
 
-  const content: contentProps[] = parseContent2(contentSum);
+  const content: contentProps[] = contentSum;
 
   return (
     <div className={styles.sidebarWrapper}>

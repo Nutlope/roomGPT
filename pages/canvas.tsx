@@ -36,10 +36,17 @@ type ChatGPTResponse = {
   result: string;
 };
 
+interface contentProps {
+  index: any;
+  content: string;
+  desc?: string;
+  type: keyof typeof temp3;
+}
+
 const Home: NextPage = () => {
   const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
   const [prompt, setPrompt] = useState<string>("");
-  const [contentSum, setContentSum] = useState<string>("");
+  const [contentSum, setContentSum] = useState<contentProps[]>([]);
   const [restoredImage, setRestoredImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
@@ -96,8 +103,40 @@ const Home: NextPage = () => {
     />
   );
 
-  const generateContent = async (event: any) => {
-    event.preventDefault();
+  function parseContent2(raw: string): any {
+    try {
+      const regex = /^\s*\d+\.\s*(.*)$/gm;
+      const points = [];
+      let match;
+
+      while ((match = regex.exec(raw))) {
+        points.push(match[1]);
+      }
+
+      return points.map((item, index) => {
+        var point = item
+          .replace(/^\d+\. \s*/, "")
+          .replace("[Hook] ", "")
+          .replace("[Call to Action] ", "");
+
+        return {
+          index,
+          type:
+            index === 0
+              ? "content"
+              : index !== points.length - 1
+              ? "content"
+              : "end",
+          desc: point,
+        };
+      });
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  const generateContent = async (event?: any) => {
+    event?.preventDefault();
     setLoading(true);
 
     try {
@@ -116,15 +155,18 @@ const Home: NextPage = () => {
           new Error(`Request failed with status ${response.status}`)
         );
       }
-
-      setContentSum(data.result);
-      setPrompt("");
+      const content = parseContent2(data.result);
+      if (content.length === 0) {
+        generateContent(null);
+        return;
+      }
+      setContentSum(content);
       setLoading(false);
     } catch (error: any) {
       // Consider implementing your own error handling logic here
-      console.error(error);
       setLoading(false);
       alert(error.message);
+      generateContent(null);
     }
   };
 
@@ -195,7 +237,7 @@ const Home: NextPage = () => {
             have used Instacarol so far
           </a>
         )}
-        {status === "authenticated" && !contentSum && (
+        {status === "authenticated" && contentSum?.length === 0 && (
           <>
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
               Transform Copy into Engaging{" "}
@@ -203,7 +245,7 @@ const Home: NextPage = () => {
             </h1>
           </>
         )}
-        {status === "authenticated" && contentSum && (
+        {status === "authenticated" && contentSum?.length > 0 && (
           <>
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
               Edit & Download your{" "}
@@ -211,7 +253,7 @@ const Home: NextPage = () => {
             </h1>
           </>
         )}
-        {status === "authenticated" && data && contentSum && (
+        {status === "authenticated" && data && contentSum?.length > 0 && (
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
@@ -259,7 +301,7 @@ const Home: NextPage = () => {
                   restored={restoredImage!}
                 />
               )}
-              {status === "loading" ? (
+              {status === "loading" || loading ? (
                 <div className="max-w-[670px] h-[250px] flex justify-center items-center">
                   <Rings
                     height="100"
@@ -272,20 +314,22 @@ const Home: NextPage = () => {
                     ariaLabel="rings-loading"
                   />
                 </div>
-              ) : status === "authenticated" && !contentSum ? (
+              ) : status === "authenticated" && contentSum?.length === 0 ? (
                 <>
                   <textarea
                     className="rounded-xl bg-black w-full max-w-2xl p-4"
                     rows={5}
                     value={prompt}
+                    minLength={150}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Two products, different jobs: Snickers fights hunger, KitKat provides a break. JTBD framework explains why customers buv. People seek specific outcomes. Snickers keeps vou satisfied on a road trip, while KitKat offers stress relief. Positioning matters- Snickers became more than a treat by understanding customers' job. They expanded their market by meeting customer needs. Successful outcome: increased sales"
                   ></textarea>
+                  <p className="mt-4">{prompt.length} chars (min 150 chars)</p>
                   <button
                     type="submit"
-                    className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 mt-10 hover:bg-blue-500 transition"
+                    className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 mt-10 hover:bg-blue-500 transition disabled:bg-gray-800"
                     onClick={generateContent}
-                    disabled={loading}
+                    disabled={loading || prompt?.length < 150}
                   >
                     {loading && (
                       <span className="pr-4">
@@ -296,7 +340,7 @@ const Home: NextPage = () => {
                   </button>
                 </>
               ) : (
-                !contentSum && (
+                contentSum?.length === 0 && (
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
                       Sign in below with LinkedIn to create a free account and
@@ -318,7 +362,9 @@ const Home: NextPage = () => {
                   </div>
                 )
               )}
-              {contentSum && <CanvasPage contentSum={contentSum} />}
+              {contentSum?.length > 0 && !loading && (
+                <CanvasPage contentSum={contentSum} />
+              )}
               {/* {loading && (
                 <button
                   disabled
@@ -343,7 +389,7 @@ const Home: NextPage = () => {
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
-                {contentSum && !loading && !error && (
+                {contentSum?.length > 0 && !loading && !error && (
                   <button
                     onClick={() => {
                       downloadPDF().then((e) => {
@@ -355,18 +401,28 @@ const Home: NextPage = () => {
                     Download
                   </button>
                 )}
-                {contentSum && (
-                  <button
-                    onClick={() => {
-                      setContentSum("");
-                      // setRestoredImage(null);
-                      // setRestoredLoaded(false);
-                      setError(null);
-                    }}
-                    className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
-                  >
-                    New
-                  </button>
+                {contentSum?.length > 0 && !loading && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        generateContent(e);
+                      }}
+                      className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+                    >
+                      Refresh
+                    </button>
+                    <button
+                      onClick={() => {
+                        setContentSum("");
+                        // setRestoredImage(null);
+                        // setRestoredLoaded(false);
+                        setError(null);
+                      }}
+                      className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+                    >
+                      New
+                    </button>
+                  </>
                 )}
               </div>
             </motion.div>
