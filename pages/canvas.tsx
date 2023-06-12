@@ -243,6 +243,15 @@ const Home: NextPage = () => {
               Transform Copy into Engaging{" "}
               <div className="text-blue-600">Linkedin Carousels</div>
             </h1>
+            <h2 className="text-2xl bold mb-1">
+              Enter your Linkedin post copy
+            </h2>
+            <h3 className="max-w-3xl">
+              Some ideas: 1) Start typing a new LinkedIn copy, 2) recycle one of
+              your old LinkedIn post copy, or 3) copy/paste a popular Linkedin
+              post you recently saw to repurpose and make it your own! It
+              hunger, KitKat provides a break. JTBD Please enter a minimum
+            </h3>
           </>
         )}
         {status === "authenticated" && contentSum?.length > 0 && (
@@ -277,7 +286,7 @@ const Home: NextPage = () => {
         )}
         <ResizablePanel>
           <AnimatePresence mode="wait">
-            <motion.div className="flex justify-between items-center w-full flex-col mt-4">
+            <motion.div className="flex justify-between items-center w-full flex-col">
               {restoredImage && (
                 <div>
                   Here's your remodeled <b>{room.toLowerCase()}</b> in the{" "}
@@ -322,7 +331,7 @@ const Home: NextPage = () => {
                     value={prompt}
                     minLength={150}
                     onChange={(e) => setPrompt(e.target.value)}
-                    placeholder="Two products, different jobs: Snickers fights hunger, KitKat provides a break. JTBD framework explains why customers buv. People seek specific outcomes. Snickers keeps vou satisfied on a road trip, while KitKat offers stress relief. Positioning matters- Snickers became more than a treat by understanding customers' job. They expanded their market by meeting customer needs. Successful outcome: increased sales"
+                    placeholder="Please enter a minimum of 150 words to get the best carousel result"
                   ></textarea>
                   <p className="mt-4">{prompt.length} chars (min 150 chars)</p>
                   <button

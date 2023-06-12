@@ -34,7 +34,7 @@ export default function Pricing() {
           You currently have{" "}
           <span className="font-semibold text-gray-400">
             {data?.remainingGenerations}{" "}
-            {data?.remainingGenerations > 1 ? "credits" : "credit"}
+            {data?.remainingGenerations > 1 ? "downloads" : "download"}
           </span>
           . Purchase more below.
         </p>
