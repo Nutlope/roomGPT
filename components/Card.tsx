@@ -9,6 +9,8 @@ interface CardProps {
   template?: any;
   item?: any;
   globalCanvasHeight: number;
+  order: any;
+  selBgColor: any;
   setGlobalCanvasHeight: Dispatch<SetStateAction<number>>;
 }
 
@@ -29,6 +31,8 @@ export default function Card({
   template,
   item,
   globalCanvasHeight,
+  order,
+  selBgColor,
   setGlobalCanvasHeight,
 }: CardProps) {
   const { imageURL, textOpt, descOpt, backgroundColor } = template;
@@ -54,47 +58,32 @@ export default function Card({
     var offsetY = (globalCanvasHeight - totalHeight) / 2;
 
     var currentY = offsetY;
+    var canvasObj: any = {};
     cnv.forEachObject(function (obj) {
-      // console.log(obj);
-      const objectHeight = obj.height as number;
       // @ts-ignore
-      switch (obj.note) {
-        case "userfullname":
-          // console.log(obj.text, obj.note, currentY, objectHeight);
-          obj
-            .set({
-              top: currentY,
-            })
-            .setCoords();
-          break;
-        case "username":
-          obj
-            .set({
-              top: currentY + 12,
-            })
-            .setCoords();
-          break;
-        case "desc":
-          obj
-            .set({
-              top: currentY + 80,
-            })
-            .setCoords();
-          break;
-        case "profilePic":
-          obj
-            .set({
-              top: offsetY,
-            })
-            .setCoords();
-          break;
-        default:
-          break;
-      }
-      currentY += objectHeight;
+      canvasObj[obj.note] = obj;
     });
+    // console.log(obj);
+
+    order?.forEach((obj: any) => {
+      const object = canvasObj[obj.name];
+      console.log(obj.name);
+      if (object) {
+        console.log(obj.name, object.top);
+        const objectHeight = object.height as number;
+        console.log(objectHeight, globalCanvasHeight, totalHeight);
+        object
+          .set({
+            top: currentY + obj.top,
+          })
+          .setCoords();
+        currentY += objectHeight;
+      }
+    });
+
     cnv.renderAll();
   };
+
   useEffect(() => {
     // console.log("load", contentIndex, content, template);
     if (!canvasRef.current) return;
@@ -152,34 +141,53 @@ export default function Card({
       );
 
       // textRef.current = text;
-      var nameFont = new FontFaceObserver(template.profile.fontFamily);
-      const name = new fabric.Textbox(
-        session?.user?.name as string,
-        // template.profile as ITextboxOptions
-        {
-          top: template?.profile.top + 0,
-          left: template?.profile.left + 160,
-          fontSize: 40,
-          width: 480,
-          fill: template?.profile?.fill,
-          note: "userfullname",
-          fontWeight: "bold",
-        } as ITextboxOptions
-      );
-      const usertag = new fabric.Textbox(
-        `@${session?.user?.name?.toLowerCase().split(" ").join("")}` as string,
-        // template.profile as ITextboxOptions
-        {
-          top: template?.profile.top + 10,
-          left: template?.profile.left + 160,
-          fontSize: 40,
-          width: 480,
-          fill: "gray",
-          note: "username",
-        } as ITextboxOptions
-      );
-      cnv.add(name);
-      cnv.add(usertag);
+      if (template?.userfullname) {
+        var nameFont = new FontFaceObserver(template.profile.fontFamily);
+        const name = new fabric.Textbox(
+          session?.user?.name as string,
+          // template.profile as ITextboxOptions
+          {
+            ...template.userfullname,
+            top: template?.profile.top + 0,
+            left: template?.profile.left + template.userfullname.leftOffset,
+          } as ITextboxOptions
+        );
+        cnv.add(name);
+      }
+
+      if (template?.username) {
+        const usertag = new fabric.Textbox(
+          `@${session?.user?.name
+            ?.toLowerCase()
+            .split(" ")
+            .join("")}` as string,
+          // template.profile as ITextboxOptions
+          {
+            ...template.username,
+            top: template?.profile.top + 10,
+            left: template?.profile.left + template.username.leftOffset,
+          } as ITextboxOptions
+        );
+        cnv.add(usertag);
+      }
+
+      const line = new fabric.Line([50, 50, 200, 200], {
+        stroke: "black",
+        strokeWidth: 2,
+      });
+
+      // Create an arrowhead
+      const arrowhead = new fabric.Triangle({
+        width: 10,
+        height: 10,
+        fill: "black",
+        left: 200,
+        top: 200,
+        angle: 45,
+      });
+
+      // Add line and arrowhead to canvas
+      // cnv.add(line, arrowhead);
       // nameFont
       //   .load(null, 10000)
       //   .then((v) => {
@@ -243,6 +251,16 @@ export default function Card({
       repos(canvas);
     }
   }, [globalCanvasHeight]);
+
+  useEffect(() => {
+    console.log("change color", selBgColor);
+    if (canvas && canvas._objects?.length > 0) {
+      canvas?.setBackgroundColor(
+        selBgColor.color,
+        canvas.renderAll.bind(canvas)
+      );
+    }
+  }, [selBgColor]);
 
   return (
     <div

@@ -121,12 +121,12 @@ const Home: NextPage = () => {
 
         return {
           index,
-          type:
-            index === 0
-              ? "content"
-              : index !== points.length - 1
-              ? "content"
-              : "end",
+          type: "content",
+          // index === 0
+          //   ? "content"
+          //   : index !== points.length - 1
+          //   ? "content"
+          //   : "end",
           desc: point,
         };
       });

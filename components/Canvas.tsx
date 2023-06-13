@@ -5,7 +5,35 @@ import Card from "./Card";
 import TextInput from "./TextInput";
 import TemplateCarousel from "./TemplateCarousel";
 import styles from "../styles/Sidebar.module.css";
+import Toolbar from "./Toolbar";
 
+interface ColorOption {
+  color: string;
+  label: string;
+}
+
+const colors: ColorOption[] = [
+  { color: "#02084B", label: "Dark blue" },
+  { color: "#74DFF6", label: "Light Blue" },
+  { color: "#FAD02C", label: "Yellow" },
+];
+const username = {
+  userfullname: {
+    leftOffset: 160,
+    fontSize: 40,
+    width: 480,
+    fill: "black",
+    note: "userfullname",
+    fontWeight: "bold",
+  },
+  username: {
+    leftOffset: 160,
+    fontSize: 40,
+    width: 480,
+    fill: "gray",
+    note: "username",
+  },
+};
 const temp3 = {
   sample: "temp1/s1.png",
   title: {
@@ -320,6 +348,12 @@ const temp2 = [
 
 const temp5 = {
   sample: "sample/1.png",
+  order: [
+    { name: "profilePic", top: 0 },
+    { name: "userfullname", top: -90 },
+    { name: "username", top: -80 },
+    { name: "desc", top: 0 },
+  ],
   title: {
     textOpt: {
       left: 40,
@@ -353,6 +387,7 @@ const temp5 = {
     },
   },
   content: {
+    ...username,
     textOpt: {
       left: 40,
       top: 70,
@@ -418,6 +453,12 @@ const temp5 = {
 };
 const temp6 = {
   sample: "sample/2.png",
+  order: [
+    { name: "profilePic", top: 0 },
+    { name: "userfullname", top: -90 },
+    { name: "username", top: -80 },
+    { name: "desc", top: 0 },
+  ],
   title: {
     textOpt: {
       left: 40,
@@ -452,6 +493,22 @@ const temp6 = {
     },
   },
   content: {
+    userfullname: {
+      leftOffset: 160,
+      fontSize: 40,
+      width: 480,
+      fill: "white",
+      note: "userfullname",
+      fontWeight: "bold",
+    },
+    username: {
+      leftOffset: 160,
+      fontSize: 40,
+      width: 480,
+      fill: "gray",
+      note: "username",
+    },
+
     textOpt: {
       left: 40,
       top: 70,
@@ -518,6 +575,213 @@ const temp6 = {
 
 const temp7 = {
   sample: "sample/1.png",
+  order: [
+    { name: "profilePic", top: 0 },
+    { name: "userfullname", top: -90 },
+    { name: "username", top: -80 },
+    { name: "desc", top: 0 },
+  ],
+  title: {
+    textOpt: {
+      left: 40,
+      top: 80,
+      fontSize: 80,
+      width: 720,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      fill: "black",
+      textAlign: "left",
+    },
+    profile: {
+      left: 40, // set left position
+      top: 10, // set top position
+      scaleX: 1.3,
+      scaleY: 1.3,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#FFFFFF",
+
+    descOpt: {
+      left: 40,
+      top: 104,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+  },
+  content: {
+    ...username,
+    textOpt: {
+      left: 40,
+      top: 70,
+      fontSize: 80,
+      width: 720,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    descOpt: {
+      left: 40,
+      top: 104,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    profile: {
+      left: 40, // set left position
+      top: 10, // set top position
+      scaleX: 1.3,
+      scaleY: 1.3,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#FFFFFF",
+  },
+  end: {
+    textOpt: {
+      left: 20,
+      top: 75,
+      fontSize: 80,
+      width: 160,
+      // fontFamily: "League Gothic",`
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    descOpt: {
+      left: 40,
+      top: 125,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    profile: {
+      left: 40, // set left position
+      top: 10, // set top position
+      scaleX: 1.3,
+      scaleY: 1.3,
+      fill: "black",
+    },
+    // imageURL: "temp3/3.png",
+    backgroundColor: "#FFFFFF",
+  },
+};
+
+const temp8 = {
+  sample: "sample/1.png",
+  title: {
+    textOpt: {
+      left: 40,
+      top: 280,
+      fontSize: 80,
+      width: 720,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      fill: "black",
+      textAlign: "left",
+    },
+    profile: {
+      left: 40, // set left position
+      top: 10, // set top position
+      scaleX: 1.3,
+      scaleY: 1.3,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#FFFFFF",
+
+    descOpt: {
+      left: 40,
+      top: 104,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+  },
+  content: {
+    textOpt: {
+      left: 40,
+      top: 70,
+      fontSize: 80,
+      width: 720,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    descOpt: {
+      left: 40,
+      top: 104,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    profile: {
+      left: 40, // set left position
+      top: 10, // set top position
+      scaleX: 1.3,
+      scaleY: 1.3,
+      fill: "black",
+    },
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#FFFFFF",
+  },
+  end: {
+    textOpt: {
+      left: 20,
+      top: 75,
+      fontSize: 80,
+      width: 160,
+      // fontFamily: "League Gothic",`
+      lineHeight: 1,
+      textAlign: "center",
+      fill: "black",
+    },
+    descOpt: {
+      left: 40,
+      top: 125,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "black",
+    },
+    profile: {
+      left: 40, // set left position
+      top: 10, // set top position
+      scaleX: 1.3,
+      scaleY: 1.3,
+      fill: "black",
+    },
+    // imageURL: "temp3/3.png",
+    backgroundColor: "#FFFFFF",
+  },
+};
+
+const temp9 = {
+  sample: "sample/5.png",
   title: {
     textOpt: {
       left: 40,
@@ -614,7 +878,14 @@ const temp7 = {
     // imageURL: "temp3/3.png",
     backgroundColor: "#FFFFFF",
   },
+  order: [
+    { name: "desc", top: 0 },
+    { name: "profilePic", top: 20 },
+    { name: "userfullname", top: 12 },
+    { name: "username", top: 80 },
+  ],
 };
+
 interface contentProps {
   index: any;
   content: string;
@@ -633,8 +904,8 @@ function parseContent(c: string): contentProps[] {
   const matches: RegExpMatchArray[] = Array.from(c.matchAll(pattern));
   const points: contentProps[] = matches.map((match, index) => ({
     index: match[0],
-    type:
-      index !== 0 ? "content" : index === matches.length - 1 ? "end" : "title",
+    type: "content",
+    // index !== 0 ? "content" : index === matches.length - 1 ? "end" : "title",
     content: match[2].substring(1),
     desc: match[3],
   }));
@@ -728,7 +999,7 @@ function parseContent3(raw: string): any {
 //   },
 // ];
 
-const template = [temp5, temp6, temp7];
+const template = [temp5, temp6, temp7, temp9];
 
 const CanvasPage = ({ contentSum }: { contentSum: contentProps[] }) => {
   const [title, settitle] = useState("second");
@@ -741,40 +1012,55 @@ const CanvasPage = ({ contentSum }: { contentSum: contentProps[] }) => {
   };
 
   const content: contentProps[] = contentSum;
+  const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
+  console.log(selectedColor);
 
   return (
-    <div className={styles.sidebarWrapper}>
-      <div>
-        <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-          <h2>Choose Template</h2>
-          <div className="md:flex flex-wrap hidden content-center ">
-            <TemplateCarousel template={template} setselTemp={setselTemp} />
-          </div>
-        </nav>
-      </div>
-      {/* <button onClick={handleToggle}>Toggle Sidebar</button> */}
-      <div
-        className={`flex flex-row flex-wrap ${
-          isOpen ? "md:ml-64" : ""
-        } transition-all duration-300 ease-in-out`}
-      >
-        {content.map((item, index) => {
-          return (
-            <Card
-              key={`card-"${index}`}
-              template={selTemp[item.type]}
-              item={item}
-              globalCanvasHeight={globalCanvasHeight}
-              setGlobalCanvasHeight={setGlobalCanvasHeight}
-              // content={item.content}
-              // textOpt={selTemp[item.type]?.textOpt}
-              // desc={item.desc}
-              // descOpt={selTemp[item.type]?.descOpt}
-              // contentIndex={item.contentIndex}
-              // imageURL={selTemp[item.type]?.imageURL}
+    <div>
+      <div></div>
+      <div className={styles.sidebarWrapper}>
+        <div>
+          <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
+            <h2>Choose Template</h2>
+            <div className="md:flex flex-wrap hidden content-center ">
+              <TemplateCarousel template={template} setselTemp={setselTemp} />
+            </div>
+          </nav>
+        </div>
+        {/* <button onClick={handleToggle}>Toggle Sidebar</button> */}
+        <div
+          className={`${
+            isOpen ? "md:ml-64" : ""
+          } transition-all duration-300 ease-in-out`}
+        >
+          <div>
+            <Toolbar
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
             />
-          );
-        })}
+          </div>
+          <div className="flex flex-row flex-wrap ">
+            {content.map((item, index) => {
+              return (
+                <Card
+                  key={`card-"${index}`}
+                  template={selTemp[item.type]}
+                  item={item}
+                  globalCanvasHeight={globalCanvasHeight}
+                  setGlobalCanvasHeight={setGlobalCanvasHeight}
+                  selBgColor={selectedColor}
+                  order={selTemp.order}
+                  // content={item.content}
+                  // textOpt={selTemp[item.type]?.textOpt}
+                  // desc={item.desc}
+                  // descOpt={selTemp[item.type]?.descOpt}
+                  // contentIndex={item.contentIndex}
+                  // imageURL={selTemp[item.type]?.imageURL}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
