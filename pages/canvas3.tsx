@@ -74,6 +74,41 @@ const Home: NextPage = () => {
     },
   };
 
+  const generateContent = async (event?: any) => {
+    event?.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: prompt }),
+      });
+
+      const data = await response.json();
+      if (response.status !== 200) {
+        throw (
+          data.error ||
+          new Error(`Request failed with status ${response.status}`)
+        );
+      }
+      const content = parseContent2(data.result);
+      if (content.length === 0) {
+        generateContent(null);
+        return;
+      }
+      // setContentSum(content);
+      setLoading(false);
+    } catch (error: any) {
+      // Consider implementing your own error handling logic here
+      setLoading(false);
+      alert(error.message);
+      generateContent(null);
+    }
+  };
+
   function parseContent2(raw: string): any {
     try {
       const regex = /^\s*\d+\.\s*(.*)$/gm;
@@ -253,6 +288,7 @@ const Home: NextPage = () => {
                 </div>
               ) : true ? (
                 <CanvasPage
+                  generateContent={generateContent}
                   contentSum={parseContent2(`1. [Hook] Have you ever felt like you were fighting an uphill battle when it comes to cold emailing?
                 2. AI, spam filters and smart inboxes can make it difficult to get your message across.
                 3. To win this battle, your cold emails have to be like spears - straight, to the point, no fluff.

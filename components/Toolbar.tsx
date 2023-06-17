@@ -6,19 +6,24 @@ interface ColorOption {
 }
 
 const colors: ColorOption[] = [
+  { color: "#F6F7F1", label: "Cream" },
+  { color: "#1B2528", label: "Dark grey" },
+  { color: "#FFFFFF", label: "White" },
   { color: "#02084B", label: "Dark blue" },
-  { color: "#74DFF6", label: "Light Blue" },
+  { color: "#74DFF6", label: "Light blue" },
   { color: "#FAD02C", label: "Yellow" },
 ];
 
 interface ToolbarProps {
   selectedColor: any;
   setSelectedColor: any;
+  generateContent: (event?: any) => Promise<void>;
 }
 
 export default function Toolbar({
   selectedColor,
   setSelectedColor,
+  generateContent,
 }: ToolbarProps) {
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -29,13 +34,19 @@ export default function Toolbar({
   };
 
   return (
-    <div className="toolbar">
+    <div className="toolbar flex justify-between align-middle ">
       <div className="dropdown-container relative">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className=" px-4 py-2 rounded"
           onClick={() => setShowDropdown(!showDropdown)}
         >
-          Background Color
+          <div
+            className={`color-swatch mx-3 rounded`}
+            style={{
+              backgroundColor: selectedColor?.color,
+              borderRadius: "50%",
+            }}
+          ></div>
         </button>
         {showDropdown && (
           <div className="dropdown absolute top-10 left-0 bg-white p-4 shadow rounded">
@@ -52,6 +63,14 @@ export default function Toolbar({
           </div>
         )}
       </div>
+      <button
+        onClick={(e) => {
+          generateContent(e);
+        }}
+        className="bg-white rounded-full text-black border font-medium px-4 py-2  hover:bg-gray-100 transition"
+      >
+        Refresh
+      </button>
       <style jsx>{`
         .toolbar {
           display: flex;

@@ -247,10 +247,15 @@ const Home: NextPage = () => {
               Enter your Linkedin post copy
             </h2>
             <h3 className="max-w-3xl">
-              Some ideas: 1) Start typing a new LinkedIn copy, 2) recycle one of
-              your old LinkedIn post copy, or 3) copy/paste a popular Linkedin
-              post you recently saw to repurpose and make it your own! It
-              hunger, KitKat provides a break. JTBD Please enter a minimum
+              <br />
+              Some ideas:
+              <br />
+              1) Start typing new LinkedIn post copy
+              <br />
+              2) Copy/paste one of your old LinkedIn post
+              <br />
+              3) Copy/paste a popular Linkedin post you recently saw and make it
+              your own!
             </h3>
           </>
         )}
@@ -333,7 +338,7 @@ const Home: NextPage = () => {
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Please enter a minimum of 150 words to get the best carousel result"
                   ></textarea>
-                  <p className="mt-4">{prompt.length} chars (min 150 chars)</p>
+                  {/* <p className="mt-4">{prompt.length} chars (min 150 chars)</p> */}
                   <button
                     type="submit"
                     className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 mt-10 hover:bg-blue-500 transition disabled:bg-gray-800"
@@ -345,7 +350,7 @@ const Home: NextPage = () => {
                         <LoadingDots color="white" style="large" />
                       </span>
                     )}
-                    Generate Your Carousel
+                    Create LinkedIn Carousel
                   </button>
                 </>
               ) : (
@@ -372,7 +377,10 @@ const Home: NextPage = () => {
                 )
               )}
               {contentSum?.length > 0 && !loading && (
-                <CanvasPage contentSum={contentSum} />
+                <CanvasPage
+                  contentSum={contentSum}
+                  generateContent={generateContent}
+                />
               )}
               {/* {loading && (
                 <button
@@ -412,14 +420,6 @@ const Home: NextPage = () => {
                 )}
                 {contentSum?.length > 0 && !loading && (
                   <>
-                    <button
-                      onClick={(e) => {
-                        generateContent(e);
-                      }}
-                      className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
-                    >
-                      Refresh
-                    </button>
                     <button
                       onClick={() => {
                         setContentSum([]);

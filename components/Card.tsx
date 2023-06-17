@@ -67,11 +67,8 @@ export default function Card({
 
     order?.forEach((obj: any) => {
       const object = canvasObj[obj.name];
-      console.log(obj.name);
       if (object) {
-        console.log(obj.name, object.top);
         const objectHeight = object.height as number;
-        console.log(objectHeight, globalCanvasHeight, totalHeight);
         object
           .set({
             top: currentY + obj.top,
@@ -118,7 +115,17 @@ export default function Card({
         (img: fabric.Image) => {
           // console.log(canvasBackgroundImage)
           if (cnv._objects.length > 0) {
-            img.set({ ...template.profile, note: "profilePic" });
+            var clipPath = new fabric.Circle({
+              radius: 40,
+              top: -50,
+              left: -40,
+            });
+
+            img.set({
+              ...template.profile,
+              note: "profilePic",
+            });
+            img.clipPath = clipPath;
             cnv.add(img);
 
             var totalHeight = 0;

@@ -1001,7 +1001,13 @@ function parseContent3(raw: string): any {
 
 const template = [temp5, temp6, temp7, temp9];
 
-const CanvasPage = ({ contentSum }: { contentSum: contentProps[] }) => {
+const CanvasPage = ({
+  contentSum,
+  generateContent,
+}: {
+  contentSum: contentProps[];
+  generateContent: (event?: any) => Promise<void>;
+}) => {
   const [title, settitle] = useState("second");
   const [selTemp, setselTemp] = useState(temp5);
   const [isOpen, setIsOpen] = useState(true);
@@ -1012,8 +1018,17 @@ const CanvasPage = ({ contentSum }: { contentSum: contentProps[] }) => {
   };
 
   const content: contentProps[] = contentSum;
-  const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
-  console.log(selectedColor);
+  const [selectedColor, setSelectedColor] = useState<ColorOption | null>({
+    color: "#F6F7F1",
+    label: "cream",
+  });
+
+  useEffect(() => {
+    setSelectedColor({
+      color: selTemp.content.backgroundColor,
+      label: "Template Color",
+    });
+  }, [selTemp]);
 
   return (
     <div>
@@ -1037,6 +1052,7 @@ const CanvasPage = ({ contentSum }: { contentSum: contentProps[] }) => {
             <Toolbar
               selectedColor={selectedColor}
               setSelectedColor={setSelectedColor}
+              generateContent={generateContent}
             />
           </div>
           <div className="flex flex-row flex-wrap ">

@@ -24,7 +24,6 @@ async function convertAllCanvasesToImages() {
 
 async function generatePDFFromImages(images: HTMLCanvasElement[]) {
   //   const pdf = new jsPDF("l", "px", [images[0].height, images[0].width]);
-  console.log(images[0].height, images[0].width);
   const pdf = new jsPDF({
     unit: "px",
     format: [images[0].height, images[0].width],

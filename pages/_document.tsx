@@ -2,10 +2,10 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render() {
-    let description = "Generate visualisation from your content";
+    let description = "Turn your LinkedIn copy into engaging carousels!";
     let ogimage = "https://www.Instacarol.ai/logo.png";
     let sitename = "Instacarol.ai";
-    let title = "Content Visualiser";
+    let title = "LinkedIn Carousel Generator";
 
     return (
       <Html lang="en">
