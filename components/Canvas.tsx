@@ -844,6 +844,15 @@ const temp9 = {
       scaleY: 1.3,
       fill: "black",
     },
+    vision: {
+      left: 190, // set left position
+      top: 0, // set top position
+      scaleX: 0.52,
+      scaleY: 0.52,
+      fill: "white",
+      bg: "black",
+    },
+
     // imageURL: "temp3/1.png",
     backgroundColor: "#FFFFFF",
   },
@@ -881,6 +890,7 @@ const temp9 = {
   order: [
     { name: "desc", top: 0 },
     { name: "profilePic", top: 20 },
+    { name: "arrow", top: -80 },
     { name: "userfullname", top: 12 },
     { name: "username", top: 80 },
   ],

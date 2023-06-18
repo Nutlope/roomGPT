@@ -269,7 +269,8 @@ const Home: NextPage = () => {
         )}
         {status === "authenticated" && data && contentSum?.length > 0 && (
           <p className="text-gray-400">
-            You have{" "}
+            Click text to edit copy
+            {/* You have{" "}
             <span className="font-semibold text-gray-300">
               {data.remainingGenerations}{" "}
               {data?.remainingGenerations > 1 ? "downloads" : "download"}
@@ -286,7 +287,7 @@ const Home: NextPage = () => {
                 </Link>
                 .
               </span>
-            )}
+            )} */}
           </p>
         )}
         <ResizablePanel>

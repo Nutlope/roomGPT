@@ -35,7 +35,7 @@ export default function Card({
   selBgColor,
   setGlobalCanvasHeight,
 }: CardProps) {
-  const { imageURL, textOpt, descOpt, backgroundColor } = template;
+  const { imageURL, textOpt, descOpt, backgroundColor, vision } = template;
   const { content, desc, contentIndex } = item;
   const { data: session } = useSession();
 
@@ -50,7 +50,7 @@ export default function Card({
     var totalHeight = 0;
     cnv.forEachObject((obj) => {
       // @ts-ignore
-      if (obj.note !== "profilePic") {
+      if (obj.note !== "profilePic" && obj.note !== "arrow") {
         totalHeight += obj.height as number;
       }
     });
@@ -69,6 +69,7 @@ export default function Card({
       const object = canvasObj[obj.name];
       if (object) {
         const objectHeight = object.height as number;
+        console.log(obj.name, object.name, objectHeight);
         object
           .set({
             top: currentY + obj.top,
@@ -244,6 +245,58 @@ export default function Card({
       }
     }
 
+    if (vision) {
+      var ArrowWithTail = fabric.util.createClass(fabric.Path, {
+        initialize: function (options: any) {
+          options = options || {};
+          var pathData =
+            "M 0 0 L 80 0 L 80 -20 L 120 20 L 80 60 L 80 40 L 0 40 z";
+          this.callSuper("initialize", pathData, options);
+          this.set({
+            fill: vision.fill || "white",
+            width: 90,
+            height: 60,
+          });
+        },
+      });
+
+      // Create an instance of the arrow with a tail
+      var arrow = new ArrowWithTail({
+        left: 65,
+        top: 75,
+      });
+
+      // Create a black arrow object
+      // var arrow = new fabric.Path("M 0 0 L 20 0 L 20 -5 L 30 5 L 20 15 L 20 10 L 0 10 z", {
+      //   fill: 'black',
+      //   left: 0,
+      //   top: 0
+      // });
+
+      // Create a white circle object
+      var circle = new fabric.Circle({
+        radius: 100,
+        fill: vision.bg || "black",
+        left: 0,
+        top: 0,
+      });
+
+      // Create a group to contain the arrow and circle
+      var group = new fabric.Group([circle, arrow]);
+      group.set({
+        top: vision.top,
+        left: vision.left,
+        scaleX: vision.scaleX,
+        scaleY: vision.scaleY,
+        //@ts-ignore
+        note: "arrow",
+      });
+
+      // Add the group to the canvas
+
+      // Add the arrow with a tail to the canvas
+      cnv.add(group);
+    }
     return () => {
       cnv.dispose();
       setCanvas(undefined);
