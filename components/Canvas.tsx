@@ -354,38 +354,6 @@ const temp5 = {
     { name: "username", top: -80 },
     { name: "desc", top: 0 },
   ],
-  title: {
-    textOpt: {
-      left: 40,
-      top: 80,
-      fontSize: 80,
-      width: 720,
-      // fontFamily: "League Gothic",
-      lineHeight: 1,
-      fill: "black",
-      textAlign: "center",
-    },
-    profile: {
-      left: 40, // set left position
-      top: 10, // set top position
-      scaleX: 1.3,
-      scaleY: 1.3,
-      fill: "black",
-    },
-    // imageURL: "temp3/1.png",
-    backgroundColor: "#F6F7F1",
-
-    descOpt: {
-      left: 40,
-      top: 104,
-      fontSize: 48,
-      width: 720,
-      // fontFamily: "League Gothic",
-      lineHeight: 1,
-      textAlign: "left",
-      fill: "black",
-    },
-  },
   content: {
     ...username,
     textOpt: {
@@ -419,37 +387,6 @@ const temp5 = {
     // imageURL: "temp3/1.png",
     backgroundColor: "#F6F7F1",
   },
-  end: {
-    textOpt: {
-      left: 20,
-      top: 75,
-      fontSize: 80,
-      width: 160,
-      // fontFamily: "League Gothic",`
-      lineHeight: 1,
-      textAlign: "left",
-      fill: "black",
-    },
-    descOpt: {
-      left: 40,
-      top: 125,
-      fontSize: 48,
-      width: 720,
-      // fontFamily: "League Gothic",
-      lineHeight: 1,
-      textAlign: "left",
-      fill: "black",
-    },
-    profile: {
-      left: 40, // set left position
-      top: 10, // set top position
-      scaleX: 1.3,
-      scaleY: 1.3,
-      fill: "black",
-    },
-    // imageURL: "temp3/1.png",
-    backgroundColor: "#F6F7F1",
-  },
 };
 const temp6 = {
   sample: "sample/2.png",
@@ -459,39 +396,6 @@ const temp6 = {
     { name: "username", top: -80 },
     { name: "desc", top: 0 },
   ],
-  title: {
-    textOpt: {
-      left: 40,
-      top: 80,
-      fontSize: 80,
-      width: 720,
-      // fontFamily: "League Gothic",
-      lineHeight: 1,
-      fill: "white",
-      textAlign: "center",
-    },
-    profile: {
-      left: 40, // set left position
-      top: 10, // set top position
-      scaleX: 1.3,
-      scaleY: 1.3,
-      fill: "white",
-    },
-    // imageURL: "temp3/1.png",
-    backgroundColor: "#1B2528",
-
-    descOpt: {
-      left: 40,
-      top: 104,
-      fontSize: 48,
-      width: 720,
-      // fontFamily: "League Gothic",
-      // fontWeight: "light",
-      lineHeight: 1,
-      textAlign: "left",
-      fill: "black",
-    },
-  },
   content: {
     userfullname: {
       leftOffset: 160,
@@ -538,37 +442,6 @@ const temp6 = {
       fill: "white",
     },
     // imageURL: "temp3/1.png",
-    backgroundColor: "#1B2528",
-  },
-  end: {
-    textOpt: {
-      left: 20,
-      top: 75,
-      fontSize: 80,
-      width: 160,
-      // fontFamily: "League Gothic",`
-      lineHeight: 1,
-      textAlign: "center",
-      fill: "white",
-    },
-    descOpt: {
-      left: 40,
-      top: 125,
-      fontSize: 48,
-      width: 720,
-      // fontFamily: "League Gothic",
-      lineHeight: 1,
-      textAlign: "left",
-      fill: "white",
-    },
-    profile: {
-      left: 40, // set left position
-      top: 10, // set top position
-      scaleX: 1.3,
-      scaleY: 1.3,
-      fill: "white",
-    },
-    // imageURL: "temp3/3.png",
     backgroundColor: "#1B2528",
   },
 };
@@ -782,39 +655,6 @@ const temp8 = {
 
 const temp9 = {
   sample: "sample/5.png",
-  title: {
-    textOpt: {
-      left: 40,
-      top: 80,
-      fontSize: 80,
-      width: 720,
-      // fontFamily: "League Gothic",
-      lineHeight: 1,
-      fill: "black",
-      textAlign: "left",
-    },
-    profile: {
-      left: 40, // set left position
-      top: 10, // set top position
-      scaleX: 1.3,
-      scaleY: 1.3,
-      fill: "black",
-    },
-    // imageURL: "temp3/1.png",
-    backgroundColor: "#FFFFFF",
-
-    descOpt: {
-      left: 40,
-      top: 104,
-      fontSize: 48,
-      width: 720,
-      // fontFamily: "League Gothic",
-      // fontWeight: "light",
-      lineHeight: 1,
-      textAlign: "left",
-      fill: "black",
-    },
-  },
   content: {
     textOpt: {
       left: 40,
@@ -845,52 +685,76 @@ const temp9 = {
       fill: "black",
     },
     vision: {
-      left: 190, // set left position
+      left: 200, // set left position
       top: 0, // set top position
-      scaleX: 0.52,
-      scaleY: 0.52,
+      scaleX: 0.102,
+      scaleY: 0.102,
       fill: "white",
+      img: "element/arrow_black.png",
       bg: "black",
     },
 
     // imageURL: "temp3/1.png",
     backgroundColor: "#FFFFFF",
   },
-  end: {
+  order: [
+    { name: "desc", top: 0 },
+    { name: "profilePic", top: 20 },
+    { name: "arrow", top: -95 },
+    { name: "userfullname", top: 12 },
+    { name: "username", top: 80 },
+  ],
+};
+
+const temp10 = {
+  sample: "sample/7.png",
+
+  content: {
     textOpt: {
-      left: 20,
-      top: 75,
-      fontSize: 80,
-      width: 160,
-      // fontFamily: "League Gothic",`
-      lineHeight: 1,
-      textAlign: "center",
-      fill: "black",
-    },
-    descOpt: {
       left: 40,
-      top: 125,
-      fontSize: 48,
+      top: 70,
+      fontSize: 80,
       width: 720,
       // fontFamily: "League Gothic",
       lineHeight: 1,
       textAlign: "left",
-      fill: "black",
+      fill: "white",
+    },
+    descOpt: {
+      left: 40,
+      top: 104,
+      fontSize: 48,
+      width: 720,
+      // fontFamily: "League Gothic",
+      // fontWeight: "light",
+      lineHeight: 1,
+      textAlign: "left",
+      fill: "white",
     },
     profile: {
       left: 40, // set left position
       top: 10, // set top position
       scaleX: 1.3,
       scaleY: 1.3,
-      fill: "black",
+      fill: "white",
     },
-    // imageURL: "temp3/3.png",
-    backgroundColor: "#FFFFFF",
+    vision: {
+      left: 200, // set left position
+      top: 0, // set top position
+      scaleX: 0.102,
+      scaleY: 0.102,
+      img: "element/arrow_white.png",
+      fill: "white",
+      bg: "black",
+    },
+
+    // imageURL: "temp3/1.png",
+    backgroundColor: "#1B2528",
   },
   order: [
     { name: "desc", top: 0 },
     { name: "profilePic", top: 20 },
-    { name: "arrow", top: -80 },
+    { name: "arrow", top: -95 },
     { name: "userfullname", top: 12 },
     { name: "username", top: 80 },
   ],
@@ -900,7 +764,7 @@ interface contentProps {
   index: any;
   content: string;
   desc?: string;
-  type: keyof typeof temp3;
+  type: keyof typeof temp5;
 }
 
 const craw = `1. Put yourself first: Stop people pleasing and start taking care of yourself! 
@@ -1009,7 +873,7 @@ function parseContent3(raw: string): any {
 //   },
 // ];
 
-const template = [temp5, temp6, temp7, temp9];
+const template = [temp5, temp6, temp9, temp10];
 
 const CanvasPage = ({
   contentSum,

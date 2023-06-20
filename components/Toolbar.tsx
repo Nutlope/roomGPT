@@ -49,7 +49,7 @@ export default function Toolbar({
           ></div>
         </button>
         {showDropdown && (
-          <div className="dropdown absolute top-10 left-0 bg-white p-4 shadow rounded">
+          <div className="dropdown absolute top-10 left-0 bg-gray-300 p-4 shadow rounded">
             {colors.map((color) => (
               <div
                 key={color.color}
@@ -86,7 +86,6 @@ export default function Toolbar({
           top: 45px;
           left: 0;
           z-index: 100;
-          background: white;
           padding: 10px;
           border-radius: 4px;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
