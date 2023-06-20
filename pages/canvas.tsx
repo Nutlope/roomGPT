@@ -150,7 +150,10 @@ const Home: NextPage = () => {
 
       const data = await response.json();
       if (response.status !== 200) {
-        if (data.error.message) alert(data.error.message);
+        if (data.error.message) {
+          setLoading(false);
+          return alert(data.error.message);
+        }
         throw (
           data.error ||
           new Error(`Request failed with status ${response.status}`)
