@@ -150,6 +150,7 @@ const Home: NextPage = () => {
 
       const data = await response.json();
       if (response.status !== 200) {
+        if (data.error.message) alert(data.error.message);
         throw (
           data.error ||
           new Error(`Request failed with status ${response.status}`)
@@ -165,7 +166,7 @@ const Home: NextPage = () => {
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       setLoading(false);
-      alert("We are working to fix the problem. Please try again later");
+      // alert("We are working to fix the problem. Please try again later");
       generateContent(null);
     }
   };
