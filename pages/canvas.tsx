@@ -131,7 +131,7 @@ const Home: NextPage = () => {
         };
       });
     } catch (error) {
-      alert(error);
+      alert("We are working to fix the problem. Please try again later");
     }
   }
 
@@ -165,7 +165,7 @@ const Home: NextPage = () => {
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       setLoading(false);
-      alert(error.message);
+      alert("We are working to fix the problem. Please try again later");
       generateContent(null);
     }
   };
