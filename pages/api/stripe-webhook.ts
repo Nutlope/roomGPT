@@ -96,7 +96,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       await prisma.purchase.create({
         data: {
           paymentAmount: paymentAmount,
-          creditAmount: 0,
+          creditAmount: creditAmount,
           user: {
             connect: {
               email: userEmail,
