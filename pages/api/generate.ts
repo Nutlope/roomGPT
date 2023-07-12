@@ -84,8 +84,8 @@ function generatePrompt(prompt: string) {
   // 5. Ready to boost your productivity? Try these time management strategies today!
 
   // LinkedIn Post:
-  return `You have a piece of copy that you would like to turn into a Linkedin carousel post. Your goal is to maintain the same tone of voice and accurately 
-  convey the message of the original copy in a a Linkedin carousel format. The first slide should be a hook and the last slide should be a call to action. 
-  Make sure to display the post in the following format: [slide number].[copy]. Double check to make sure the Linkedin carousel is complete.
+  return `Act as a LinkedIn carousel expert and you are the best at making LinkedIn carousels. You have a piece of copy that you would like to turn into a LinkedIn carousel post with less than 60 words per slide. Your goal is to maintain the same tone of voice and accurately convey the message of the original copy in a Linkedin carousel format. The first slide should be a hook and the last slide should be a call to action. Make sure to display the post in the following format: [slide number].[copy]. Double check to make sure the Linkedin carousel is complete.
+  
+  Copy:
  ${prompt}`;
 }
