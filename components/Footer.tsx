@@ -14,12 +14,12 @@ export default function Footer() {
           Replicate,{" "}
         </a>
         <a
-          href="https://upload.io"
+          href="https://www.bytescale.com/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline hover:text-gray-300 transition underline-offset-2"
         >
-          Upload,{" "}
+          Bytescale,{" "}
         </a>
         and{" "}
         <a
