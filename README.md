@@ -15,7 +15,7 @@ It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet
 ### Cloning the repository the local machine.
 
 ```bash
-git clone https://github.com/Nutlope/roomGPT
+git 
 ```
 
 ### Creating a account on Replicate to get an API key.
