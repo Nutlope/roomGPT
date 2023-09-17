@@ -3,8 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { UploadDropzone } from "react-uploader";
-import { Uploader } from "uploader";
+import { UploadDropzone } from "@bytescale/upload-widget-react";
 import { CompareSlider } from "../../components/CompareSlider";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -15,15 +14,12 @@ import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
+import {UploadWidgetConfig} from "@bytescale/upload-widget";
 
-// Configuration for the uploader
-const uploader = Uploader({
+const options: UploadWidgetConfig = {
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
-    ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
-    : "free",
-});
-
-const options = {
+      ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
+      : "free",
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
@@ -57,7 +53,6 @@ export default function DreamPage() {
 
   const UploadDropZone = () => (
     <UploadDropzone
-      uploader={uploader}
       options={options}
       onUpdate={(file) => {
         if (file.length !== 0) {
