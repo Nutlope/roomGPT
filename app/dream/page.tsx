@@ -15,6 +15,7 @@ import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
 import {UploadWidgetConfig} from "@bytescale/upload-widget";
+import {UrlBuilder} from "@bytescale/sdk";
 
 const options: UploadWidgetConfig = {
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
@@ -54,11 +55,21 @@ export default function DreamPage() {
   const UploadDropZone = () => (
     <UploadDropzone
       options={options}
-      onUpdate={(file) => {
-        if (file.length !== 0) {
-          setPhotoName(file[0].originalFile.originalFileName);
-          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
-          generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+      onUpdate={(files) => {
+        if (files.length !== 0) {
+          const image = files[0];
+          const imageName = image.originalFile.originalFileName
+          const imageUrl = UrlBuilder.url({
+            accountId: image.originalFile.accountId,
+            filePath: image.filePath,
+            options: {
+              transformation: "preset",
+              transformationPreset: "thumbnail"
+            }
+          });
+          setPhotoName(imageName);
+          setOriginalPhoto(imageUrl);
+          generatePhoto(imageUrl);
         }
       }}
       width="670px"
