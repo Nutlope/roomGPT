@@ -6,7 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@bytescale/upload-widget-react": "^4.1.0",
+    "@bytescale/upload-widget-react": "^4.9.0",
     "@headlessui/react": "^1.7.7",
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.16",

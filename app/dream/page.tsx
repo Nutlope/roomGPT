@@ -3,6 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import { UrlBuilder } from "@bytescale/sdk";
+import { UploadWidgetConfig } from "@bytescale/upload-widget";
 import { UploadDropzone } from "@bytescale/upload-widget-react";
 import { CompareSlider } from "../../components/CompareSlider";
 import Footer from "../../components/Footer";
@@ -14,8 +16,6 @@ import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
-import {UploadWidgetConfig} from "@bytescale/upload-widget";
-import {UrlBuilder} from "@bytescale/sdk";
 
 const options: UploadWidgetConfig = {
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
@@ -55,12 +55,12 @@ export default function DreamPage() {
   const UploadDropZone = () => (
     <UploadDropzone
       options={options}
-      onUpdate={(files) => {
-        if (files.length !== 0) {
-          const image = files[0];
-          const imageName = image.originalFile.originalFileName
+      onUpdate={({ uploadedFiles }) => {
+        if (uploadedFiles.length !== 0) {
+          const image = uploadedFiles[0];
+          const imageName = image.originalFile.originalFileName;
           const imageUrl = UrlBuilder.url({
-            accountId: image.originalFile.accountId,
+            accountId: image.accountId,
             filePath: image.filePath,
             options: {
               transformation: "preset",
