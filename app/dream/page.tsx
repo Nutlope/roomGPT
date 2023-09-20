@@ -3,8 +3,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { UploadDropzone } from "react-uploader";
-import { Uploader } from "uploader";
+import { UrlBuilder } from "@bytescale/sdk";
+import { UploadWidgetConfig } from "@bytescale/upload-widget";
+import { UploadDropzone } from "@bytescale/upload-widget-react";
 import { CompareSlider } from "../../components/CompareSlider";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -16,14 +17,10 @@ import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
 
-// Configuration for the uploader
-const uploader = Uploader({
+const options: UploadWidgetConfig = {
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
-    ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
-    : "free",
-});
-
-const options = {
+      ? process.env.NEXT_PUBLIC_UPLOAD_API_KEY
+      : "free",
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
@@ -57,13 +54,22 @@ export default function DreamPage() {
 
   const UploadDropZone = () => (
     <UploadDropzone
-      uploader={uploader}
       options={options}
-      onUpdate={(file) => {
-        if (file.length !== 0) {
-          setPhotoName(file[0].originalFile.originalFileName);
-          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
-          generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+      onUpdate={({ uploadedFiles }) => {
+        if (uploadedFiles.length !== 0) {
+          const image = uploadedFiles[0];
+          const imageName = image.originalFile.originalFileName;
+          const imageUrl = UrlBuilder.url({
+            accountId: image.accountId,
+            filePath: image.filePath,
+            options: {
+              transformation: "preset",
+              transformationPreset: "thumbnail"
+            }
+          });
+          setPhotoName(imageName);
+          setOriginalPhoto(imageUrl);
+          generatePhoto(imageUrl);
         }
       }}
       width="670px"
