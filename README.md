@@ -18,7 +18,7 @@ It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet
 git clone https://github.com/Nutlope/roomGPT
 ```
 
-### Creating a account on Replicate to get an API key.
+### Creating an account on Replicate to get an API key.
 
 1. Go to [Replicate](https://replicate.com/) to make an account.
 2. Click on your profile picture in the top left corner, and click on "API Tokens".
