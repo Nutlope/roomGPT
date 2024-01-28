@@ -28,7 +28,7 @@ git clone https://github.com/Nutlope/roomGPT
 
 Create a file in root directory of project with env. And store your API key in it, as shown in the .example.env file.
 
-If you'd also like to do rate limiting, create an account on UpStash, create a Redis database, and populate the two environment variables in `.env` as well. If you don't want to do rate limiting, you don't need to make any changes.
+If you would also like to do rate limiting, create an account on UpStash, create a Redis database, and populate the two environment variables in `.env` as well. If you don't want to do rate limiting, you don't need to make any changes.
 
 ### Installing the dependencies.
 
