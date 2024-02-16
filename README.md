@@ -50,6 +50,72 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY&project-name=room-GPT&repo-name=roomGPT)
 
+## Quick Start Guide: Building a RoomGPT Project
+
+Welcome to the Quick Start Guide for creating your Room GPT project using the command line. This guide will walk you through setting up your environment, creating a basic GPT-based application focused on room or environment-related tasks.
+
+### Prequisites
+
+Ensure Python 3.6 or later is installed on your system.
+
+### Setup Your Environment
+
+Create Environemnt:
+
+```bash
+python -m venv myprojectenv
+```
+
+Activate Environment:
+Unix/MacOS:
+
+```bash
+source myprojectenv/bin/activate
+```
+
+Windows:
+
+```bash
+myprojectenv\Scripts\activate
+```
+
+### Install Required Package
+
+```bash
+pip install transformers
+```
+
+### Create Project
+
+```bash
+mkdir myroomgptproject
+cd myroomgptproject
+```
+
+### Write Your First Project
+
+This example will demonstrate how to genereate basic room descriptions.
+
+```bash
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+
+def generate_room_description(prompt):
+    tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+    model = GPT2LMHeadModel.from_pretrained("gpt2")
+
+    inputs = tokenizer.encode(prompt, return_tensors="pt")
+    outputs = model.generate(inputs, max_length=100, num_return_sequences=1)
+    text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    return text
+```
+
+### Test Your Project
+
+```bash
+python example.py
+```
+
 ## License
 
 This repo is MIT licensed.
